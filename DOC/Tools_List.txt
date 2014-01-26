@@ -1,0 +1,21 @@
+Technologies
+1. Eclipse
+Client development tool.
+2. Java
+Client development programming language
+3. Android SDK
+Client development kit
+4. PHP
+Provide the webservice in the server side
+5. JSON
+Server and Client communication data format
+6. HTTP
+Server and Client communication
+7. MYSQL
+Provide the database in Linux
+8. Windows and Linux
+Windows for Android development and Linux for remote server hosting and mySql hosting
+9. Github
+For source code version control
+10. Notepad/Vi/VIM
+For edit the server side of PHP and MYSQL config.
