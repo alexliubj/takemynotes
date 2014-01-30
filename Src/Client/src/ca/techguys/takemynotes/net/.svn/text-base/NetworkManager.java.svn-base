@@ -1,0 +1,32 @@
+package com.itotem.chinahr.campus.network;
+
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+/**
+ * 判断网络连接
+ * @author andy
+ *
+ */
+public class NetworkManager {
+
+	public  static boolean  isNetConnected(Context context){
+		boolean  isResult=false;
+		ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService( Context.CONNECTIVITY_SERVICE );
+		NetworkInfo info=connectivityManager.getActiveNetworkInfo();
+		if(info!=null){
+			/*int type=info.getType();
+			if(type==ConnectivityManager.TYPE_MOBILE){
+				if(info.isConnected()){
+					isResult=true;
+				}
+			}else if(type==ConnectivityManager.TYPE_WIFI){
+				if(info.isConnected()){
+					isResult=true;
+				}
+			}*/
+			return info.isConnectedOrConnecting();
+		}
+		return isResult;
+	}
+}

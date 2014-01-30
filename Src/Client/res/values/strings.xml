@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TakeMyNotest</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="wait">Wait...</string>
+    <string name="dataload">Loading...</string>
+    <string name="quit">Quit</string>
+    <string name="confirm">Confirm</string>
+    <string name="exit">Exit</string>
+    <string name="cancel">Cancel</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_category">CategoryActivity</string>
+    <string name="title_activity_sell_notes">SellNotesActivity</string>
+    <string name="title_activity_user_panel">UserPanelActivity</string>
+    <string name="title_activity_select_role">SelectRoleActivity</string>
+    <string name="title_activity_sub_category">SubCategoryActivity</string>
+    <string name="title_activity_note_details">NoteDetailsActivity</string>
+
+</resources>

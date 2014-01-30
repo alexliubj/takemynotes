@@ -1,0 +1,214 @@
+package com.itotem.chinahr.campus.network;
+
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+import org.apache.http.HttpException;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+
+import android.text.TextUtils;
+import android.util.Log;
+
+public class ChinahrRequest {
+	/**
+	 * 存放普通参数的list name--value
+	 */
+	private List<NameValuePair> strParams;
+	/**
+	 * 存放上传文件的list name--filePath
+	 */
+	private List<NameValuePair> fileParams;
+	// ?userId=att&userPass=att&methodVit=GETALLMOVIE
+
+	
+	//private final String url="http://118.144.84.60/lookups";//测试接口
+	private final String url =  "https://campusservice.chinahr.com/lookups";//正式接口
+	private final String updateUrl = "http://120.196.125.11:26780/sdk/sdk_vup.php?appkey=4mj895qtdjq3&channel=CHANNEL002";
+	private final String urlLogin = "http://120.196.125.11:26120";
+	/**
+	 * 登录接口
+	 */
+	public static final String LOGIN = "https://campusservice.chinahr.com/login";
+	/**
+	 * 获得动态密码接口
+	 */
+	public static final String LOGIN_DYNAMIC_PWD="/index.php?m=traffic&c=member&a=getDynamicPassword";
+	/**
+	 * 2.1.8	JobCities 接口
+	 */
+	public static final String JOB_CITYS = "/dic/JobCities";
+	
+	public static final String PREACH_CITYS = "/dic/CareerTalkCities";
+	
+	public static final String JOBS = "/Jobs";
+	
+	public static final String JOB = "/Job";
+	
+	public static final String CAREER_TALKS = "/CareerTalks";
+	
+	public static final String CAREER_TALK = "/CareerTalk";
+	
+	public static final String CAREER_TALK_INDUSTRIES = "/dic/CareerTalkIndustries";
+	
+	public static final String CAREER_TALK_SCHOOLS = "/dic/CareerTalkSchools" ;
+	
+	public static final String APPLY_HISTORY = "/ApplyHistory";
+	private BaseRequest baseRequest;
+
+	public ChinahrRequest() {
+		strParams = new ArrayList<NameValuePair>();
+		fileParams = new ArrayList<NameValuePair>();
+		baseRequest = new BaseRequest();
+	}
+
+//	private void addShareParams() {
+//		strParams.add(new BasicNameValuePair("userId", "att"));
+//		strParams.add(new BasicNameValuePair("userPass", "att"));
+//	}
+
+	/**
+	 * 获取所有城市信息
+	 * 
+	 * @return
+	 * @throws HttpException
+	 * @throws IOException
+	 */
+	public String getJobCitiesRequest(String time) throws HttpException, IOException,Exception {
+		strParams.clear();
+		System.out.println("datatime          ---  "+time);
+		strParams.add(new BasicNameValuePair("Timestamp", time));
+		String result = baseRequest.getRequest(strParams, url+JOB_CITYS);
+		return result;
+	}
+
+	/**
+	 * 根据关键字搜索工作信息接口
+	 * @param Keyword
+	 * @param CityId
+	 * @param PageNo
+	 * @return
+	 * @throws HttpException
+	 * @throws IOException
+	 */
+	public String getCareerTalksRequest(String Keyword,String CityId,String IndustryId,String SchoolId,String PageNo,String PageSize) throws HttpException, IOException
+	,Exception{
+		strParams.clear();
+		if(!Keyword.equals("")){
+		strParams.add(new BasicNameValuePair("Keyword", Keyword));
+		}
+		if(!CityId.equals("")){
+			CityId=CityId.replaceAll(",", "%2C");
+			strParams.add(new BasicNameValuePair("CityId", CityId));
+		}
+		if(!IndustryId.equals("")){
+			strParams.add(new BasicNameValuePair("IndustryId", IndustryId));
+		}
+		if(!SchoolId.equals("")){
+			strParams.add(new BasicNameValuePair("SchoolId", SchoolId));
+		}
+		strParams.add(new BasicNameValuePair("PageNo", PageNo));
+		strParams.add(new BasicNameValuePair("PageSize", PageSize));
+		String result = baseRequest.getRequest(strParams, url+CAREER_TALKS);
+		return result;
+	}
+
+	/**
+	 * 根据工作ID查找
+	 * @param JobId
+	 * @return
+	 * @throws HttpException
+	 * @throws IOException
+	 */
+	public String getJobRequest(String JobId) throws HttpException, IOException ,Exception{
+		strParams.clear();
+		if(!JobId.equals("")){
+		strParams.add(new BasicNameValuePair("JobId", JobId));
+		}
+		String result = baseRequest.getRequest(strParams, url+JOB);
+		return result;
+	}
+	
+	/**
+	 * 获取宣讲全部城市信息
+	 * @return
+	 * @throws HttpException
+	 * @throws IOException
+	 */
+	public String getCareerTalkCitiesRequest(String time) throws HttpException, IOException,Exception {
+		strParams.clear();
+		System.out.println("datatime          ---  "+time);
+		strParams.add(new BasicNameValuePair("Timestamp", time));
+		String result = baseRequest.getRequest(strParams, url+PREACH_CITYS);
+		return result;
+	}
+	
+	
+	public String getJobsRequest(String Keyword,String CityId,String PageNo) throws HttpException, IOException ,Exception{
+		strParams.clear();
+		if(!Keyword.equals("")){
+		strParams.add(new BasicNameValuePair("Keyword", Keyword));
+		}
+		if(!CityId.equals("")){
+			CityId=CityId.replaceAll(",", "%2C");
+			strParams.add(new BasicNameValuePair("CityId", CityId));
+		}
+		strParams.add(new BasicNameValuePair("PostDataInterval", "180"));
+		strParams.add(new BasicNameValuePair("PageSize", "10"));
+		strParams.add(new BasicNameValuePair("PageNo", PageNo));
+		String result = baseRequest.getRequest(strParams, url+JOBS);
+		return result;
+	}
+	
+	public String getCareerTalkRequest(String CtId) throws HttpException, IOException,Exception {
+		strParams.clear();
+		if(!CtId.equals("")){
+		strParams.add(new BasicNameValuePair("CtId", CtId));
+		}
+		String result = baseRequest.getRequest(strParams, url+CAREER_TALK);
+		return result;
+	}
+	
+	public String getCareerTalkIndustriesRequest(String time) throws HttpException, IOException ,Exception{
+		strParams.clear();
+		System.out.println("datatime          ---  "+time);
+		strParams.add(new BasicNameValuePair("Timestamp", time));
+		String result = baseRequest.getRequest(strParams, url+CAREER_TALK_INDUSTRIES);
+		return result;
+	}
+	
+	public String getLoginRequest(String username,String password) throws HttpException, IOException,Exception {
+		strParams.clear();
+		strParams.add(new BasicNameValuePair("username", username));
+		strParams.add(new BasicNameValuePair("password", password));
+		strParams.add(new BasicNameValuePair("IsSetCookie", "0"));
+		String result = baseRequest.getRequest(strParams, LOGIN);
+		return result;
+	}
+	
+	public String getCareerTalkSchoolRequest(String timestamp) throws HttpException, IOException,Exception {
+		strParams.clear();
+	/*	Calendar c = Calendar.getInstance();
+		String mNowDate = c.get(Calendar.YEAR) + "-" + (c.get(Calendar.MONTH) + 1) + "-" + (c.get(Calendar.DAY_OF_MONTH));
+		System.out.println("datatime          ---  "+mNowDate);*/
+		strParams.add(new BasicNameValuePair("Timestamp", timestamp));
+		/*if(TextUtils.isEmpty(Cityid)){
+			Cityid=Cityid.replaceAll(",", "%2C");
+		}*/
+		//strParams.add(new BasicNameValuePair("Cityid",""));
+		String result = baseRequest.getRequest(strParams, url+CAREER_TALK_SCHOOLS);
+		return result;
+	}
+	
+	public String getHistoryListRequest(String ClaimToken,String PageNo) throws HttpException, IOException,Exception {
+		strParams.clear();
+		strParams.add(new BasicNameValuePair("ClaimToken", ClaimToken));
+		strParams.add(new BasicNameValuePair("PageNo", PageNo));
+		strParams.add(new BasicNameValuePair("PageSize", "10"));
+		String result = baseRequest.getRequest(strParams, url+APPLY_HISTORY);
+		return result;
+	}
+}
