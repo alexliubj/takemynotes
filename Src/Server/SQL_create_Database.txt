@@ -1,0 +1,36 @@
+CREATE TABLE `mynotes`.`NUsers` (
+  `idUsers` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(45) NOT NULL,
+  `UserImg` VARCHAR(45) NULL,
+  `Email` VARCHAR(100) NOT NULL,
+  `Password` VARCHAR(45) NOT NULL,
+  `DateRegister` DATETIME NULL,
+  `DateLastLogin` DATETIME NULL,
+  `Address` VARCHAR(100) NULL,
+  `City` VARCHAR(45) NULL,
+  `Province` VARCHAR(45) NULL,
+  PRIMARY KEY (`idUsers`));
+
+
+ CREATE TABLE `mynotes`.`Category` (
+  `idCategory` INT NOT NULL,
+  `CategoryName` VARCHAR(45) NOT NULL,
+  `CateImg` VARCHAR(255) NULL,
+  PRIMARY KEY (`idCategory`));
+
+CREATE TABLE `mynotes`.`FavNotes` (
+  `UserId` INT NOT NULL,
+  `NoteId` INT NOT NULL);
+
+CREATE TABLE `mynotes`.`Notes` (
+  `idNotes` INT NOT NULL AUTO_INCREMENT,
+  `NoteName` VARCHAR(45) NOT NULL,
+  `CateId` INT NOT NULL,
+  `Description` VARCHAR(255) NULL,
+  `Price` DECIMAL(5) NULL,
+  `PubUserId` INT NOT NULL,
+  `DateCreate` DATETIME NULL,
+  `Status` INT NOT NULL,
+  `URL` VARCHAR(255) NULL,
+  `NoteImg` VARCHAR(255) NULL,
+  PRIMARY KEY (`idNotes`));

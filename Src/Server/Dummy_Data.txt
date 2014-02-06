@@ -1,0 +1,12 @@
+Category Data:
+
+insert into mynotes.Category(idCategory, CategoryName,CateImg) values (2,'Math','/cate3.jpg');
+select * from mynotes.Category;
+desc mynotes.Category;
+
+Note Data:
+
+insert into mynotes.Notes (NoteName,CateId,Description,Price,pubUserId,DateCreate,Status,URL,NoteImg)
+values ("COMP224",1,"nice note",2.6,1,now(),1,"http://123.com/123","/note/123.jpg");
+select * from mynotes.Notes;
+

@@ -1,0 +1,25 @@
+1.CreateUser -> create user (Registration)
+
+2.Login -> login(get userInformation with favorite notes list)
+
+3.GetAllCategory -> get all category
+
+address:
+www.picpicworld.com/TakeMyNotes/bin/GetAllCategory.php
+
+params:
+no
+
+4.GetNotesByCate -> get notes by category Id
+address:
+http://www.picpicworld.com/TakeMyNotes/bin/GetNoteByCategory.php?classid=1&page=1&limit=20&sortby=time
+
+params:
+classid: categoryid
+page : page number from 1...n
+limit: page size
+sortby: time -> order by date
+		no -> order by id
+5.PublishNotes -> publish a note
+
+6.AddToFavorite -> add one note to favorite with user id
