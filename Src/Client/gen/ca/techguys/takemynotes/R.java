@@ -38,13 +38,18 @@ public final class R {
         public static final int welcome=0x7f02000a;
     }
     public static final class id {
-        public static final int action_settings=0x7f090006;
-        public static final int btn_back=0x7f090005;
-        public static final int btn_cancel=0x7f090002;
+        public static final int action_settings=0x7f09000b;
+        public static final int btn_back=0x7f09000a;
+        public static final int btn_cancel=0x7f090007;
         public static final int btn_get_captcha=0x7f090000;
-        public static final int btn_sure=0x7f090004;
-        public static final int probLoading=0x7f090001;
-        public static final int tv_message=0x7f090003;
+        public static final int btn_sure=0x7f090009;
+        public static final int editText1=0x7f090002;
+        public static final int editText2=0x7f090004;
+        public static final int probLoading=0x7f090006;
+        public static final int textView1=0x7f090001;
+        public static final int textView2=0x7f090003;
+        public static final int textView3=0x7f090005;
+        public static final int tv_message=0x7f090008;
     }
     public static final class layout {
         public static final int activity_category=0x7f030000;
