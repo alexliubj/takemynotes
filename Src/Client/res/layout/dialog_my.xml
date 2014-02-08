@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dip"
+    android:layout_height="200dip"
+    android:layout_gravity="center"
+    android:background="@drawable/dialog_other_bg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_top_bg" >
+
+        <TextView
+            style="@style/light_black18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/tips" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_message"
+        style="@style/light_gray18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="是否取消收藏" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|bottom"
+        android:layout_marginBottom="20dip"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_sure"
+            style="@style/light_black18"
+            android:layout_width="76dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_capture"
+            android:text="@string/sure" />
+
+        <Button
+            android:id="@+id/btn_back"
+            style="@style/light_black18"
+            android:layout_width="76dp"
+            android:layout_height="38dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_capture"
+            android:text="@string/cancel" />
+    </LinearLayout>
+
+</LinearLayout>

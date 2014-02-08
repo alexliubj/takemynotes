@@ -1,8 +1,5 @@
 package ca.techguys.takemynotes.utils;
 
-
-
-
 import ca.techguys.takemynotes.R;
 import ca.techguys.takemynotes.beans.DataUtil;
 

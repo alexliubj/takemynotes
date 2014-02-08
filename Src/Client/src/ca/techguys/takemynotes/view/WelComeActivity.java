@@ -24,7 +24,7 @@ public class WelComeActivity extends Activity {
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
 			case 1:
-				startActivity(new Intent(WelComeActivity.this, MainActivity.class));
+				startActivity(new Intent(WelComeActivity.this, LoginActivity.class));
 				WelComeActivity.this.finish();
 				break;
 
@@ -67,7 +67,7 @@ public class WelComeActivity extends Activity {
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				builder.create().dismiss();
-				startActivity(new Intent(WelComeActivity.this, MainActivity.class));
+				startActivity(new Intent(WelComeActivity.this, LoginActivity.class));
 				WelComeActivity.this.finish();
 			}
 		});

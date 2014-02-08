@@ -21,5 +21,4 @@ public class SubCategoryActivity extends Activity {
 		getMenuInflater().inflate(R.menu.sub_category, menu);
 		return true;
 	}
-
 }

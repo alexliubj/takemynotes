@@ -11,7 +11,43 @@
             backward-compatibility can go here.
         -->
     </style>
-
+    
+    <style name="white16" >
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    
+        
+    <style name="light_black18" >
+        <item name="android:textColor">#404040</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+<style name="white20" >
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+ <style name="light_black20" >
+        <item name="android:textColor">#404040</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="light_gray18" >
+        <item name="android:textColor">#a7a7a7</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    
+      <style name="dialog_meijika" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowAnimationStyle">@style/dialog_anim_meijika</item>
+    </style> 
+<style name="dialog_anim_meijika">
+        <item name="android:windowEnterAnimation">@anim/popup_enter</item>
+        <item name="android:windowExitAnimation">@anim/popup_exit</item>
+    </style>
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
