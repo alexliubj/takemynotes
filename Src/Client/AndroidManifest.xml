@@ -5,7 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="18" />
 
     <application
@@ -46,7 +46,7 @@
             android:label="@string/title_activity_sell_notes" >
         </activity>
         <activity
-           android:name="ca.techguys.takemynotes.view.UserPanelActivity"
+            android:name="ca.techguys.takemynotes.view.UserPanelActivity"
             android:label="@string/title_activity_user_panel" >
         </activity>
         <activity
@@ -54,12 +54,16 @@
             android:label="@string/title_activity_select_role" >
         </activity>
         <activity
-           android:name="ca.techguys.takemynotes.view.SubCategoryActivity"
+            android:name="ca.techguys.takemynotes.view.SubCategoryActivity"
             android:label="@string/title_activity_sub_category" >
         </activity>
         <activity
-      android:name="ca.techguys.takemynotes.view.NoteDetailsActivity"
+            android:name="ca.techguys.takemynotes.view.NoteDetailsActivity"
             android:label="@string/title_activity_note_details" >
+        </activity>
+        <activity
+            android:name="ca.techguys.takemynotes.TabActivity"
+            android:label="@string/title_activity_tab" >
         </activity>
     </application>
 

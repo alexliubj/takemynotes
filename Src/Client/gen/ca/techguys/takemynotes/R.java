@@ -96,7 +96,8 @@ public final class R {
         public static final int select_role=0x7f080005;
         public static final int sell_notes=0x7f080006;
         public static final int sub_category=0x7f080007;
-        public static final int user_panel=0x7f080008;
+        public static final int tab=0x7f080008;
+        public static final int user_panel=0x7f080009;
     }
     public static final class string {
         public static final int action_settings=0x7f060001;
@@ -118,7 +119,11 @@ public final class R {
         public static final int title_activity_select_role=0x7f060012;
         public static final int title_activity_sell_notes=0x7f060010;
         public static final int title_activity_sub_category=0x7f060013;
+        public static final int title_activity_tab=0x7f060015;
         public static final int title_activity_user_panel=0x7f060011;
+        public static final int title_section1=0x7f060016;
+        public static final int title_section2=0x7f060017;
+        public static final int title_section3=0x7f060018;
         public static final int wait=0x7f060003;
     }
     public static final class style {
