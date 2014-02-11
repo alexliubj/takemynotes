@@ -23,6 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
+        android:layout_alignRight="@+id/button1"
         android:layout_below="@+id/textView1"
         android:ems="10" />
 
@@ -41,6 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editText1"
+        android:layout_alignRight="@+id/editText1"
         android:layout_below="@+id/textView2"
         android:ems="10"
         android:inputType="textEmailAddress" >
@@ -72,6 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView4"
+        android:layout_alignRight="@+id/editText2"
         android:layout_below="@+id/textView3"
         android:ems="10" />
 
@@ -80,6 +83,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView4"
+        android:layout_alignRight="@+id/button1"
         android:layout_alignTop="@+id/textView4"
         android:layout_marginTop="26dp"
         android:ems="10" />
