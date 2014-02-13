@@ -9,7 +9,7 @@
     tools:context=".SelectRoleActivity" >
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/buttonBuy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -18,11 +18,11 @@
         android:text="buy" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonSell"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
+        android:layout_alignBaseline="@+id/buttonBuy"
+        android:layout_alignBottom="@+id/buttonBuy"
         android:layout_alignParentRight="true"
         android:layout_marginRight="46dp"
         android:text="sell" />

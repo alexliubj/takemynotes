@@ -23,7 +23,6 @@ public class SubCategoryActivity extends Activity {
 	// The two views in our tabbed example
 	private ListView listView1;
 	private ListView listView2;
-
 	private TabHost tabHost;
 	
 	
@@ -31,8 +30,6 @@ public class SubCategoryActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sub_category);
-		
-		
 	}
 
 	@Override
@@ -54,8 +51,4 @@ public class SubCategoryActivity extends Activity {
 			//do something
 		}
 	}
-	
-	
-	
-	
 }

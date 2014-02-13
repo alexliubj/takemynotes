@@ -35,7 +35,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.btn_get_captcha:
 		{
-			startActivity(new Intent(LoginActivity.this, CategoryActivity.class));
+			startActivity(new Intent(LoginActivity.this,  SelectRoleActivity.class));
 			LoginActivity.this.finish();
 		}
 			break;
