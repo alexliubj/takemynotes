@@ -14,7 +14,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 public class TakeMyNotesRequest {
-	private final String url = "http://mjk1.okhigh.com/";
+	private final String url = "http://www.picpicworld.com/TakeMyNotes/bin/";
 //	private final String url = "http://m.meijika.com/";
 
 	protected Context mContext;
@@ -88,6 +88,11 @@ public class TakeMyNotesRequest {
 		}
 		return baseRequest.postRequestByHttpClient(strParams, getUrl("user", "verificationKey"));
 	}
+
+	public String getCategory() throws IOException,TimeoutException {
+		ArrayList<NameValuePair> strParams = new ArrayList<NameValuePair>();
+		return baseRequest.postRequestByHttpClient(strParams, getUrl("GetAllCategory.php", ""));
+		}
 
 	public String getLogin(String mobelNo, String passWord, String key) throws IOException,
 			TimeoutException {

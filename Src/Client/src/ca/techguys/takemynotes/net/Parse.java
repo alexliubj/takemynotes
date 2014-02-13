@@ -1,29 +1,36 @@
 package ca.techguys.takemynotes.net;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
+import ca.techguys.takemynotes.beans.CategoryItem;
 import ca.techguys.takemynotes.beans.CommonModel;
+import ca.techguys.takemynotes.beans.UniversalModel;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 
 
 public class Parse {
 
-//	/**
-//	 * @param str
-//	 * @return
-//	 */
-//	public LogInModel LogParse(String str) {
-//		Gson gson = new Gson();
-//		Type type = new TypeToken<LogInModel>() {
-//		}.getType();
-//		LogInModel model = new LogInModel();
-//		model = gson.fromJson(str, type);
-//		return model;
-//	}
+	/**
+	 * @param str
+	 * @return
+	 */
+	public CategoryItem LogParse(String str) {
+		Gson gson = new Gson();
+		Type type = new TypeToken<CategoryItem>() {
+		}.getType();
+		CategoryItem model = new CategoryItem();
+		model = gson.fromJson(str, type);
+		return model;
+	}
+	
 //
 //	/**
 //
@@ -65,19 +72,30 @@ public class Parse {
 //		return model;
 //	}
 //
-//	/**
-//	 * @param str
-//	 * @return
-//	 * @throws JsonSyntaxException
-//	 */
-//	public UniversalModel<BusinessInformationModel> ShopFavlistPares(String str)
-//			throws JsonSyntaxException {
-//		Type type = new TypeToken<UniversalModel<BusinessInformationModel>>() {
-//		}.getType();
-//		UniversalModel<BusinessInformationModel> model = new UniversalModel<BusinessInformationModel>();
-//		model = new Gson().fromJson(str, type);
-//		return model;
-//	}
+	/**
+	 * @param str
+	 * @return
+	 * @throws JsonSyntaxException
+	 */
+	public ArrayList<CategoryItem> GetCategory(String str)
+			throws JsonSyntaxException {
+		Type type = new TypeToken<UniversalModel<CategoryItem>>() {
+		}.getType();
+		UniversalModel<CategoryItem> model = new UniversalModel<CategoryItem>();
+		
+		Gson gson = new Gson(); 
+	    JsonParser parser = new JsonParser(); 
+	    JsonArray Jarray = parser.parse(str).getAsJsonArray(); 
+
+	    ArrayList<CategoryItem> lcs = new ArrayList<CategoryItem>(); 
+
+	    for(JsonElement obj : Jarray ){ 
+	    	CategoryItem cse = gson.fromJson( obj , CategoryItem.class); 
+	        lcs.add(cse); 
+	    }
+
+		return lcs;
+	}
 //
 //	/**
 //	 * @param str
