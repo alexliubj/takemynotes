@@ -1,6 +1,7 @@
 package ca.techguys.takemynotes.view;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.concurrent.TimeoutException;
 
@@ -99,16 +100,12 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 								e.printStackTrace();
 							}
 							
-//
-//							tempModel = new Parse().GetCategory((String) msg.obj);
-//							shopHaveGiftList = new UniversalModel<CategoryItem>();
-//							shopHaveGiftList = new Parse().GetCategory((String) msg.obj);
-							//if (null != shopHaveGiftList && shopHaveGiftList.getResult() == 1) {
 							if (tempModel != null) {
 								
 								dialog.cancel();
 								Intent intent = new Intent(SelectRoleActivity.this,
 										CategoryActivity.class);
+								intent.putExtra("tempModel", (Serializable)tempModel);
 								startActivity(intent);
 								finish();
 							} else {
