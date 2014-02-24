@@ -26,9 +26,14 @@ import android.widget.Toast;
 public class LoginActivity extends Activity implements OnClickListener {
 
 	private Button btnGetCaptcha;
+	private Button loginBtn;
 	private void init() {
 		btnGetCaptcha = (Button) findViewById(R.id.btn_get_captcha);
 		btnGetCaptcha.setOnClickListener(this);
+
+		
+		
+		
 	}
 
 	public void onClick(View v) {

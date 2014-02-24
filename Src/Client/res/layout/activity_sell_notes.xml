@@ -18,7 +18,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/userNameEdt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
@@ -30,7 +30,7 @@
     </EditText>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/createBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -38,12 +38,12 @@
         android:text="Button" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/conPwEdt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button1"
+        android:layout_above="@+id/createBtn"
         android:layout_alignLeft="@+id/textView4"
-        android:layout_alignRight="@+id/button1"
+        android:layout_alignRight="@+id/createBtn"
         android:layout_marginBottom="15dp"
         android:ems="10" />
 
@@ -51,13 +51,13 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editText3"
-        android:layout_alignLeft="@+id/editText2"
+        android:layout_above="@+id/conPwEdt"
+        android:layout_alignLeft="@+id/pwEdt"
         android:text="Pirce:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/pwEdt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView4"
@@ -79,8 +79,8 @@
         android:id="@+id/nameTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText1"
-        android:layout_below="@+id/editText1"
+        android:layout_alignLeft="@+id/userNameEdt"
+        android:layout_below="@+id/userNameEdt"
         android:layout_marginTop="30dp"
         android:text="Category:"
         android:textAppearance="?android:attr/textAppearanceMedium" />

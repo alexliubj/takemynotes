@@ -9,7 +9,7 @@
     tools:context=".NoteDetailsActivity" >
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/regLogoimg"
         android:layout_width="125px"
         android:layout_height="155px"
         android:layout_alignParentLeft="true"
@@ -20,8 +20,8 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageView1"
-        android:layout_below="@+id/imageView1"
+        android:layout_alignLeft="@+id/regLogoimg"
+        android:layout_below="@+id/regLogoimg"
         android:layout_marginTop="58dp"
         android:text="Contact:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
@@ -48,8 +48,8 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/imageView1"
-        android:layout_toRightOf="@+id/imageView1"
+        android:layout_alignTop="@+id/regLogoimg"
+        android:layout_toRightOf="@+id/regLogoimg"
         android:text="Name:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView3"
         android:layout_alignBottom="@+id/textView3"
-        android:layout_toRightOf="@+id/imageView1"
+        android:layout_toRightOf="@+id/regLogoimg"
         android:text="Atom"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -98,7 +98,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView7"
         android:layout_alignBottom="@+id/textView7"
-        android:layout_toRightOf="@+id/imageView1"
+        android:layout_toRightOf="@+id/regLogoimg"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -106,7 +106,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView7"
-        android:layout_toRightOf="@+id/imageView1"
+        android:layout_toRightOf="@+id/regLogoimg"
         android:text="6478886666"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -125,7 +125,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView9"
-        android:layout_toRightOf="@+id/imageView1"
+        android:layout_toRightOf="@+id/regLogoimg"
         android:text="takemynote@notes.com"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
