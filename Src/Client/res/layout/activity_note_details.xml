@@ -27,7 +27,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/nameTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
@@ -36,7 +36,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/descTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView4"
@@ -54,7 +54,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/contactTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView3"
@@ -102,7 +102,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/phoneTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView7"
@@ -111,17 +111,17 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/priceTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView9"
         android:layout_alignBottom="@+id/textView9"
-        android:layout_alignLeft="@+id/textView12"
+        android:layout_alignLeft="@+id/emailTv"
         android:text="$ 45.99"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/emailTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView9"
@@ -133,8 +133,8 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/nameTv"
+        android:layout_below="@+id/nameTv"
         android:layout_marginTop="20dp"
         android:text="Description:"
         android:textAppearance="?android:attr/textAppearanceMedium" />

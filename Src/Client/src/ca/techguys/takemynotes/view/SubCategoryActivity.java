@@ -1,7 +1,13 @@
 package ca.techguys.takemynotes.view;
 
+
+
 import java.util.ArrayList;
 import java.util.List;
+
+import com.actionbarsherlock.app.ActionBar;
+import com.actionbarsherlock.app.ActionBar.Tab;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 
 import ca.techguys.takemynotes.R;
 import ca.techguys.takemynotes.R.layout;
@@ -15,40 +21,78 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TabHost;
 
-public class SubCategoryActivity extends Activity {
+public class SubCategoryActivity extends SherlockFragmentActivity {
 
-	private static final String LIST1_TAB_TAG = "List1";
+	/*private static final String LIST1_TAB_TAG = "List1";
 	private static final String LIST2_TAB_TAG = "List2";
 
 	// The two views in our tabbed example
 	private ListView listView1;
 	private ListView listView2;
-	private TabHost tabHost;
+	private TabHost tabHost;*/
 	
 	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_sub_category);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.sub_category, menu);
-		return true;
-	}
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        
+        // Getting an instance of action bar
+        ActionBar actionBar = getSupportActionBar();
+        
+        // Enabling Tab Navigation mode for this action bar
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        
+        // Enabling Title
+        actionBar.setDisplayShowTitleEnabled(true);
+        
+        // Creating Android Tab
+        Tab tab1 = actionBar.newTab()
+        					.setText("Android")
+        					.setTabListener(new CustomTabListener<DateFragment>(this, "By Date", DateFragment.class) )
+        					.setIcon(R.drawable.android);
+        
+        // Adding Android Tab to acton bar
+        actionBar.addTab(tab1);
+        
+        // Creating Apple Tab
+        Tab tab2 = actionBar.newTab()
+				.setText("Apple")
+				.setTabListener(new CustomTabListener<PriceFragment>(this, "By Price", PriceFragment.class))
+				.setIcon(R.drawable.apple);
+        
+        // Adding Apple Tab to action bar
+        actionBar.addTab(tab2);        
+        
+        // Orientation Change Occurred
+        if(savedInstanceState!=null){
+        	int currentTabIndex = savedInstanceState.getInt("tab_index");
+        	actionBar.setSelectedNavigationItem(currentTabIndex);
+        }
+        
+        
+    }
+    
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+    	int currentTabIndex = getSupportActionBar().getSelectedNavigationIndex();
+    	outState.putInt("tab_index", currentTabIndex);
+    	super.onSaveInstanceState(outState);
+    }
 	
 	
 	/**
 	 * Implement logic here when a tab is selected
 	 */
-	public void onTabChanged(String tabName) {
+	/*public void onTabChanged(String tabName) {
 		if(tabName.equals(LIST2_TAB_TAG)) {
 			//do something
 		}
 		else if(tabName.equals(LIST1_TAB_TAG)) {
 			//do something
 		}
-	}
+	}*/
+	
+	
+	
+	
 }

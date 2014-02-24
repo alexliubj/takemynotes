@@ -6,6 +6,7 @@ import ca.techguys.takemynotes.R.menu;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.widget.TextView;
 
 public class NoteDetailsActivity extends Activity {
 
@@ -13,6 +14,11 @@ public class NoteDetailsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_note_details);
+		
+		String position=getIntent().getStringExtra("value1").toString(); 
+		
+		TextView tv1=(TextView) findViewById(R.id.nameTv);
+		tv1.setText(position);
 	}
 
 	@Override
