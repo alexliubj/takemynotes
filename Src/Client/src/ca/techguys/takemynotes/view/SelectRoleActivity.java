@@ -46,8 +46,7 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 			{
 				ShowMyDialog(1, null);
 				handler.sendEmptyMessage(0);
-			//	startActivity(new Intent(SelectRoleActivity.this,  CategoryActivity.class));
-			//	SelectRoleActivity.this.finish();
+			
 			}
 			break;
 			

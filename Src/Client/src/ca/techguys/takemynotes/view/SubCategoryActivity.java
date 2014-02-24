@@ -16,12 +16,13 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TabHost;
 
-public class SubCategoryActivity extends SherlockFragmentActivity {
+public class SubCategoryActivity extends SherlockFragmentActivity  implements OnClickListener {
 
 	/*private static final String LIST1_TAB_TAG = "List1";
 	private static final String LIST2_TAB_TAG = "List2";
@@ -78,6 +79,12 @@ public class SubCategoryActivity extends SherlockFragmentActivity {
     	outState.putInt("tab_index", currentTabIndex);
     	super.onSaveInstanceState(outState);
     }
+
+	@Override
+	public void onClick(View arg0) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	/**
