@@ -44,6 +44,7 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 		switch (v.getId()) {
 			case R.id.buyBtn:
 			{
+				buttonBuy.setBackgroundResource(R.drawable.buypressed);
 				ShowMyDialog(1, null);
 				handler.sendEmptyMessage(0);
 			
@@ -52,6 +53,7 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 			
 			case R.id.sellBtn:
 			{
+				buttonSell.setBackgroundResource(R.drawable.sellpressed);
 				startActivity(new Intent(SelectRoleActivity.this,  SellNotesActivity.class));
 				SelectRoleActivity.this.finish();
 			}
@@ -95,7 +97,7 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 								tempModel = new Parse().GetCategory(result);
 							} catch (JsonSyntaxException e) {
 								//
-								//ToastUtil.showText(RecentlyViewedActivity.this, "ÍøÂçÒì³£");
+								//ToastUtil.showText(RecentlyViewedActivity.this, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 								e.printStackTrace();
 							}
 							

@@ -11,20 +11,20 @@
 
     <Button
         android:id="@+id/buyBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="95dp"
+        android:layout_width="128dp"
+        android:layout_height="45dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="149dp"
         android:background="@drawable/buy" />
 
     <Button
         android:id="@+id/sellBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="95dp"
+        android:layout_width="128dp"
+        android:layout_height="45dp"
         android:layout_alignLeft="@+id/buyBtn"
         android:layout_below="@+id/buyBtn"
-        android:layout_marginTop="99dp"
+        android:layout_marginTop="115dp"
         android:background="@drawable/sell" />
     
 </RelativeLayout>
