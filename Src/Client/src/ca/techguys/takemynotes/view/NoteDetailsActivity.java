@@ -23,7 +23,7 @@ public class NoteDetailsActivity extends Activity {
 		setTitle("Note detail");
 		String position=getIntent().getStringExtra("value1").toString(); 
 		
-		TextView tv1=(TextView) findViewById(R.id.nameTv);
+		TextView tv1=(TextView) findViewById(R.id.cateTv);
 		tv1.setText(position);
 	}
 

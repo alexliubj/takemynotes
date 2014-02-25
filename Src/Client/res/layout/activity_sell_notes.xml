@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/catebg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -9,87 +10,96 @@
     tools:context=".SellNotesActivity" >
 
     <TextView
-        android:id="@+id/warningMsgTv"
+        android:id="@+id/noteNameTv"
+        android:textSize="22sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:text="Name:"
+        android:text="Note name:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <EditText
-        android:id="@+id/userNameEdt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/warningMsgTv"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/warningMsgTv"
-        android:ems="10" >
-
-        <requestFocus />
-    </EditText>
 
     <Button
-        android:id="@+id/createBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/createNoteBtn"
+        android:layout_width="95dp"
+        android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="Button" />
-
-    <EditText
-        android:id="@+id/conPwEdt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/createBtn"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_alignRight="@+id/createBtn"
-        android:layout_marginBottom="15dp"
-        android:ems="10" />
+        android:background="@drawable/registerbg"
+        android:text="Create" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/cateTv"
+        android:textSize="22sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/conPwEdt"
-        android:layout_alignLeft="@+id/pwEdt"
-        android:text="Pirce:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <EditText
-        android:id="@+id/pwEdt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textView4"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_alignRight="@+id/spinner1"
-        android:layout_marginBottom="45dp"
-        android:ems="10" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/spinner1"
-        android:layout_centerVertical="true"
-        android:text="Description:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/nameTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/userNameEdt"
-        android:layout_below="@+id/userNameEdt"
+        android:layout_alignLeft="@+id/noteNameEdt"
+        android:layout_below="@+id/noteNameEdt"
         android:layout_marginTop="30dp"
         android:text="Category:"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Spinner
-        android:id="@+id/spinner1"
+        android:id="@+id/cateSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/nameTv"
-        android:layout_below="@+id/nameTv" />
+        android:layout_alignLeft="@+id/cateTv"
+        android:layout_below="@+id/cateTv" />
+
+    <EditText
+        android:id="@+id/noteNameEdt"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/noteNameTv"
+        android:layout_below="@+id/noteNameTv"
+        android:background="@drawable/textboxbg"
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/descEdt"
+        android:background="@drawable/textboxbg"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/descTv"
+        android:layout_alignRight="@+id/cateSpinner"
+        android:layout_below="@+id/descTv"
+        android:layout_marginTop="10dp"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/priceTv"
+        android:textSize="22sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/descEdt"
+        android:layout_below="@+id/descEdt"
+        android:layout_marginTop="22dp"
+        android:text="Pirce:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/priceEdt"
+        android:background="@drawable/textboxbg"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/priceTv"
+        android:layout_alignRight="@+id/createNoteBtn"
+        android:layout_below="@+id/priceTv"
+        android:layout_marginTop="11dp"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/descTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cateSpinner"
+        android:layout_below="@+id/cateSpinner"
+        android:layout_marginTop="16dp"
+        android:text="Description:"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="22sp" />
 
 </RelativeLayout>

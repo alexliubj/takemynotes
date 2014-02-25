@@ -33,7 +33,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 		btnGetCaptcha = (Button) findViewById(R.id.btn_get_captcha);
 		btnGetCaptcha.setOnClickListener(this);
 
-		createBtn = (Button) findViewById(R.id.createBtn);
+		createBtn = (Button) findViewById(R.id.createNoteBtn);
 		createBtn.setOnClickListener(this);
 		
 		
@@ -62,7 +62,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 				
 			}
 			break;
-			case R.id.createBtn:
+			case R.id.createNoteBtn:
 			{
 				startActivity(new Intent(LoginActivity.this,  RegisterActivity.class));
 				LoginActivity.this.finish();

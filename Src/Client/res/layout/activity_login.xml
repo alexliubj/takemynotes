@@ -14,14 +14,14 @@
         android:textSize="32sp"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
-        android:layout_above="@+id/createBtn"
+        android:layout_above="@+id/createNoteBtn"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="62dp"
         android:background="@drawable/loginbtnbg"
         android:text="Login" />
 
     <EditText
-        android:id="@+id/pwEdt"
+        android:id="@+id/descEdt"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_alignLeft="@+id/btn_get_captcha"
@@ -40,18 +40,18 @@
         android:src="@drawable/logo" />
 
     <EditText
-        android:id="@+id/userNameEdt"
+        android:id="@+id/noteNameEdt"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:layout_above="@+id/pwEdt"
-        android:layout_alignLeft="@+id/pwEdt"
+        android:layout_above="@+id/descEdt"
+        android:layout_alignLeft="@+id/descEdt"
         android:layout_marginBottom="21dp"
         android:background="@drawable/textboxbg"
         android:ems="10"
         android:hint="User Name" />
 
     <TextView
-        android:id="@+id/warningMsgTv"
+        android:id="@+id/noteNameTv"
         android:textSize="25sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -62,13 +62,13 @@
         android:textColor="#FFFFFF" />
 
     <Button
-        android:id="@+id/createBtn"
+        android:id="@+id/createNoteBtn"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignTop="@+id/warningMsgTv"
+        android:layout_alignTop="@+id/noteNameTv"
         android:layout_marginRight="16dp"
-        android:layout_toLeftOf="@+id/warningMsgTv"
+        android:layout_toLeftOf="@+id/noteNameTv"
         android:background="@drawable/create" />
 
 </RelativeLayout>

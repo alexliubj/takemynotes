@@ -16,7 +16,7 @@ public class RegisterActivity extends Activity {
 	private Button signupBtn;
 	
 	private void init() {
-		signupBtn = (Button) findViewById(R.id.createBtn);
+		signupBtn = (Button) findViewById(R.id.signupBtn);
 		signupBtn.setOnClickListener((OnClickListener) this);
 		
 	}

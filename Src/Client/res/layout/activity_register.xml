@@ -10,8 +10,8 @@
     tools:context=".RegisterActivity" >
 
     <Button
-        android:id="@+id/createBtn"
-        android:layout_width="wrap_content"
+        android:id="@+id/signupBtn"
+        android:layout_width="95dp"
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
@@ -28,7 +28,7 @@
         android:src="@drawable/logo" />
 
     <EditText
-        android:id="@+id/userNameEdt"
+        android:id="@+id/noteNameEdt"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_alignLeft="@+id/emailEdt"
@@ -42,8 +42,8 @@
         android:id="@+id/emailEdt"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:layout_alignLeft="@+id/conPwEdt"
-        android:layout_below="@+id/userNameEdt"
+        android:layout_alignLeft="@+id/priceEdt"
+        android:layout_below="@+id/noteNameEdt"
         android:layout_marginTop="23dp"
         android:background="@drawable/textboxbg"
         android:ems="10"
@@ -53,7 +53,7 @@
     </EditText>
 
     <EditText
-        android:id="@+id/pwEdt"
+        android:id="@+id/descEdt"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:layout_alignLeft="@+id/emailEdt"
@@ -65,24 +65,24 @@
         android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/conPwEdt"
+        android:id="@+id/priceEdt"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:layout_alignRight="@+id/createBtn"
-        android:layout_below="@+id/pwEdt"
+        android:layout_alignRight="@+id/createNoteBtn"
+        android:layout_below="@+id/descEdt"
         android:layout_marginTop="25dp"
         android:background="@drawable/textboxbg"
         android:ems="10"
         android:hint="Confirm Password" />
 
     <TextView
-        android:id="@+id/warningMsgTv"
+        android:id="@+id/noteNameTv"
         android:textSize="25sp"
         android:textColor="#FF0000"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/createBtn"
-        android:layout_alignLeft="@+id/conPwEdt"
+        android:layout_above="@+id/createNoteBtn"
+        android:layout_alignLeft="@+id/priceEdt"
         android:layout_marginBottom="29dp"
         android:text="Warning"
         android:textAppearance="?android:attr/textAppearanceMedium" />
