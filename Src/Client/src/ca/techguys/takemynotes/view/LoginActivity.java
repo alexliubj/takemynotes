@@ -8,6 +8,7 @@ import android.app.Dialog;
 import ca.techguys.takemynotes.R;
 import ca.techguys.takemynotes.R.layout;
 import ca.techguys.takemynotes.R.menu;
+import ca.techguys.takemynotes.beans.ApplicationData;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.content.Context;
@@ -15,6 +16,7 @@ import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,6 +37,19 @@ public class LoginActivity extends Activity implements OnClickListener {
 		createBtn.setOnClickListener(this);
 		
 		
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+		switch (keyCode) {
+		case KeyEvent.KEYCODE_BACK:
+			ApplicationData.exit(LoginActivity.this);
+			break;
+		default:
+			break;
+		}
+		return super.onKeyDown(keyCode, event);
 	}
 
 	public void onClick(View v) {

@@ -157,4 +157,5 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 		dialog.show();
 	}
 
+	
 }
