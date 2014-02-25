@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import ca.techguys.takemynotes.R;
+import ca.techguys.takemynotes.model.Note;
 
 import com.actionbarsherlock.app.SherlockListFragment;
 
@@ -19,24 +20,24 @@ import android.widget.SimpleAdapter;
 
 public class DateFragment extends SherlockListFragment{
 
+	private List<Note> myNotes;
+	private int numOfNote;
+	private String info[];
 	
 	/** An array of items to display */
-    String android_versions[] = new String[]{
-            "Jelly Bean",
+    /*private String android_versions[] = new String[]{
+            "Name"+"\n"+"Desc"+"\n"+"Price",
             "IceCream Sandwich",
             "HoneyComb",
             "GingerBread",
+            "Froyo",
+            "HoneyComb",
+            "GingerBread",
             "Froyo"
-    };
+    };*/
     
     /** An array of items to display */
-    int android_images[] = new int[]{
-            R.drawable.jb,
-            R.drawable.ics,
-            R.drawable.honeycomb,
-            R.drawable.gingerbread,
-            R.drawable.froyo
-    };
+    private int noteImgs[];
     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -45,10 +46,28 @@ public class DateFragment extends SherlockListFragment{
     	// Each row in the list stores country name, currency and flag
         List<HashMap<String,String>> aList = new ArrayList<HashMap<String,String>>();
 
-        for(int i=0;i<5;i++){
+        myNotes=getNotes();
+        numOfNote=myNotes.size();
+        
+        info=new String[numOfNote];
+        noteImgs=new int[numOfNote];
+        
+        for(int c=0; c<numOfNote; c++){
+        	/*info[c]=myNotes.get(c).name+"\n"+myNotes.get(c).desc
+        			+"\n"+myNotes.get(c).price;*/
+        	info[c]="hello "+String.valueOf(c);
+        	
+        }
+        
+        for(int c=0; c<numOfNote; c++){
+        	noteImgs[c]=R.drawable.note2;
+        }
+        
+        
+        for(int i=0;i<numOfNote;i++){
                 HashMap<String, String> hm = new HashMap<String,String>();
-            hm.put("txt", android_versions[i]);
-            hm.put("img", Integer.toString(android_images[i]  ) );
+            hm.put("txt", info[i]);
+            hm.put("img", Integer.toString(noteImgs[i]) );
             aList.add(hm);
         }
 
@@ -80,6 +99,32 @@ public class DateFragment extends SherlockListFragment{
    		startActivity(intent);
            
      }  
+     
+     public List<Note> getNotes(){
+    	 
+    	 List<Note> noteList=new ArrayList<Note>();
+    	 
+    	 Note n1=new Note();
+    	 n1.name="note1";
+    	 n1.desc="no idea";
+    	 n1.price=43.00;
+    	 n1.contactName="Atom";
+    	 n1.phone="6478648288";
+    	 n1.email="sh@gmail.com";
+    	 
+    	 Note n2=new Note();
+    	 n2.name="note2";
+    	 n2.desc="good idea";
+    	 n2.price=15.10;
+    	 n2.contactName="Atom";
+    	 n2.phone="6478648288";
+    	 n2.email="sh@gmail.com";
+    	 
+    	 noteList.add(n1);
+    	 noteList.add(n2);
+    	 
+    	 return noteList;
+     }
      
      
 }

@@ -13,7 +13,7 @@ public class Note {
   
     public String email;
 
-    public float price;
+    public double price;
     
     
 }
