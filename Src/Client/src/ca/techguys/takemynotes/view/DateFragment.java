@@ -24,19 +24,6 @@ public class DateFragment extends SherlockListFragment{
 	private int numOfNote;
 	private String info[];
 	
-	/** An array of items to display */
-    /*private String android_versions[] = new String[]{
-            "Name"+"\n"+"Desc"+"\n"+"Price",
-            "IceCream Sandwich",
-            "HoneyComb",
-            "GingerBread",
-            "Froyo",
-            "HoneyComb",
-            "GingerBread",
-            "Froyo"
-    };*/
-    
-    /** An array of items to display */
     private int noteImgs[];
     
     @Override
@@ -53,9 +40,8 @@ public class DateFragment extends SherlockListFragment{
         noteImgs=new int[numOfNote];
         
         for(int c=0; c<numOfNote; c++){
-        	/*info[c]=myNotes.get(c).name+"\n"+myNotes.get(c).desc
-        			+"\n"+myNotes.get(c).price;*/
-        	info[c]="hello "+String.valueOf(c);
+        	info[c]=myNotes.get(c).name+"\n"+myNotes.get(c).desc+"\n"
+        			+"$"+myNotes.get(c).price+"\n";
         	
         }
         
@@ -120,8 +106,37 @@ public class DateFragment extends SherlockListFragment{
     	 n2.phone="6478648288";
     	 n2.email="sh@gmail.com";
     	 
+    	 Note n3=new Note();
+    	 n3.name="note3";
+    	 n3.desc="good idea";
+    	 n3.price=15.10;
+    	 n3.contactName="Atom";
+    	 n3.phone="6478648288";
+    	 n3.email="sh@gmail.com";
+    	 
+    	 
+    	 Note n4=new Note();
+    	 n4.name="note4";
+    	 n4.desc="good idea";
+    	 n4.price=15.10;
+    	 n4.contactName="Atom";
+    	 n4.phone="6478648288";
+    	 n4.email="sh@gmail.com";
+    	 
+    	 Note n5=new Note();
+    	 n5.name="note5";
+    	 n5.desc="good idea";
+    	 n5.price=15.10;
+    	 n5.contactName="Atom";
+    	 n5.phone="6478648288";
+    	 n5.email="sh@gmail.com";
+    	 
     	 noteList.add(n1);
     	 noteList.add(n2);
+    	 noteList.add(n3);
+    	 noteList.add(n4);
+    	 noteList.add(n5);
+    	 
     	 
     	 return noteList;
      }

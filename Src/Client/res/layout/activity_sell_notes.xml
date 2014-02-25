@@ -58,39 +58,6 @@
         <requestFocus />
     </EditText>
 
-    <EditText
-        android:id="@+id/descEdt"
-        android:background="@drawable/textboxbg"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_alignLeft="@+id/descTv"
-        android:layout_alignRight="@+id/cateSpinner"
-        android:layout_below="@+id/descTv"
-        android:layout_marginTop="10dp"
-        android:ems="10" />
-
-    <TextView
-        android:id="@+id/priceTv"
-        android:textSize="22sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/descEdt"
-        android:layout_below="@+id/descEdt"
-        android:layout_marginTop="22dp"
-        android:text="Pirce:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <EditText
-        android:id="@+id/priceEdt"
-        android:background="@drawable/textboxbg"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_alignLeft="@+id/priceTv"
-        android:layout_alignRight="@+id/createNoteBtn"
-        android:layout_below="@+id/priceTv"
-        android:layout_marginTop="11dp"
-        android:ems="10" />
-
     <TextView
         android:id="@+id/descTv"
         android:layout_width="wrap_content"
@@ -101,5 +68,37 @@
         android:text="Description:"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="22sp" />
+
+    <EditText
+        android:id="@+id/descEdt"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/descTv"
+        android:layout_below="@+id/descTv"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/textboxbg"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/priceTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/descEdt"
+        android:layout_below="@+id/descEdt"
+        android:layout_marginTop="40dp"
+        android:text="Pirce:"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="22sp" />
+
+    <EditText
+        android:id="@+id/priceEdt"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/priceTv"
+        android:layout_below="@+id/priceTv"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/textboxbg"
+        android:ems="10"
+        android:inputType="numberDecimal" />
 
 </RelativeLayout>

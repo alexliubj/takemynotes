@@ -4,6 +4,7 @@ import ca.techguys.takemynotes.R;
 import ca.techguys.takemynotes.R.layout;
 import ca.techguys.takemynotes.R.menu;
 import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.util.Log;
 import android.view.Menu;
