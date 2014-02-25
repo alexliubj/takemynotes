@@ -9,7 +9,7 @@
     tools:context=".SellNotesActivity" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/warningMsgTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -21,9 +21,9 @@
         android:id="@+id/userNameEdt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
+        android:layout_alignLeft="@+id/warningMsgTv"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/warningMsgTv"
         android:ems="10" >
 
         <requestFocus />

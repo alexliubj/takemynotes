@@ -26,24 +26,32 @@ import android.widget.Toast;
 public class LoginActivity extends Activity implements OnClickListener {
 
 	private Button btnGetCaptcha;
-	private Button loginBtn;
+	private Button createBtn;
 	private void init() {
 		btnGetCaptcha = (Button) findViewById(R.id.btn_get_captcha);
 		btnGetCaptcha.setOnClickListener(this);
 
-		
+		createBtn = (Button) findViewById(R.id.createBtn);
+		createBtn.setOnClickListener(this);
 		
 		
 	}
 
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.btn_get_captcha:
-		{
-			startActivity(new Intent(LoginActivity.this,  SelectRoleActivity.class));
-			LoginActivity.this.finish();
-		}
-			break;
+			case R.id.btn_get_captcha:
+			{
+				startActivity(new Intent(LoginActivity.this,  SelectRoleActivity.class));
+				LoginActivity.this.finish();
+				break;
+			}
+			case R.id.createBtn:
+			{
+				startActivity(new Intent(LoginActivity.this,  RegisterActivity.class));
+				LoginActivity.this.finish();
+				break;
+			}
+			
 		}
 	}
 	
@@ -52,6 +60,9 @@ public class LoginActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
+		
+		setTitle("Login");
+		
 		//ActivityManager.getActivityManage().addActivity(SignInActivity.this);
 		init();
 	}

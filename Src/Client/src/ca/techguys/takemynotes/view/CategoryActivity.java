@@ -45,6 +45,9 @@ public class CategoryActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_category);
+		
+		setTitle("Note Category");
+		
 		getCategoryList();
 		ListView listView=(ListView)findViewById(R.id.news_listview);
 		myBaseAdapter=new MyBaseAdapter();

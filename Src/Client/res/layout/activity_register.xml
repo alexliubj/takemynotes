@@ -12,9 +12,11 @@
     <Button
         android:id="@+id/createBtn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/regImg"
+        android:background="@drawable/loginbtnbg"
         android:text="Sign up" />
 
     <ImageView
@@ -32,7 +34,7 @@
         android:layout_alignLeft="@+id/emailEdt"
         android:layout_below="@+id/regImg"
         android:layout_marginTop="24dp"
-        android:background="@drawable/TextboxBg"
+        android:background="@drawable/textboxbg"
         android:ems="10"
         android:hint="User Name" />
 
@@ -43,7 +45,7 @@
         android:layout_alignLeft="@+id/conPwEdt"
         android:layout_below="@+id/userNameEdt"
         android:layout_marginTop="23dp"
-        android:background="@drawable/TextboxBg"
+        android:background="@drawable/textboxbg"
         android:ems="10"
         android:hint="Email" >
 
@@ -57,7 +59,7 @@
         android:layout_alignLeft="@+id/emailEdt"
         android:layout_below="@+id/emailEdt"
         android:layout_marginTop="26dp"
-        android:background="@drawable/TextboxBg"
+        android:background="@drawable/textboxbg"
         android:ems="10"
         android:hint="Password"
         android:inputType="textEmailAddress" />
@@ -68,9 +70,21 @@
         android:layout_height="45dp"
         android:layout_alignRight="@+id/createBtn"
         android:layout_below="@+id/pwEdt"
-        android:layout_marginTop="22dp"
-        android:background="@drawable/TextboxBg"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/textboxbg"
         android:ems="10"
         android:hint="Confirm Password" />
+
+    <TextView
+        android:id="@+id/warningMsgTv"
+        android:textSize="25sp"
+        android:textColor="#FF0000"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/createBtn"
+        android:layout_alignLeft="@+id/conPwEdt"
+        android:layout_marginBottom="29dp"
+        android:text="Warning"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

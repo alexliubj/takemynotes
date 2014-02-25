@@ -1,5 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/catebg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -9,22 +10,21 @@
     tools:context=".SelectRoleActivity" >
 
     <Button
-        android:id="@+id/buttonBuy"
+        android:id="@+id/buyBtn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="44dp"
-        android:text="buy" />
+        android:layout_height="95dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="108dp"
+        android:background="@drawable/buy" />
 
     <Button
-        android:id="@+id/buttonSell"
+        android:id="@+id/sellBtn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/buttonBuy"
-        android:layout_alignBottom="@+id/buttonBuy"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="46dp"
-        android:text="sell" />
+        android:layout_height="95dp"
+        android:layout_alignLeft="@+id/buyBtn"
+        android:layout_below="@+id/buyBtn"
+        android:layout_marginTop="99dp"
+        android:background="@drawable/sell" />
     
 </RelativeLayout>

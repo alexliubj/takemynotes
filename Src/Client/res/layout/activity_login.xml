@@ -12,25 +12,11 @@
     <Button
         android:id="@+id/btn_get_captcha"
         android:layout_width="wrap_content"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_above="@+id/createBtn"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="62dp"
-        android:background="@drawable/loginBtn" />
-
-    <EditText
-        android:id="@+id/userNameEdt"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_above="@+id/btn_get_captcha"
-        android:layout_alignLeft="@+id/btn_get_captcha"
-        android:layout_marginBottom="124dp"
-        android:background="@drawable/TextboxBg"
-        android:ems="10"
-        android:hint="User Name" >
-
-        <requestFocus />
-    </EditText>
+        android:background="@drawable/loginbtn" />
 
     <EditText
         android:id="@+id/pwEdt"
@@ -38,7 +24,7 @@
         android:layout_height="45dp"
         android:layout_alignLeft="@+id/btn_get_captcha"
         android:layout_centerVertical="true"
-        android:background="@drawable/TextboxBg"
+        android:background="@drawable/textboxbg"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword" />
@@ -51,23 +37,36 @@
         android:layout_centerHorizontal="true"
         android:src="@drawable/logo" />
 
+    <EditText
+        android:id="@+id/userNameEdt"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_above="@+id/pwEdt"
+        android:layout_alignLeft="@+id/pwEdt"
+        android:layout_marginBottom="21dp"
+        android:background="@drawable/textboxbg"
+        android:ems="10"
+        android:hint="User Name" />
+
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/warningMsgTv"
+        android:textSize="25sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/createBtn"
-        android:layout_alignRight="@+id/btn_get_captcha"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
         android:text="Create Account"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/createBtn"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/create"
-        android:text="Button" />
+        android:layout_alignTop="@+id/warningMsgTv"
+        android:layout_marginRight="16dp"
+        android:layout_toLeftOf="@+id/warningMsgTv"
+        android:background="@drawable/create" />
 
 </RelativeLayout>

@@ -33,16 +33,16 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 
 	private ArrayList<CategoryItem> tempModel;
 	private void init() {
-		buttonBuy = (Button) findViewById(R.id.buttonBuy);
+		buttonBuy = (Button) findViewById(R.id.buyBtn);
 		buttonBuy.setOnClickListener(this);
 		
-		buttonSell = (Button) findViewById(R.id.buttonSell);
+		buttonSell = (Button) findViewById(R.id.sellBtn);
 		buttonSell.setOnClickListener(this);
 	}
 
 	public void onClick(View v) {
 		switch (v.getId()) {
-			case R.id.buttonBuy:
+			case R.id.buyBtn:
 			{
 				ShowMyDialog(1, null);
 				handler.sendEmptyMessage(0);
@@ -50,7 +50,7 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 			}
 			break;
 			
-			case R.id.buttonSell:
+			case R.id.sellBtn:
 			{
 				startActivity(new Intent(SelectRoleActivity.this,  SellNotesActivity.class));
 				SelectRoleActivity.this.finish();
@@ -134,6 +134,7 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_select_role);
+		setTitle("Select Your Action");
 		init();
 	}
 
