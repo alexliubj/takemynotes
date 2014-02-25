@@ -16,7 +16,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@+id/regImg"
-        android:background="@drawable/loginbtnbg"
+        android:background="@drawable/registerbg"
         android:text="Sign up" />
 
     <ImageView

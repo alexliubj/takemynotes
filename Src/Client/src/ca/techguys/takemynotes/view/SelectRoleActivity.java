@@ -44,7 +44,7 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 		switch (v.getId()) {
 			case R.id.buyBtn:
 			{
-				buttonBuy.setBackgroundResource(R.drawable.buypressed);
+				buttonBuy.setBackgroundResource(R.drawable.buy);
 				ShowMyDialog(1, null);
 				handler.sendEmptyMessage(0);
 			
@@ -53,7 +53,7 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 			
 			case R.id.sellBtn:
 			{
-				buttonSell.setBackgroundResource(R.drawable.sellpressed);
+				buttonSell.setBackgroundResource(R.drawable.sell);
 				startActivity(new Intent(SelectRoleActivity.this,  SellNotesActivity.class));
 				SelectRoleActivity.this.finish();
 			}

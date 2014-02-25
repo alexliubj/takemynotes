@@ -16,7 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="149dp"
-        android:background="@drawable/buy" />
+        android:background="@drawable/buypressed" />
 
     <Button
         android:id="@+id/sellBtn"
@@ -25,6 +25,6 @@
         android:layout_alignLeft="@+id/buyBtn"
         android:layout_below="@+id/buyBtn"
         android:layout_marginTop="115dp"
-        android:background="@drawable/sell" />
+        android:background="@drawable/sellpressed" />
     
 </RelativeLayout>

@@ -62,8 +62,8 @@ public final class R {
         public static final int navigaitionbg=0x7f020022;
         public static final int note2=0x7f020023;
         public static final int panther=0x7f020024;
-        public static final int registerbgpress=0x7f020025;
-        public static final int registerbtn=0x7f020026;
+        public static final int registerbg=0x7f020025;
+        public static final int registerbgpress=0x7f020026;
         public static final int right_flag=0x7f020027;
         public static final int sell=0x7f020028;
         public static final int sellpressed=0x7f020029;

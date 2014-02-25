@@ -11,12 +11,14 @@
 
     <Button
         android:id="@+id/btn_get_captcha"
+        android:textSize="32sp"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:layout_above="@+id/createBtn"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="62dp"
-        android:background="@drawable/loginbtn" />
+        android:background="@drawable/loginbtnbg"
+        android:text="Login" />
 
     <EditText
         android:id="@+id/pwEdt"

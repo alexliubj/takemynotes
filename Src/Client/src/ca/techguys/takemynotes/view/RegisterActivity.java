@@ -15,13 +15,30 @@ public class RegisterActivity extends Activity {
 
 	private Button signupBtn;
 	
+	private void init() {
+		signupBtn = (Button) findViewById(R.id.createBtn);
+		signupBtn.setOnClickListener((OnClickListener) this);
+		
+	}
+	
+	public void onClick(View v) {
+		switch (v.getId()) {
+			case R.id.btn_get_captcha:
+			{
+				signupBtn.setBackgroundResource(R.drawable.registerbgpress);
+				break;
+			}
+			
+		}
+	}
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
 		
 		setTitle("Register");
-		
+		init();
 	}
 
 	@Override
