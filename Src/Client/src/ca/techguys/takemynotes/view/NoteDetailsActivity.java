@@ -15,6 +15,7 @@ public class NoteDetailsActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_note_details);
 		
+		setTitle("Note detail");
 		String position=getIntent().getStringExtra("value1").toString(); 
 		
 		TextView tv1=(TextView) findViewById(R.id.nameTv);
