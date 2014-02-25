@@ -18,22 +18,24 @@ import com.actionbarsherlock.app.SherlockListFragment;
 public class PriceFragment extends SherlockListFragment{
 
 	
-	/** An array of items to display */
-    String android_versions[] = new String[]{
-            "Jelly Bean",
-            "IceCream Sandwich",
-            "HoneyComb",
-            "GingerBread",
-            "Froyo"
+	/** An array of items to display*/
+    String apple_versions[] = new String[]{
+            "Mountain Lion",
+            "Lion",
+            "Snow Leopard",
+            "Leopard",
+            "Tiger",
+            "Panther"
     };
     
-    /** An array of items to display */
-    int android_images[] = new int[]{
-            R.drawable.jb,
-            R.drawable.ics,
-            R.drawable.honeycomb,
-            R.drawable.gingerbread,
-            R.drawable.froyo
+    /** An array of images to display*/
+    int apple_images[] = new int[]{
+            R.drawable.mountainlion,
+            R.drawable.lion,
+            R.drawable.snowleopard,
+            R.drawable.leopard,
+            R.drawable.tiger,
+            R.drawable.panther
     };
     
     @Override
@@ -45,8 +47,8 @@ public class PriceFragment extends SherlockListFragment{
 
         for(int i=0;i<5;i++){
                 HashMap<String, String> hm = new HashMap<String,String>();
-            hm.put("txt", android_versions[i]);
-            hm.put("img", Integer.toString(android_images[i]  ) );
+            hm.put("txt", apple_versions[i]);
+            hm.put("img", Integer.toString(apple_images[i]  ) );
             aList.add(hm);
         }
 

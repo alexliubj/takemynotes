@@ -48,18 +48,16 @@ public class SubCategoryActivity extends SherlockFragmentActivity  implements On
         
         // Creating Android Tab
         Tab tab1 = actionBar.newTab()
-        					.setText("Android")
-        					.setTabListener(new CustomTabListener<DateFragment>(this, "By Date", DateFragment.class) )
-        					.setIcon(R.drawable.android);
+        					.setText("By Date")
+        					.setTabListener(new CustomTabListener<DateFragment>(this, "By Date", DateFragment.class) );
         
         // Adding Android Tab to acton bar
         actionBar.addTab(tab1);
         
         // Creating Apple Tab
         Tab tab2 = actionBar.newTab()
-				.setText("Apple")
-				.setTabListener(new CustomTabListener<PriceFragment>(this, "By Price", PriceFragment.class))
-				.setIcon(R.drawable.apple);
+				.setText("By Price")
+				.setTabListener(new CustomTabListener<PriceFragment>(this, "By Price", PriceFragment.class));
         
         // Adding Apple Tab to action bar
         actionBar.addTab(tab2);        
