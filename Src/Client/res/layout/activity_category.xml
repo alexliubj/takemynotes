@@ -10,7 +10,6 @@
 		android:layout_height = "wrap_content" 
 		android:gravity="center_horizontal">
 	</LinearLayout>
-
         
     <ListView   
 	     	android:dividerHeight="1dip" 
@@ -20,7 +19,7 @@
 	     	android:layout_height="wrap_content" 
 	     	android:cacheColorHint="#00000000" 
 	     	android:background="#FFFFFF" 
-	     	android:listSelector="@drawable/ic_launcher">
+	     	>
 	     </ListView> 
     
 </LinearLayout>
