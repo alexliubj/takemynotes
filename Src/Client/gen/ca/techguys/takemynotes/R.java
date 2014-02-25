@@ -86,6 +86,7 @@ public final class R {
         public static final int descTv=0x7f090012;
         public static final int emailEdt=0x7f090014;
         public static final int emailTv=0x7f09000e;
+        public static final int favorite=0x7f090028;
         public static final int img=0x7f090025;
         public static final int info=0x7f090026;
         public static final int listView1=0x7f09001a;
