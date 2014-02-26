@@ -20,7 +20,7 @@ public class SellNotesActivity extends Activity {
 		
 		setTitle("Sell note");
 		
-		createNoteBtn=(Button) findViewById(R.id.createNoteBtn);
+		createNoteBtn=(Button) findViewById(R.id.lgCreateBtn);
 		createNoteBtn.setOnClickListener(new OnClickListener(){
 
 			@Override

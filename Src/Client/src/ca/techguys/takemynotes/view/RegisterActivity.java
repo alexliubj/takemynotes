@@ -38,7 +38,7 @@ public class RegisterActivity extends Activity {
 		setContentView(R.layout.activity_register);
 		
 		setTitle("Register");
-		init();
+	//	init();
 	}
 
 	@Override

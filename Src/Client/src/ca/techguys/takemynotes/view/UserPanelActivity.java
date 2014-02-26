@@ -13,6 +13,8 @@ public class UserPanelActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_user_panel);
+		
+		setTitle("My profile");
 	}
 
 	@Override

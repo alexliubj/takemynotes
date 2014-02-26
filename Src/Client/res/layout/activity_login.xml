@@ -14,7 +14,7 @@
         android:textSize="32sp"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
-        android:layout_above="@+id/createNoteBtn"
+        android:layout_above="@+id/lgCreateBtn"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="62dp"
         android:background="@drawable/loginbtnbg"
@@ -62,7 +62,7 @@
         android:textColor="#FFFFFF" />
 
     <Button
-        android:id="@+id/createNoteBtn"
+        android:id="@+id/lgCreateBtn"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"

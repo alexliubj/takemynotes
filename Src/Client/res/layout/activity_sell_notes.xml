@@ -20,7 +20,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
-        android:id="@+id/createNoteBtn"
+        android:id="@+id/lgCreateBtn"
         android:layout_width="95dp"
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"

@@ -18,6 +18,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -33,7 +34,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 		btnGetCaptcha = (Button) findViewById(R.id.btn_get_captcha);
 		btnGetCaptcha.setOnClickListener(this);
 
-		createBtn = (Button) findViewById(R.id.createNoteBtn);
+		createBtn = (Button) findViewById(R.id.lgCreateBtn);
 		createBtn.setOnClickListener(this);
 		
 		
@@ -62,7 +63,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 				
 			}
 			break;
-			case R.id.createNoteBtn:
+			case R.id.lgCreateBtn:
 			{
 				startActivity(new Intent(LoginActivity.this,  RegisterActivity.class));
 				LoginActivity.this.finish();
@@ -90,6 +91,20 @@ public class LoginActivity extends Activity implements OnClickListener {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.login, menu);
 		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+		switch (item.getItemId()) {
+	    case R.id.Account_Management:
+	    	startActivity(new Intent(LoginActivity.this,  UserPanelActivity.class));
+			LoginActivity.this.finish();
+	        return true;
+	    default:
+	        return super.onOptionsItemSelected(item);
+	    }
+		
 	}
 	
 

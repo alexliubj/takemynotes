@@ -37,6 +37,7 @@ public class SubCategoryActivity extends SherlockFragmentActivity  implements On
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
+        setTitle("Notes");
         // Getting an instance of action bar
         ActionBar actionBar = getSupportActionBar();
         
