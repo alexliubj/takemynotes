@@ -33,16 +33,16 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 
 	private ArrayList<CategoryItem> tempModel;
 	private void init() {
-		buttonBuy = (Button) findViewById(R.id.buyBtn);
+		buttonBuy = (Button) findViewById(R.id.srBuyBtn);
 		buttonBuy.setOnClickListener(this);
 		
-		buttonSell = (Button) findViewById(R.id.sellBtn);
+		buttonSell = (Button) findViewById(R.id.srSellBtn);
 		buttonSell.setOnClickListener(this);
 	}
 
 	public void onClick(View v) {
 		switch (v.getId()) {
-			case R.id.buyBtn:
+			case R.id.srBuyBtn:
 			{
 				buttonBuy.setBackgroundResource(R.drawable.buy);
 				ShowMyDialog(1, null);
@@ -51,7 +51,7 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 			}
 			break;
 			
-			case R.id.sellBtn:
+			case R.id.srSellBtn:
 			{
 				buttonSell.setBackgroundResource(R.drawable.sell);
 				startActivity(new Intent(SelectRoleActivity.this,  SellNotesActivity.class));

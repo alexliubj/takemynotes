@@ -10,7 +10,7 @@
     tools:context=".UserPanelActivity" >
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/upUserImgView"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_alignParentLeft="true"
@@ -18,24 +18,64 @@
         android:src="@drawable/user" />
 
     <EditText
-        android:id="@+id/accountUnEdt"
+        android:id="@+id/upNameEdt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imageView1"
-        android:layout_below="@+id/imageView1"
+        android:layout_alignLeft="@+id/upUserImgView"
+        android:layout_below="@+id/upUserImgView"
         android:layout_marginTop="26dp"
-        android:ems="10" >
+        android:ems="10"
+        android:hint="Name" >
 
         <requestFocus />
     </EditText>
 
     <EditText
-        android:id="@+id/accountEmailEdt"
+        android:id="@+id/upEmailEdt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/accountUnEdt"
-        android:layout_below="@+id/accountUnEdt"
+        android:layout_alignLeft="@+id/upNameEdt"
+        android:layout_below="@+id/upNameEdt"
         android:layout_marginTop="17dp"
-        android:ems="10" />
+        android:ems="10"
+        android:hint="Email" />
+
+    <EditText
+        android:id="@+id/upAddressEdt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/upEmailEdt"
+        android:layout_below="@+id/upEmailEdt"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="Address" />
+
+    <TextView
+        android:id="@+id/upDateRegisterTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/upUserImgView"
+        android:layout_marginRight="48dp"
+        android:text="Register date"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/upLastLoginTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/upDateRegisterTv"
+        android:layout_below="@+id/upDateRegisterTv"
+        android:layout_marginTop="26dp"
+        android:text="Last login date"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/upUpdateBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="Update" />
 
 </RelativeLayout>

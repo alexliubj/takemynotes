@@ -9,28 +9,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".LoginActivity" >
 
-    <Button
-        android:id="@+id/btn_get_captcha"
-        android:textSize="32sp"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_above="@+id/lgCreateBtn"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="62dp"
-        android:background="@drawable/loginbtnbg"
-        android:text="Login" />
-
-    <EditText
-        android:id="@+id/descEdt"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_alignLeft="@+id/btn_get_captcha"
-        android:layout_centerVertical="true"
-        android:background="@drawable/textboxbg"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword" />
-
     <ImageView
         android:id="@+id/loginImg"
         android:layout_width="75dp"
@@ -38,17 +16,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:src="@drawable/logo" />
-
-    <EditText
-        android:id="@+id/noteNameEdt"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_above="@+id/descEdt"
-        android:layout_alignLeft="@+id/descEdt"
-        android:layout_marginBottom="21dp"
-        android:background="@drawable/textboxbg"
-        android:ems="10"
-        android:hint="User Name" />
 
     <TextView
         android:id="@+id/noteNameTv"
@@ -70,5 +37,42 @@
         android:layout_marginRight="16dp"
         android:layout_toLeftOf="@+id/noteNameTv"
         android:background="@drawable/create" />
+
+    <Button
+        android:id="@+id/lgLoginBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_above="@+id/noteNameTv"
+        android:layout_alignRight="@+id/noteNameTv"
+        android:layout_marginBottom="74dp"
+        android:background="@drawable/loginbtnbg"
+        android:text="Login"
+        android:textSize="32sp" />
+
+    <EditText
+        android:id="@+id/lgUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/lgLoginBtn"
+        android:layout_below="@+id/loginImg"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/textboxbg"
+        android:ems="10"
+        android:hint="User Name" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/lgPasswordEdt"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/lgUserName"
+        android:layout_below="@+id/lgUserName"
+        android:layout_marginTop="38dp"
+        android:background="@drawable/textboxbg"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword" />
 
 </RelativeLayout>

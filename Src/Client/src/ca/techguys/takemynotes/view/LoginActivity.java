@@ -31,7 +31,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	private Button btnGetCaptcha;
 	private Button createBtn;
 	private void init() {
-		btnGetCaptcha = (Button) findViewById(R.id.btn_get_captcha);
+		btnGetCaptcha = (Button) findViewById(R.id.lgLoginBtn);
 		btnGetCaptcha.setOnClickListener(this);
 
 		createBtn = (Button) findViewById(R.id.lgCreateBtn);
@@ -55,7 +55,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 	public void onClick(View v) {
 		switch (v.getId()) {
-			case R.id.btn_get_captcha:
+			case R.id.lgLoginBtn:
 			{
 				btnGetCaptcha.setBackgroundResource(R.drawable.loginbtnpressed);
 				startActivity(new Intent(LoginActivity.this,  SelectRoleActivity.class));

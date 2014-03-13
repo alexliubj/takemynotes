@@ -16,14 +16,14 @@ public class RegisterActivity extends Activity {
 	private Button signupBtn;
 	
 	private void init() {
-		signupBtn = (Button) findViewById(R.id.signupBtn);
+		signupBtn = (Button) findViewById(R.id.regRegisterBtn);
 		signupBtn.setOnClickListener((OnClickListener) this);
 		
 	}
 	
 	public void onClick(View v) {
 		switch (v.getId()) {
-			case R.id.btn_get_captcha:
+			case R.id.regRegisterBtn:
 			{
 				signupBtn.setBackgroundResource(R.drawable.registerbgpress);
 				break;

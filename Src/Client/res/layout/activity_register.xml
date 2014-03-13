@@ -10,14 +10,14 @@
     tools:context=".RegisterActivity" >
 
     <Button
-        android:id="@+id/signupBtn"
+        android:id="@+id/regRegisterBtn"
         android:layout_width="95dp"
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@+id/regImg"
         android:background="@drawable/registerbg"
-        android:text="Sign up" />
+        android:text="Register" />
 
     <ImageView
         android:id="@+id/regImg"
@@ -28,63 +28,63 @@
         android:src="@drawable/logo" />
 
     <EditText
-        android:id="@+id/noteNameEdt"
+        android:id="@+id/regUserNameEdt"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:layout_alignLeft="@+id/emailEdt"
+        android:layout_alignLeft="@+id/regEmailEdt"
         android:layout_below="@+id/regImg"
         android:layout_marginTop="24dp"
         android:background="@drawable/textboxbg"
         android:ems="10"
         android:hint="User Name" />
 
+    <TextView
+        android:id="@+id/regWarningTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/regRegisterBtn"
+        android:layout_alignLeft="@+id/regConPasswordEdt"
+        android:layout_marginLeft="11dp"
+        android:text="Warning"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FF0000"
+        android:textSize="25sp" />
+
     <EditText
-        android:id="@+id/emailEdt"
+        android:id="@+id/regConPasswordEdt"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:layout_alignLeft="@+id/priceEdt"
-        android:layout_below="@+id/noteNameEdt"
-        android:layout_marginTop="23dp"
+        android:layout_above="@+id/regWarningTv"
+        android:layout_alignRight="@+id/regRegisterBtn"
+        android:layout_marginBottom="38dp"
         android:background="@drawable/textboxbg"
         android:ems="10"
-        android:hint="Email" >
+        android:hint="Confirm Password" >
 
         <requestFocus />
     </EditText>
 
     <EditText
-        android:id="@+id/descEdt"
+        android:id="@+id/regPasswordEdt"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:layout_alignLeft="@+id/emailEdt"
-        android:layout_below="@+id/emailEdt"
-        android:layout_marginTop="26dp"
+        android:layout_above="@+id/regConPasswordEdt"
+        android:layout_alignLeft="@+id/regConPasswordEdt"
+        android:layout_marginBottom="36dp"
         android:background="@drawable/textboxbg"
         android:ems="10"
         android:hint="Password"
         android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/priceEdt"
+        android:id="@+id/regEmailEdt"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:layout_alignRight="@+id/lgCreateBtn"
-        android:layout_below="@+id/descEdt"
-        android:layout_marginTop="25dp"
+        android:layout_alignLeft="@+id/regPasswordEdt"
+        android:layout_below="@+id/regUserNameEdt"
+        android:layout_marginTop="28dp"
         android:background="@drawable/textboxbg"
         android:ems="10"
-        android:hint="Confirm Password" />
-
-    <TextView
-        android:id="@+id/noteNameTv"
-        android:textSize="25sp"
-        android:textColor="#FF0000"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/lgCreateBtn"
-        android:layout_alignLeft="@+id/priceEdt"
-        android:layout_marginBottom="29dp"
-        android:text="Warning"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:hint="Email" />
 
 </RelativeLayout>

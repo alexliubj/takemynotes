@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/catebg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/catebg"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -11,16 +11,16 @@
 
     <TextView
         android:id="@+id/noteNameTv"
-        android:textSize="22sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:text="Note name:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="22sp" />
 
     <Button
-        android:id="@+id/lgCreateBtn"
+        android:id="@+id/snCreateBtn"
         android:layout_width="95dp"
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
@@ -30,75 +30,70 @@
 
     <TextView
         android:id="@+id/cateTv"
-        android:textSize="22sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/noteNameEdt"
-        android:layout_below="@+id/noteNameEdt"
-        android:layout_marginTop="30dp"
+        android:layout_alignLeft="@+id/noteNameTv"
+        android:layout_below="@+id/snNoteName"
+        android:layout_marginTop="11dp"
         android:text="Category:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="22sp" />
 
     <Spinner
-        android:id="@+id/cateSpinner"
+        android:id="@+id/snCateSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/cateTv"
         android:layout_below="@+id/cateTv" />
 
     <EditText
-        android:id="@+id/noteNameEdt"
+        android:id="@+id/snPriceEdt"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:layout_alignLeft="@+id/noteNameTv"
-        android:layout_below="@+id/noteNameTv"
+        android:layout_alignLeft="@+id/priceTv"
+        android:layout_centerVertical="true"
         android:background="@drawable/textboxbg"
-        android:ems="10" >
-
-        <requestFocus />
-    </EditText>
-
-    <TextView
-        android:id="@+id/descTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/cateSpinner"
-        android:layout_below="@+id/cateSpinner"
-        android:layout_marginTop="16dp"
-        android:text="Description:"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="22sp" />
-
-    <EditText
-        android:id="@+id/descEdt"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_alignLeft="@+id/descTv"
-        android:layout_below="@+id/descTv"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/textboxbg"
-        android:ems="10" />
+        android:ems="10"
+        android:inputType="numberDecimal" />
 
     <TextView
         android:id="@+id/priceTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/descEdt"
-        android:layout_below="@+id/descEdt"
-        android:layout_marginTop="40dp"
+        android:layout_above="@+id/snPriceEdt"
+        android:layout_alignLeft="@+id/snCateSpinner"
         android:text="Pirce:"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="22sp" />
 
+    <TextView
+        android:id="@+id/descTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/snPriceEdt"
+        android:layout_below="@+id/snPriceEdt"
+        android:layout_marginTop="29dp"
+        android:text="Description:"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="22sp" />
+
     <EditText
-        android:id="@+id/priceEdt"
+        android:id="@+id/snDescEdt"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:layout_alignLeft="@+id/priceTv"
-        android:layout_below="@+id/priceTv"
-        android:layout_marginTop="11dp"
+        android:layout_alignLeft="@+id/descTv"
+        android:layout_below="@+id/descTv"
         android:background="@drawable/textboxbg"
-        android:ems="10"
-        android:inputType="numberDecimal" />
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/snNoteName"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/noteNameTv"
+        android:layout_below="@+id/noteNameTv"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/textboxbg"
+        android:ems="10" />
 
 </RelativeLayout>

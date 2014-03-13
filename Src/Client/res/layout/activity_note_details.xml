@@ -18,7 +18,7 @@
         android:src="@drawable/note2" />
 
     <TextView
-        android:id="@+id/contactTv"
+        android:id="@+id/ndContactTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView3"
@@ -47,7 +47,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/phoneTv"
+        android:id="@+id/ndPhoneTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView7"
@@ -56,22 +56,12 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/emailTv"
+        android:id="@+id/ndEmailTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/textView9"
         android:layout_toRightOf="@+id/noteDetailImg"
         android:text="takemynote@notes.com"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/priceTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView9"
-        android:layout_alignBottom="@+id/textView9"
-        android:layout_toRightOf="@+id/noteDetailImg"
-        android:text="$ 45.99"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -85,22 +75,12 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/cateTv"
+        android:id="@+id/ndNoteNameTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/contactTv"
+        android:layout_alignLeft="@+id/ndContactTv"
         android:layout_alignTop="@+id/noteDetailImg"
-        android:text="Small Text"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/descTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/cateTv"
-        android:layout_below="@+id/cateTv"
-        android:layout_marginTop="21dp"
-        android:text="Small Text"
+        android:text="Note Name"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
@@ -121,6 +101,26 @@
         android:layout_alignLeft="@+id/noteDetailImg"
         android:layout_marginBottom="33dp"
         android:text="Contact:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/ndDescTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ndNoteNameTv"
+        android:layout_below="@+id/ndNoteNameTv"
+        android:layout_marginTop="27dp"
+        android:text="Note Description"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/ndPriceTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView9"
+        android:layout_alignBottom="@+id/textView9"
+        android:layout_alignLeft="@+id/ndEmailTv"
+        android:text="$45.20"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
