@@ -19,12 +19,20 @@
 
     <TextView
         android:id="@+id/info"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/img"
-        android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/img"
+        android:layout_toLeftOf="@+id/heartImg"
         android:layout_toRightOf="@+id/img"
         android:text="info" />
+
+    <ImageView
+        android:id="@+id/favImg"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/heart" />
 
 </RelativeLayout>

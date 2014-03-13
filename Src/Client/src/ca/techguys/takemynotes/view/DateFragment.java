@@ -25,6 +25,7 @@ public class DateFragment extends SherlockListFragment{
 	private String info[];
 	
     private int noteImgs[];
+    private int favImgs[];
     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,30 +39,48 @@ public class DateFragment extends SherlockListFragment{
         
         info=new String[numOfNote];
         noteImgs=new int[numOfNote];
+        favImgs=new int[numOfNote];
         
+        //generate note images
+        for(int c=0; c<numOfNote; c++){
+        	noteImgs[c]=R.drawable.note2;
+        }
+        
+        //generate note's info
         for(int c=0; c<numOfNote; c++){
         	info[c]=myNotes.get(c).name+"\n"+myNotes.get(c).desc+"\n"
         			+"$"+myNotes.get(c).price+"\n";
         	
         }
         
+        //generate favorite images
         for(int c=0; c<numOfNote; c++){
-        	noteImgs[c]=R.drawable.note2;
+        	
+        	if(c%2==0){
+        		//which user add this note as favorite
+        		favImgs[c]=R.drawable.heart;
+        	}else{
+        		//which user didn't add this note as favorite
+        		favImgs[c]=android.R.color.transparent;
+        	}
+        	
         }
+        
         
         
         for(int i=0;i<numOfNote;i++){
                 HashMap<String, String> hm = new HashMap<String,String>();
             hm.put("txt", info[i]);
             hm.put("img", Integer.toString(noteImgs[i]) );
+            hm.put("favImg", Integer.toString(favImgs[i]) );
             aList.add(hm);
         }
 
         // Keys used in Hashmap
-        String[] from = { "img","txt" };
+        String[] from = { "img","txt", "favImg" };
 
         // Ids of views in listview_layout
-        int[] to = { R.id.img,R.id.info};
+        int[] to = { R.id.img,R.id.info, R.id.favImg};
 
         // Instantiating an adapter to store each items
         // R.layout.listview_layout defines the layout of each item
@@ -69,6 +88,7 @@ public class DateFragment extends SherlockListFragment{
         
         // Setting the adapter to the listView
         setListAdapter(adapter);        
+        
         
         return super.onCreateView(inflater, container, savedInstanceState);
 
@@ -80,7 +100,7 @@ public class DateFragment extends SherlockListFragment{
            
        	Intent intent=new Intent(getActivity(), NoteDetailsActivity.class);
    		
-   		intent.putExtra("value1", String.valueOf(position));
+   		//intent.putExtra("value1", String.valueOf(position));
    		
    		startActivity(intent);
            

@@ -122,12 +122,26 @@ public class CategoryActivity extends Activity {
 				
 				final CategoryItem cate=(CategoryItem)obj;
 				
+				String cateName=cate.getCategoryName().toString();
+
 				if(bitmap!=null){
 					news_item_image.setImageBitmap(bitmap);
 				}else{
-					news_item_image.setImageResource(R.drawable.thumb_no_photo);
+					if(cateName.contains("ICT")){
+						news_item_image.setImageResource(R.drawable.computer);
+					}else if(cateName.contains("Business")){
+						news_item_image.setImageResource(R.drawable.business);
+					}else if(cateName.contains("Math")){
+						news_item_image.setImageResource(R.drawable.math);
+					}
+					
 				}
+				
+								
+				
+				
 				news_item_title.setText(cate.getCategoryName());
+				
 				//news_item_content.setText(cate.getTitle());
 			}else{
 				//view.setBackgroundResource(R.drawable.grey_box);
