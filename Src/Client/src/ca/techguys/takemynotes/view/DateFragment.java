@@ -76,6 +76,7 @@ public class DateFragment extends SherlockListFragment{
             aList.add(hm);
         }
 
+        
         // Keys used in Hashmap
         String[] from = { "img","txt", "favImg" };
 
@@ -85,10 +86,11 @@ public class DateFragment extends SherlockListFragment{
         // Instantiating an adapter to store each items
         // R.layout.listview_layout defines the layout of each item
         SimpleAdapter adapter = new SimpleAdapter(getActivity().getBaseContext(), aList, R.layout.subcate_listview, from, to);        
-        
+      
         // Setting the adapter to the listView
         setListAdapter(adapter);        
         
+        super.onCreateView(inflater, container, savedInstanceState).setBackgroundColor(R.drawable.itembg);
         
         return super.onCreateView(inflater, container, savedInstanceState);
 
