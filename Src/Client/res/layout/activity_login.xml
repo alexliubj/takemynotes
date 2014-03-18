@@ -17,27 +17,6 @@
         android:layout_centerHorizontal="true"
         android:src="@drawable/logo" />
 
-    <TextView
-        android:id="@+id/noteNameTv"
-        android:textSize="25sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:text="Create Account"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#FFFFFF" />
-
-    <Button
-        android:id="@+id/lgCreateBtn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignTop="@+id/noteNameTv"
-        android:layout_marginRight="16dp"
-        android:layout_toLeftOf="@+id/noteNameTv"
-        android:background="@drawable/create" />
-
     <Button
         android:id="@+id/lgLoginBtn"
         android:layout_width="wrap_content"
@@ -74,5 +53,27 @@
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/noteNameTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="15dp"
+        android:text="Create Account"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp" />
+
+    <Button
+        android:id="@+id/lgCreateBtn"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/noteNameTv"
+        android:layout_alignBottom="@+id/noteNameTv"
+        android:layout_marginRight="16dp"
+        android:layout_toLeftOf="@+id/noteNameTv"
+        android:background="@drawable/create" />
 
 </RelativeLayout>
