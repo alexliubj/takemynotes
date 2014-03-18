@@ -96,8 +96,7 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 							try {
 								tempModel = new Parse().GetCategory(result);
 							} catch (JsonSyntaxException e) {
-								//
-								//ToastUtil.showText(RecentlyViewedActivity.this, "��������");
+								
 								e.printStackTrace();
 							}
 							

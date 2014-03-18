@@ -12,6 +12,9 @@ import org.apache.http.protocol.HTTP;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.Log;
+import ca.techguys.takemynotes.beans.UserInfo;
+import ca.techguys.takemynotes.beans.Note;
+
 
 public class TakeMyNotesRequest {
 	private final String url = "http://www.picpicworld.com/TakeMyNotes/bin/";
@@ -89,26 +92,112 @@ public class TakeMyNotesRequest {
 		return baseRequest.postRequestByHttpClient(strParams, getUrl("user", "verificationKey"));
 	}
 
+	//get sub-category
+	//http://www.picpicworld.com/TakeMyNotes/bin/GetNoteByCategory.php?classid=1&page=1&limit=20&sortby=no
+	public String getSubcategory(int classid, int pagenum, int limit, String sortBy) throws IOException,
+	TimeoutException {
+		ArrayList<NameValuePair> strParams = new ArrayList<NameValuePair>();
+		strParams.add(new BasicNameValuePair("classid", String.format("%d", classid)));
+		strParams.add(new BasicNameValuePair("page", String.format("%d", pagenum)));
+		strParams.add(new BasicNameValuePair("limit", String.format("%d", limit)));
+
+		if (!TextUtils.isEmpty(sortBy)) {
+			strParams.add(new BasicNameValuePair("sortby", sortBy));
+		}
+		return baseRequest.postRequestByHttpClient(strParams, getUrl("GetNoteByCategory.php", ""));
+	}
+	
+	//publish a note
+	//	$NoteName = $user_input['NoteName'];
+	//	$CateId = $user_input['CateId'];
+	//	$Description = $user_input['Description'];
+	//	$Price = $user_input['Price'];
+	//	$PubUserId = $user_input['PubUserId'];
+	//	$Status = $user_input['Status'];
+	
+	public String postNote(Note note) throws IOException,
+	TimeoutException {
+		ArrayList<NameValuePair> strParams = new ArrayList<NameValuePair>();
+		if (!TextUtils.isEmpty(note.getNoteName())) {
+			strParams.add(new BasicNameValuePair("NoteName", note.getNoteName()));
+		}
+		if (!TextUtils.isEmpty(note.getCateId())) {
+			strParams.add(new BasicNameValuePair("CateId", note.getCateId()));
+		}
+		if (!TextUtils.isEmpty(note.getDescription())) {
+			strParams.add(new BasicNameValuePair("Description", note.getDescription()));
+		}
+		if (!TextUtils.isEmpty(note.getPrice())) {
+			strParams.add(new BasicNameValuePair("Price", note.getPrice()));
+		}
+		if (!TextUtils.isEmpty(note.getPubUserId())) {
+			strParams.add(new BasicNameValuePair("PubUserId", note.getPubUserId()));
+		}
+		if (!TextUtils.isEmpty(note.getStatus())) {
+			strParams.add(new BasicNameValuePair("Status", note.getStatus()));
+		}
+		
+		return baseRequest.postRequestByHttpClient(strParams, getUrl("PublishNote.php", ""));
+	}
+	
+	//get all category
 	public String getCategory() throws IOException,TimeoutException {
 		ArrayList<NameValuePair> strParams = new ArrayList<NameValuePair>();
 		return baseRequest.postRequestByHttpClient(strParams, getUrl("GetAllCategory.php", ""));
 		}
 
-	public String getLogin(String mobelNo, String passWord, String key) throws IOException,
+	//login
+	//http://www.picpicworld.com/TakeMyNotes/bin/Login.php?username=1&pwd=2
+	public String getLogin(String mobelNo, String passWord, String username) throws IOException,
 			TimeoutException {
 		ArrayList<NameValuePair> strParams = new ArrayList<NameValuePair>();
 		if (!TextUtils.isEmpty(mobelNo)) {
-			strParams.add(new BasicNameValuePair("mobelNo", mobelNo));
+			//strParams.add(new BasicNameValuePair("mobelNo", mobelNo));
 		}
 		if (!TextUtils.isEmpty(passWord)) {
-			strParams.add(new BasicNameValuePair("passWord", passWord));
+			strParams.add(new BasicNameValuePair("pwd", passWord));
 		}
-		if (!TextUtils.isEmpty(key)) {
-			strParams.add(new BasicNameValuePair("key", key));
+		if (!TextUtils.isEmpty(username)) {
+			strParams.add(new BasicNameValuePair("username", username));
 		}
-		return baseRequest.postRequestByHttpClient(strParams, getUrl("user", "login"));
+		return baseRequest.postRequestByHttpClient(strParams, getUrl("Login.php", ""));
 	}
-
+	
+	//register
+	//	$username = $user_input['Name'];
+	//	$img = $user_input['UserImg'];
+	//	$email = $user_input['Email'];
+	//	$pswd = $user_input['Password'];
+	//	$addre = $user_input['Address'];
+	//	$ctiy = $user_input['City'];
+	//	$prov = $user_input['Province'];
+	public String getRegister(UserInfo user) throws IOException,
+	TimeoutException {
+		ArrayList<NameValuePair> strParams = new ArrayList<NameValuePair>();
+		if (!TextUtils.isEmpty(user.getAddress())) {
+			strParams.add(new BasicNameValuePair("Address", user.getAddress()));
+		}
+		if (!TextUtils.isEmpty(user.getCity())) {
+			strParams.add(new BasicNameValuePair("City", user.getCity()));
+		}
+		if (!TextUtils.isEmpty(user.getPassword())) {
+			strParams.add(new BasicNameValuePair("Password", user.getPassword()));
+		}
+		if (!TextUtils.isEmpty(user.getName())) {
+			strParams.add(new BasicNameValuePair("Name", user.getName()));
+		}
+		if (!TextUtils.isEmpty(user.getProvince())) {
+			strParams.add(new BasicNameValuePair("Province", user.getProvince()));
+		}
+		if (!TextUtils.isEmpty(user.getEmail())) {
+			strParams.add(new BasicNameValuePair("Email", user.getEmail()));
+		}
+		if (!TextUtils.isEmpty(user.getUiserImage())) {
+			//strParams.add(new BasicNameValuePair("UserImg", user.getUiserImage()));
+		}
+		return baseRequest.postRequestByHttpClient(strParams, getUrl("CreateUser.php", ""));
+	}
+	
 	public String getFeedBack(String userId, String key, String opinion, String email)
 			throws IOException, TimeoutException {
 		ArrayList<NameValuePair> strParams = new ArrayList<NameValuePair>();

@@ -7,6 +7,7 @@ import java.util.List;
 import ca.techguys.takemynotes.beans.CategoryItem;
 import ca.techguys.takemynotes.beans.CommonModel;
 import ca.techguys.takemynotes.beans.UniversalModel;
+import ca.techguys.takemynotes.beans.Note;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -79,16 +80,10 @@ public class Parse {
 	 */
 	public ArrayList<CategoryItem> GetCategory(String str)
 			throws JsonSyntaxException {
-		Type type = new TypeToken<UniversalModel<CategoryItem>>() {
-		}.getType();
-		UniversalModel<CategoryItem> model = new UniversalModel<CategoryItem>();
-		
 		Gson gson = new Gson(); 
 	    JsonParser parser = new JsonParser(); 
 	    JsonArray Jarray = parser.parse(str).getAsJsonArray(); 
-
 	    ArrayList<CategoryItem> lcs = new ArrayList<CategoryItem>(); 
-
 	    for(JsonElement obj : Jarray ){ 
 	    	CategoryItem cse = gson.fromJson( obj , CategoryItem.class); 
 	        lcs.add(cse); 
@@ -96,6 +91,22 @@ public class Parse {
 
 		return lcs;
 	}
+	
+	public ArrayList<Note> GetNotesByCategory(String str)
+			throws JsonSyntaxException {
+		Gson gson = new Gson(); 
+	    JsonParser parser = new JsonParser(); 
+	    JsonArray Jarray = parser.parse(str).getAsJsonArray(); 
+	    ArrayList<Note> lcs = new ArrayList<Note>(); 
+	    for(JsonElement obj : Jarray ){ 
+	    	Note cse = gson.fromJson( obj , Note.class); 
+	        lcs.add(cse); 
+	    }
+		return lcs;
+	}
+	
+	
+	
 //
 //	/**
 //	 * @param str

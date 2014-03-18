@@ -134,12 +134,7 @@ public class CategoryActivity extends Activity {
 					}else if(cateName.contains("Math")){
 						news_item_image.setImageResource(R.drawable.math);
 					}
-					
 				}
-				
-								
-				
-				
 				news_item_title.setText(cate.getCategoryName());
 				
 				//news_item_content.setText(cate.getTitle());

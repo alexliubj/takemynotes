@@ -6,4 +6,6 @@ encoding//src/ca/techguys/takemynotes/beans/NotesSharedPreferences.java=UTF-8
 encoding//src/ca/techguys/takemynotes/net/BaseRequest.java=UTF-8
 encoding//src/ca/techguys/takemynotes/net/Parse.java=UTF-8
 encoding//src/ca/techguys/takemynotes/net/TakeMyNotesRequest.java=UTF-8
+encoding//src/ca/techguys/takemynotes/view/RegisterActivity.java=UTF-8
 encoding//src/ca/techguys/takemynotes/view/SelectRoleActivity.java=UTF-8
+encoding//src/ca/techguys/takemynotes/view/SubCategoryActivity.java=UTF-8
