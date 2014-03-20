@@ -81,6 +81,10 @@
             android:name="ca.techguys.takemynotes.TabActivity"
             android:label="@string/title_activity_tab" >
         </activity>
+        <activity
+            android:name="ca.techguys.takemynotes.PostCommentActivity"
+            android:label="@string/title_activity_post_comment" >
+        </activity>
     </application>
 
 </manifest>

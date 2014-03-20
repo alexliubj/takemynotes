@@ -45,7 +45,7 @@ public class PostCommentActivity extends Activity implements OnClickListener {
 	private Button buttonSell;
 	private CategoryItem item;
 	private DialogActivity dialog;
-
+	
 	private ArrayList<CategoryItem> tempModel;
 	private void init() {
 		btnGetCaptcha = (Button) findViewById(R.id.lgLoginBtn);
