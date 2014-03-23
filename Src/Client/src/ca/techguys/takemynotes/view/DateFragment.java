@@ -102,7 +102,7 @@ public class DateFragment extends SherlockListFragment{
            
        	Intent intent=new Intent(getActivity(), NoteDetailsActivity.class);
    		
-   		//intent.putExtra("value1", String.valueOf(position));
+   		intent.putExtra("value1", String.valueOf(position));
    		
    		startActivity(intent);
            

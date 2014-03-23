@@ -6,15 +6,22 @@ import ca.techguys.takemynotes.R.menu;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class NoteDetailsActivity extends Activity {
 
+	private Button commentBtn;
+	private TextView nameTv;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -22,10 +29,27 @@ public class NoteDetailsActivity extends Activity {
 		
 		
 		setTitle("Note detail");
-		String position=getIntent().getStringExtra("value1").toString(); 
+		String position=String.valueOf(getIntent().getStringExtra("value1"));
 		
-		TextView tv1=(TextView) findViewById(R.id.cateTv);
-		tv1.setText(position);
+		nameTv =(TextView) findViewById(R.id.ndNoteNameTv);
+		nameTv.setText(position);
+		
+		
+		commentBtn=(Button) findViewById(R.id.ndCommentBtn);
+		commentBtn.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent=new Intent(NoteDetailsActivity.this, PostCommentActivity.class);
+				
+		   		startActivity(intent);
+
+			}
+			
+		});
+		
+		
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) {

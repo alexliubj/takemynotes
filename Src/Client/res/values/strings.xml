@@ -22,6 +22,7 @@
     <string name="title_activity_select_role">SelectRoleActivity</string>
     <string name="title_activity_sub_category">SubCategoryActivity</string>
     <string name="title_activity_note_details">NoteDetailsActivity</string>
+    <string name="title_activity_post_comment">PostCommentActivity</string>
     <string name="title_activity_tab">MainActivity</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
