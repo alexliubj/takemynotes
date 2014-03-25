@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import ca.techguys.takemynotes.beans.ResultModel;
 import ca.techguys.takemynotes.beans.CategoryItem;
 import ca.techguys.takemynotes.beans.UniversalModel;
 import ca.techguys.takemynotes.beans.UserInfo;
@@ -32,7 +33,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 	private Button buttonSell;
 	private CategoryItem item;
 	private DialogActivity dialog;
-	private CommonModel common;
+	private ResultModel common;
 	
 	private void ShowMyDialog(int type, String str) {
 		if (type == 1) {
@@ -91,7 +92,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 						} else {
 
 							try {
-								common = new Parse().CommonPares(result);
+								common = new Parse().ResultParse(result);
 							} catch (JsonSyntaxException e) {
 							
 								e.printStackTrace();
@@ -100,6 +101,10 @@ public class RegisterActivity extends Activity implements OnClickListener {
 							if (common != null) {
 								
 								dialog.cancel();
+								if(common.getResult().equals("succ")) // successful
+								{
+									
+								}
 //								Intent intent = new Intent(SelectRoleActivity.this,
 //										CategoryActivity.class);
 //								intent.putExtra("tempModel", (Serializable)tempModel);

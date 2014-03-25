@@ -6,6 +6,7 @@ import java.util.List;
 
 import ca.techguys.takemynotes.beans.CategoryItem;
 import ca.techguys.takemynotes.beans.CommonModel;
+import ca.techguys.takemynotes.beans.ResultModel;
 import ca.techguys.takemynotes.beans.UniversalModel;
 import ca.techguys.takemynotes.beans.Note;
 
@@ -28,6 +29,15 @@ public class Parse {
 		Type type = new TypeToken<CategoryItem>() {
 		}.getType();
 		CategoryItem model = new CategoryItem();
+		model = gson.fromJson(str, type);
+		return model;
+	}
+	
+	public ResultModel ResultParse(String str) {
+		Gson gson = new Gson();
+		Type type = new TypeToken<ResultModel>() {
+		}.getType();
+		ResultModel model = new ResultModel();
 		model = gson.fromJson(str, type);
 		return model;
 	}

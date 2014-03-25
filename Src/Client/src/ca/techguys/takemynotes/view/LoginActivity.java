@@ -14,6 +14,7 @@ import ca.techguys.takemynotes.R.menu;
 import ca.techguys.takemynotes.beans.ApplicationData;
 import ca.techguys.takemynotes.beans.CategoryItem;
 import ca.techguys.takemynotes.beans.UserInfo;
+import ca.techguys.takemynotes.beans.ResultModel;
 import ca.techguys.takemynotes.net.Parse;
 import ca.techguys.takemynotes.net.TakeMyNotesRequest;
 import android.os.AsyncTask;
@@ -35,6 +36,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+
 public class LoginActivity extends Activity implements OnClickListener {
 
 	private Button btnGetCaptcha;
@@ -46,7 +48,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	private CategoryItem item;
 	private DialogActivity dialog;
 
-	private ArrayList<CategoryItem> tempModel;
+	private ResultModel tempModel;
 	private void init() {
 		btnGetCaptcha = (Button) findViewById(R.id.lgLoginBtn);
 		btnGetCaptcha.setOnClickListener(this);
@@ -147,16 +149,16 @@ public class LoginActivity extends Activity implements OnClickListener {
 							handler.sendEmptyMessage(3);
 						} else {
 
-							tempModel = new ArrayList<CategoryItem>();
+							tempModel = new ResultModel();
 							try {
-								tempModel = new Parse().GetCategory(result);
+								tempModel = new Parse().ResultParse(result);
 							} catch (JsonSyntaxException e) {
 							
 								e.printStackTrace();
 							}
 							
-							if (tempModel != null) {
-								
+							if (!tempModel.getResult().equals("fail")) { // success
+								int userid = Integer.parseInt(tempModel.getResult());
 								dialog.cancel();
 //								Intent intent = new Intent(SelectRoleActivity.this,
 //										CategoryActivity.class);
