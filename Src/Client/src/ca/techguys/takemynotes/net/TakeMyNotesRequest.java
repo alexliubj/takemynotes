@@ -198,6 +198,18 @@ public class TakeMyNotesRequest {
 		return baseRequest.postRequestByHttpClient(strParams, getUrl("CreateUser.php", ""));
 	}
 	
+	public String addFav(String noteId,String userid)
+			throws IOException, TimeoutException {
+		ArrayList<NameValuePair> strParams = new ArrayList<NameValuePair>();
+		if (!TextUtils.isEmpty(userid)) {
+			strParams.add(new BasicNameValuePair("UserId", userid));
+		}
+		if (!TextUtils.isEmpty(noteId)) {
+			strParams.add(new BasicNameValuePair("NoteId", noteId));
+		}
+		return baseRequest.postRequestByHttpClient(strParams, getUrl("help", "opinion"));
+	}
+	
 	public String getComments(int noteId)
 			throws IOException, TimeoutException {
 		ArrayList<NameValuePair> strParams = new ArrayList<NameValuePair>();
