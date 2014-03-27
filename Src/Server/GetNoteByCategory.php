@@ -13,7 +13,7 @@ function runtime($mode = 0)
   list($m0,$s0) = split("       ", $t);
   list($m1,$s1) = split("       ", $t1);
 
-  return sprintf("%.6f ms", ($s1 + $m1 - $s0 - $m0) * 1000);
+//  return sprintf("%.6f ms", ($s1 + $m1 - $s0 - $m0) * 1000);
 }
 
 runtime();
@@ -25,7 +25,7 @@ $limit = $user_input['limit'];
 $sort_by = $user_input['sortby'];
 
 //connect db
-mysql_connect("localhost", "root", "") or
+mysql_connect("localhost", "root", "password.123") or
   die("Could not connect: " . mysql_error());
 
 //select one notes
@@ -35,11 +35,12 @@ mysql_select_db("mynotes");
 $start = ($page - 1) * $limit;
 if ($sort_by == 'time')
 {
-  $result = mysql_query("SELECT * FROM $table WHERE CateId=$cid ORDER BY `DateCreate` DESC limit $start,$limit");
+$result = mysql_query("SELECT * FROM $table WHERE CateId=$cid ORDER BY `DateCreate` DESC limit $start,$limit");
 }
 else if ($sort_by == 'no')
 {
   $result = mysql_query("SELECT * FROM $table WHERE CateId=$cid order by `idNotes` DESC limit $start,$limit");
+
 }
 else
 {
@@ -90,8 +91,8 @@ print_r($output);
 //release
 mysql_free_result($result);
 
-echo("<br />time used:<br />");
-echo runtime(1);
-echo("<br />");
+//echo("<br />time used:<br />");
+//echo runtime(1);
+//echo("<br />");
 
 ?>

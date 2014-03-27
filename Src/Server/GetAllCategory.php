@@ -14,7 +14,7 @@ function runtime($mode = 0)
   list($m0,$s0) = split("       ", $t);
   list($m1,$s1) = split("       ", $t1);
 
-  return sprintf("%.6f ms", ($s1 + $m1 - $s0 - $m0) * 1000);
+//  return sprintf("%.6f ms", ($s1 + $m1 - $s0 - $m0) * 1000);
 }
 
 runtime();
@@ -22,7 +22,7 @@ $user_input = empty($_POST)?$_GET:$_POST;
 $table = 'Category';
 
 //connect to database
-mysql_connect("localhost", "root", "") or
+mysql_connect("localhost", "root", "password.123") or
   die("Could not connect: " . mysql_error());
 
 //select a database
@@ -54,15 +54,16 @@ $arr_all = array(
   'data' => $arr_category,
 );
 
-$output = json_encode($arr_all);
+$output = json_encode($arr_category);
 
 print_r($output);
 //release mem
 //mysql_free_result($result);
 
-echo("<br />time used:<br />");
-echo runtime(1);
-echo("<br />");
+//echo("<br />time used:<br />");
+//echo runtime(1);
+//echo("<br />");
 
 ?>
+
 
