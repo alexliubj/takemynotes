@@ -207,21 +207,34 @@ public class TakeMyNotesRequest {
 		if (!TextUtils.isEmpty(noteId)) {
 			strParams.add(new BasicNameValuePair("NoteId", noteId));
 		}
-		return baseRequest.postRequestByHttpClient(strParams, getUrl("help", "opinion"));
+		return baseRequest.postRequestByHttpClient(strParams, getUrl("AddToFavorite.php", ""));
 	}
 	
-	public String getComments(int noteId)
+	//http://www.picpicworld.com/TakeMyNotes/bin/GetComments.php?noteid=1
+	public String getComments(String noteid)
 			throws IOException, TimeoutException {
 		ArrayList<NameValuePair> strParams = new ArrayList<NameValuePair>();
-		
-		return baseRequest.postRequestByHttpClient(strParams, getUrl("help", "opinion"));
+		if (!TextUtils.isEmpty(noteid)) {
+			strParams.add(new BasicNameValuePair("noteid", noteid));
+		}
+		return baseRequest.postRequestByHttpClient(strParams, getUrl("GetComments.php", ""));
 	}
 	
-	public String postComment(String comment,int noteId,int userId)
+	//http://www.picpicworld.com/TakeMyNotes/bin/PostComments.php?userid=2&noteid=2&comments=1113123123123123
+	public String postComment(String comment,String noteId,String userId)
 			throws IOException, TimeoutException {
 		ArrayList<NameValuePair> strParams = new ArrayList<NameValuePair>();
+		if (!TextUtils.isEmpty(userId)) {
+			strParams.add(new BasicNameValuePair("comment", comment));
+		}
+		if (!TextUtils.isEmpty(noteId)) {
+			strParams.add(new BasicNameValuePair("noteId", noteId));
+		}
+		if (!TextUtils.isEmpty(userId)) {
+			strParams.add(new BasicNameValuePair("userId", userId));
+		}
 		
-		return baseRequest.postRequestByHttpClient(strParams, getUrl("help", "opinion"));
+		return baseRequest.postRequestByHttpClient(strParams, getUrl("PostComments.php", ""));
 	}
 	
 	public String getFeedBack(String userId, String key, String opinion, String email)
