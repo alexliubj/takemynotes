@@ -80,6 +80,8 @@ public class RegisterActivity extends Activity implements OnClickListener {
 					        aUser.setName(regUserNameEdt.getText().toString());
 					        aUser.setPassword(regConPasswordEdt.getText().toString());
 							result = request.getRegister(aUser);
+							
+							
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -103,7 +105,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 								dialog.cancel();
 								if(common.getResult().equals("succ")) // successful
 								{
-									
+									handler.sendEmptyMessage(1);
 								}
 //								Intent intent = new Intent(SelectRoleActivity.this,
 //										CategoryActivity.class);

@@ -70,7 +70,7 @@ public class UserPanelActivity extends Activity {
 				String result = null;
 				/*try {
 			        
-					result = request.getUserSet(userId, key, passWord, userName, userSex, userAddress);
+					result = request.get(userId, key, passWord, userName, userSex, userAddress);
 					
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
