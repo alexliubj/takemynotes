@@ -9,10 +9,26 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import ca.techguys.takemynotes.net.TakeMyNotesRequest;
 
 public class SellNotesActivity extends Activity {
 
-	private Button createNoteBtn;
+	EditText nameEdt;
+	EditText priceEdt;
+	EditText descEdt;
+	
+	Spinner cateSpinner;
+
+	Button postBtn;
+
+	String name;
+	String category;
+	Float price;
+	String desc;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -20,13 +36,28 @@ public class SellNotesActivity extends Activity {
 		
 		setTitle("Sell note");
 		
-		createNoteBtn=(Button) findViewById(R.id.lgCreateBtn);
-		createNoteBtn.setOnClickListener(new OnClickListener(){
+		
+		
+		
+		
+		postBtn=(Button) findViewById(R.id.lgCreateBtn);
+		postBtn.setOnClickListener(new OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				createNoteBtn.setBackgroundResource(R.drawable.registerbgpress);
+				
+				postBtn.setBackgroundResource(R.drawable.registerbgpress);
+				
+				name=nameEdt.getText().toString();
+				category=cateSpinner.getSelectedItem().toString();
+				price=Float.valueOf(priceEdt.getText().toString());
+				desc=descEdt.getText().toString();
+				
+				TakeMyNotesRequest request=new TakeMyNotesRequest(getApplicationContext());
+				
+				
+				
 				
 				
 			}

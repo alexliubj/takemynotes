@@ -26,7 +26,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:background="@drawable/registerbg"
-        android:text="Create" />
+        android:text="Post" />
 
     <TextView
         android:id="@+id/cateTv"
@@ -84,7 +84,7 @@
         android:layout_alignLeft="@+id/descTv"
         android:layout_below="@+id/descTv"
         android:background="@drawable/textboxbg"
-        android:ems="10" />
+        android:ems="10" android:inputType=""/>
 
     <EditText
         android:id="@+id/snNoteName"

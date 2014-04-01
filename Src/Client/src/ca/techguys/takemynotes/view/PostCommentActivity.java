@@ -33,11 +33,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class PostCommentActivity extends Activity implements OnClickListener {
+public class PostCommentActivity extends Activity{
 
-	private Button btnGetCaptcha;
+	/*private Button btnGetCaptcha;
 	private Button createBtn;
 	
 
@@ -47,6 +48,7 @@ public class PostCommentActivity extends Activity implements OnClickListener {
 	private DialogActivity dialog;
 	
 	private ArrayList<CategoryItem> tempModel;
+	
 	private void init() {
 		btnGetCaptcha = (Button) findViewById(R.id.lgLoginBtn);
 		btnGetCaptcha.setOnClickListener(this);
@@ -64,24 +66,22 @@ public class PostCommentActivity extends Activity implements OnClickListener {
 			dialog.getBtnSure().setOnClickListener(this);
 		}
 		dialog.show();
-	}
+	}*/
+	
+	
 	
 	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		// TODO Auto-generated method stub
-		switch (keyCode) {
-		case KeyEvent.KEYCODE_BACK:
-			//ApplicationData.exit(NoteDetailsActivity.this);
-			break;
-		default:
-			break;
-		}
-		return super.onKeyDown(keyCode, event);
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_postcomments);
+		
+		
+		
+		
+		
+		
 	}
 
-	@Override
-	public void onClick(View arg0) {
-		// TODO Auto-generated method stub
-		
-	}		
+	
+	
 }

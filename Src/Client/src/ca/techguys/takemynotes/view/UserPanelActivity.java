@@ -1,5 +1,8 @@
 package ca.techguys.takemynotes.view;
 
+import java.io.IOException;
+import java.util.concurrent.TimeoutException;
+
 import ca.techguys.takemynotes.R;
 import ca.techguys.takemynotes.R.layout;
 import ca.techguys.takemynotes.R.menu;
@@ -11,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
+import ca.techguys.takemynotes.net.TakeMyNotesRequest;
 
 public class UserPanelActivity extends Activity {
 
@@ -60,6 +64,22 @@ public class UserPanelActivity extends Activity {
 				name=userNameEdt.getText().toString();
 				email=emailEdt.getText().toString();
 				address=addressEdt.getText().toString();
+				
+				TakeMyNotesRequest request=new TakeMyNotesRequest(getApplicationContext());
+				
+				String result = null;
+				/*try {
+			        
+					result = request.getUserSet(userId, key, passWord, userName, userSex, userAddress);
+					
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (TimeoutException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}*/
+				
 				
 			}
 			
