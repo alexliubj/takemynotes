@@ -80,6 +80,8 @@ public class PriceFragment extends SherlockListFragment{
        	Intent intent=new Intent(getActivity(), NoteDetailsActivity.class);
    		
    		intent.putExtra("value1", String.valueOf(position));
+   		intent.putExtra("name", myNotes.get(position).name.toString());
+   		
    		
    		startActivity(intent);
            
