@@ -19,22 +19,51 @@ import android.widget.TextView;
 
 public class NoteDetailsActivity extends Activity {
 
-	private Button commentBtn;
-	private TextView nameTv;
+	private String name;
+	private String desc;
+	private String price;
+	private String contact;
+	private String email;
+	private String phone;
+	
+	private TextView nameTv=(TextView) findViewById(R.id.ndNoteNameTv);
+	private TextView descTv=(TextView) findViewById(R.id.ndDescTv);
+	private TextView contactTv=(TextView) findViewById(R.id.ndContactTv);
+	private TextView emailTv=(TextView) findViewById(R.id.ndEmailTv);
+	private TextView phoneTv=(TextView) findViewById(R.id.ndPhoneTv);
+	private TextView priceTv=(TextView) findViewById(R.id.ndPriceTv);
+	
+	
+	
+	private Button commentBtn=(Button) findViewById(R.id.ndCommentBtn);
+	private Button favBtn=(Button) findViewById(R.id.ndFavBtn);
+	
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_note_details);
 		
-		
 		setTitle("Note detail");
 		String position=String.valueOf(getIntent().getStringExtra("value1"));
 		
-		nameTv =(TextView) findViewById(R.id.ndNoteNameTv);
-		nameTv.setText(position);
+		
+		init();
+		
+		//Assign value
+		nameTv.setText(name);
+		descTv.setText(desc);
+		contactTv.setText(contact);
+		emailTv.setText(email);
+		phoneTv.setText(phone);
+		priceTv.setText(price);
 		
 		
+		
+		
+		
+		//comment button handler
 		commentBtn=(Button) findViewById(R.id.ndCommentBtn);
 		commentBtn.setOnClickListener(new OnClickListener(){
 
@@ -49,6 +78,32 @@ public class NoteDetailsActivity extends Activity {
 			
 		});
 		
+		//comment button handler
+		favBtn=(Button) findViewById(R.id.ndFavBtn);
+		favBtn.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				//add to favourite list
+
+			}
+			
+		});
+		
+		
+		
+	}
+	
+	//get string value from intent of notes 
+	private void init(){
+		
+		name=String.valueOf(getIntent().getStringExtra("name"));
+		desc=String.valueOf(getIntent().getStringExtra("desc"));
+		contact=String.valueOf(getIntent().getStringExtra("desc"));
+		email=String.valueOf(getIntent().getStringExtra("desc"));
+		phone=String.valueOf(getIntent().getStringExtra("desc"));
+		price=String.valueOf(Float.valueOf(getIntent().getStringExtra("desc")));
 		
 	}
 

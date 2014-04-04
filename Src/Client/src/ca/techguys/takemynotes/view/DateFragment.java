@@ -69,7 +69,7 @@ public class DateFragment extends SherlockListFragment{
         
         
         for(int i=0;i<numOfNote;i++){
-                HashMap<String, String> hm = new HashMap<String,String>();
+            HashMap<String, String> hm = new HashMap<String,String>();
             hm.put("txt", info[i]);
             hm.put("img", Integer.toString(noteImgs[i]) );
             hm.put("favImg", Integer.toString(favImgs[i]) );
@@ -98,11 +98,14 @@ public class DateFragment extends SherlockListFragment{
     
     
      @Override
-     public void onListItemClick(ListView l, View v, int position, long id) {     
-           
+     public void onListItemClick(ListView l, View v, int position, long id) {  
+    	 
        	Intent intent=new Intent(getActivity(), NoteDetailsActivity.class);
    		
    		intent.putExtra("value1", String.valueOf(position));
+   		intent.putExtra("name", myNotes.get(position).name.toString());
+   		
+   		
    		
    		startActivity(intent);
            
