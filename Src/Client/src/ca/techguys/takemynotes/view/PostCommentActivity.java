@@ -13,6 +13,7 @@ import ca.techguys.takemynotes.R.layout;
 import ca.techguys.takemynotes.R.menu;
 import ca.techguys.takemynotes.beans.ApplicationData;
 import ca.techguys.takemynotes.beans.CategoryItem;
+import ca.techguys.takemynotes.beans.Note;
 import ca.techguys.takemynotes.beans.UserInfo;
 import ca.techguys.takemynotes.net.Parse;
 import ca.techguys.takemynotes.net.TakeMyNotesRequest;
@@ -38,36 +39,99 @@ import android.widget.Toast;
 
 public class PostCommentActivity extends Activity{
 
-	/*private Button btnGetCaptcha;
-	private Button createBtn;
-	
-
-	private Button buttonBuy;
-	private Button buttonSell;
-	private CategoryItem item;
 	private DialogActivity dialog;
 	
-	private ArrayList<CategoryItem> tempModel;
 	
-	private void init() {
-		btnGetCaptcha = (Button) findViewById(R.id.lgLoginBtn);
-		btnGetCaptcha.setOnClickListener(this);
-		createBtn = (Button) findViewById(R.id.lgCreateBtn);
-		createBtn.setOnClickListener(this);
-	}
+	private String comment;
+	private String noteId;
+	private String userId;
 	
-	private void ShowMyDialog(int type, String str) {
-		if (type == 1) {
-			dialog = new DialogActivity(this, 1);
-			dialog.getBtnCancel().setOnClickListener(this);
-		} else {
-			dialog = new DialogActivity(this, 2);
-			dialog.setShowMessage(str);
-			dialog.getBtnSure().setOnClickListener(this);
+	private EditText commentEdt=(EditText) findViewById(R.id.pcCommentEdt);
+	
+	private Button postBtn=(Button) findViewById(R.id.pcSaveBtn);
+	
+	
+	private Handler handler = new Handler() {
+
+		@Override
+		public void handleMessage(Message msg) {
+			// TODO Auto-generated method stub
+			super.handleMessage(msg);
+			switch (msg.what) {
+			//get all category 
+			case 0:
+				Thread thread = new Thread() {
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						super.run();
+						TakeMyNotesRequest request = new TakeMyNotesRequest(getApplicationContext());
+						String result = null;
+						try {
+							Note newNote=new Note();
+							
+							result = request.postNote(newNote);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (TimeoutException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						if (result == null || result.equals("")) {
+							handler.sendEmptyMessage(3);
+						} else {
+							
+							
+						}
+					}
+				};
+				thread.start();
+				break;
+			//post sell note ad
+			case 1:
+				Thread thread1 = new Thread() {
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						super.run();
+						TakeMyNotesRequest request = new TakeMyNotesRequest(getApplicationContext());
+						String result = null;
+						
+						postBtn.setBackgroundResource(R.drawable.registerbgpress);
+						
+						comment=commentEdt.getText().toString();
+						
+						try {
+							result = request.postComment(comment, noteId, userId);
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (TimeoutException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						if (result == null || result.equals("")) {
+							handler.sendEmptyMessage(3);
+						}
+					}
+				};
+				thread1.start();
+				break;
+			//dialog for error message
+			case 3:
+				dialog.cancel();
+				
+				break;
+			default:
+				break;
+			}
 		}
-		dialog.show();
-	}*/
-	
+
+	};
 	
 	
 	@Override

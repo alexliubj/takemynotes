@@ -85,7 +85,6 @@ public final class R {
         public static final int btn_sure=0x7f090039;
         public static final int cateTv=0x7f090022;
         public static final int descTv=0x7f090027;
-        public static final int editText1=0x7f090017;
         public static final int favImg=0x7f09003e;
         public static final int favorite=0x7f090041;
         public static final int heartImg=0x7f09003d;
@@ -112,6 +111,7 @@ public final class R {
         public static final int news_listview=0x7f090000;
         public static final int noteDetailImg=0x7f090007;
         public static final int noteNameTv=0x7f090003;
+        public static final int pcCommentEdt=0x7f090017;
         public static final int pcSaveBtn=0x7f090015;
         public static final int priceTv=0x7f090026;
         public static final int probLoading=0x7f090036;

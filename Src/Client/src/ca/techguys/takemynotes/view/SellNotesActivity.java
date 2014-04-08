@@ -69,7 +69,9 @@ public class SellNotesActivity extends Activity {
 						TakeMyNotesRequest request = new TakeMyNotesRequest(getApplicationContext());
 						String result = null;
 						try {
-							result = request.getCategory();
+							Note newNote=new Note();
+							
+							result = request.postNote(newNote);
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -167,6 +169,7 @@ public class SellNotesActivity extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				
+				handler.sendEmptyMessage(1);
 				
 				
 				
