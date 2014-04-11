@@ -15,6 +15,7 @@ import ca.techguys.takemynotes.beans.ApplicationData;
 import ca.techguys.takemynotes.beans.CategoryItem;
 import ca.techguys.takemynotes.beans.UserInfo;
 import ca.techguys.takemynotes.beans.ResultModel;
+import ca.techguys.takemynotes.beans.*;
 import ca.techguys.takemynotes.net.Parse;
 import ca.techguys.takemynotes.net.TakeMyNotesRequest;
 import android.os.AsyncTask;
@@ -45,8 +46,10 @@ public class LoginActivity extends Activity implements OnClickListener {
 	private Button buttonSell;
 	private CategoryItem item;
 	private DialogActivity dialog;
+	private int userid;
 
 	private ResultModel tempModel;
+	private StoreUserInfo storeInfoModel; 
 	private void init() {
 		btnGetCaptcha = (Button) findViewById(R.id.lgLoginBtn);
 		btnGetCaptcha.setOnClickListener(this);
@@ -84,8 +87,11 @@ public class LoginActivity extends Activity implements OnClickListener {
 			case R.id.lgLoginBtn:
 			{
 				btnGetCaptcha.setBackgroundResource(R.drawable.loginbtnpressed);
-				startActivity(new Intent(LoginActivity.this,  SelectRoleActivity.class));
-				LoginActivity.this.finish();
+				
+				handler.sendEmptyMessage(0);
+				
+//				startActivity(new Intent(LoginActivity.this,  SelectRoleActivity.class));
+//				LoginActivity.this.finish();
 				
 			}
 			break;
@@ -108,11 +114,8 @@ public class LoginActivity extends Activity implements OnClickListener {
 		
 		setTitle("Login");
 		
-		//ActivityManager.getActivityManage().addActivity(SignInActivity.this);
 		init();
 	}
-	
-	
 
 	private Handler handler = new Handler() {
 
@@ -122,6 +125,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 			super.handleMessage(msg);
 			switch (msg.what) {
 			case 0:
+				ShowMyDialog(1, null);
 				Thread thread = new Thread() {
 
 					@Override
@@ -137,34 +141,28 @@ public class LoginActivity extends Activity implements OnClickListener {
 					        String password = lgPasswordEdt.getText().toString();
 							result = request.getLogin("",username,password);
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} catch (TimeoutException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 						if (result == null || result.equals("")) {
 							handler.sendEmptyMessage(3);
 						} else {
-
 							tempModel = new ResultModel();
 							try {
 								tempModel = new Parse().ResultParse(result);
 							} catch (JsonSyntaxException e) {
-							
 								e.printStackTrace();
 							}
-							
 							if (!tempModel.getResult().equals("fail")) { // success
-								int userid = Integer.parseInt(tempModel.getResult());
-								dialog.cancel();
-//								Intent intent = new Intent(SelectRoleActivity.this,
-//										CategoryActivity.class);
-//								intent.putExtra("tempModel", (Serializable)tempModel);
-//								startActivity(intent);
-//								finish();
-							} else {
-								handler.sendEmptyMessage(1);
+								int userid2 = Integer.parseInt(tempModel.getResult());
+								userid = userid2;
+								handler.sendEmptyMessage(4);
+//								startActivity(new Intent(LoginActivity.this,  SelectRoleActivity.class));
+//								LoginActivity.this.finish();
+//								dialog.cancel();
+							} else { //failed
+								
 							}
 						}
 					}
@@ -179,6 +177,43 @@ public class LoginActivity extends Activity implements OnClickListener {
 				dialog.cancel();
 				
 				break;
+				
+			case 4:
+				Thread thread2 = new Thread() {
+
+					@Override
+					public void run() {
+						super.run();
+						TakeMyNotesRequest request = new TakeMyNotesRequest(getApplicationContext());
+						String result = null;
+						try {
+							result = request.GetUserInfo(String.format("%d", userid));
+						} catch (IOException e) {
+							e.printStackTrace();
+						} catch (TimeoutException e) {
+							e.printStackTrace();
+						}
+						if (result == null || result.equals("")) {
+							handler.sendEmptyMessage(3);
+						} else {
+							storeInfoModel = new StoreUserInfo();
+							try {
+								storeInfoModel = new Parse().storeUserInfoParse(result);
+							} catch (JsonSyntaxException e) {
+								e.printStackTrace();
+							}
+							
+							ApplicationData.SetUserInfor(storeInfoModel);
+							
+							startActivity(new Intent(LoginActivity.this,  SelectRoleActivity.class));
+							LoginActivity.this.finish();
+							dialog.cancel();
+						}
+					}
+				};
+				thread2.start();
+				break;
+				
 			default:
 				break;
 			}

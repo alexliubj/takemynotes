@@ -10,6 +10,7 @@ import ca.techguys.takemynotes.beans.ResultModel;
 import ca.techguys.takemynotes.beans.UniversalModel;
 import ca.techguys.takemynotes.beans.Note;
 import ca.techguys.takemynotes.beans.Comment;
+import ca.techguys.takemynotes.beans.*;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -30,6 +31,16 @@ public class Parse {
 		Type type = new TypeToken<CategoryItem>() {
 		}.getType();
 		CategoryItem model = new CategoryItem();
+		model = gson.fromJson(str, type);
+		return model;
+	}
+	
+	public StoreUserInfo storeUserInfoParse(String str)
+	{
+		Gson gson = new Gson();
+		Type type = new TypeToken<StoreUserInfo>() {
+		}.getType();
+		StoreUserInfo model = new StoreUserInfo();
 		model = gson.fromJson(str, type);
 		return model;
 	}

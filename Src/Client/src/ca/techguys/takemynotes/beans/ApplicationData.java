@@ -28,7 +28,7 @@ public class ApplicationData extends Application{
 	
 	static ArrayList<Object> listdata = new ArrayList<Object>();
 	
-	static UserInfo userinfo = new UserInfo();
+	static StoreUserInfo userinfo = new StoreUserInfo();
 	static ArrayList<CategoryItem> cateItem = new ArrayList<CategoryItem>();
 	
 	public static ArrayList<CategoryItem> getCategoryList()
@@ -41,12 +41,12 @@ public class ApplicationData extends Application{
 		cateItem = listCategory;
 	}
 	
-	public static UserInfo GetUserInforamtion()
+	public static StoreUserInfo GetUserInforamtion()
 	{
 		return userinfo;
 	}
 	
-	public static void SetUserInfor(UserInfo userinfor )
+	public static void SetUserInfor(StoreUserInfo userinfor )
 	{
 		userinfo = userinfor;
 	}

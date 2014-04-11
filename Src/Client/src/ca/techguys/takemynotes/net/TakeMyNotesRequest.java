@@ -14,6 +14,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import ca.techguys.takemynotes.beans.UserInfo;
 import ca.techguys.takemynotes.beans.Note;
+import ca.techguys.takemynotes.beans.StoreUserInfo;
 
 
 public class TakeMyNotesRequest {
@@ -148,7 +149,7 @@ public class TakeMyNotesRequest {
 
 	//login
 	//http://www.picpicworld.com/TakeMyNotes/bin/Login.php?username=1&pwd=2
-	public String getLogin(String mobelNo, String passWord, String username) throws IOException,
+	public String getLogin(String mobelNo, String username,String passWord) throws IOException,
 			TimeoutException {
 		ArrayList<NameValuePair> strParams = new ArrayList<NameValuePair>();
 		if (!TextUtils.isEmpty(mobelNo)) {
@@ -196,6 +197,16 @@ public class TakeMyNotesRequest {
 			//strParams.add(new BasicNameValuePair("UserImg", user.getUiserImage()));
 		}
 		return baseRequest.postRequestByHttpClient(strParams, getUrl("CreateUser.php", ""));
+	}
+	
+	//get userinfo by userid
+	public String GetUserInfo(String userid)
+		throws IOException, TimeoutException {
+			ArrayList<NameValuePair> strParams = new ArrayList<NameValuePair>();
+			if (!TextUtils.isEmpty(userid)) {
+				strParams.add(new BasicNameValuePair("userid", userid));
+			}
+			return baseRequest.postRequestByHttpClient(strParams, getUrl("GetUserInfoById.php", ""));
 	}
 	
 	public String addFav(String noteId,String userid)
