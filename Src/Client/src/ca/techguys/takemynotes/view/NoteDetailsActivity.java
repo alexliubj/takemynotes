@@ -1,8 +1,11 @@
 package ca.techguys.takemynotes.view;
 
+import java.util.ArrayList;
+
 import ca.techguys.takemynotes.R;
 import ca.techguys.takemynotes.R.layout;
 import ca.techguys.takemynotes.R.menu;
+import ca.techguys.takemynotes.beans.Note;
 import android.os.Bundle;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -19,26 +22,16 @@ import android.widget.TextView;
 
 public class NoteDetailsActivity extends Activity {
 
-	private String name;
-	private String desc;
-	private String price;
-	private String contact;
-	private String email;
-	private String phone;
-	
-	private TextView nameTv=(TextView) findViewById(R.id.ndNoteNameTv);
-	private TextView descTv=(TextView) findViewById(R.id.ndDescTv);
-	private TextView contactTv=(TextView) findViewById(R.id.ndContactTv);
-	private TextView emailTv=(TextView) findViewById(R.id.ndEmailTv);
-	private TextView phoneTv=(TextView) findViewById(R.id.ndPhoneTv);
-	private TextView priceTv=(TextView) findViewById(R.id.ndPriceTv);
-	
-	
-	
-	private Button commentBtn=(Button) findViewById(R.id.ndCommentBtn);
-	private Button favBtn=(Button) findViewById(R.id.ndFavBtn);
-	
-	
+	private Note aNote;
+	private TextView nameTv;
+	private TextView descTv;
+	private TextView contactTv;
+	private TextView emailTv;
+	private TextView phoneTv;
+	private TextView priceTv;
+	private Button commentBtn;
+	private Button favBtn;
+
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,25 +39,20 @@ public class NoteDetailsActivity extends Activity {
 		setContentView(R.layout.activity_note_details);
 		
 		setTitle("Note detail");
-		String position=String.valueOf(getIntent().getStringExtra("value1"));
+		nameTv=(TextView) findViewById(R.id.ndNoteNameTv);
+		descTv=(TextView) findViewById(R.id.ndDescTv);
+		contactTv=(TextView) findViewById(R.id.ndContactTv);
+		emailTv=(TextView) findViewById(R.id.ndEmailTv);
+		phoneTv=(TextView) findViewById(R.id.ndPhoneTv);
+		priceTv=(TextView) findViewById(R.id.ndPriceTv);
+		commentBtn=(Button) findViewById(R.id.ndCommentBtn);
+		favBtn=(Button) findViewById(R.id.ndFavBtn);
 		
-		
+		aNote = (Note)getIntent().getSerializableExtra("notedetails") ;
 		init();
 		
-		//Assign value
-		nameTv.setText(name);
-		descTv.setText(desc);
-		contactTv.setText(contact);
-		emailTv.setText(email);
-		phoneTv.setText(phone);
-		priceTv.setText(price);
-		
-		
-		
-		
-		
-		//comment button handler
-		commentBtn=(Button) findViewById(R.id.ndCommentBtn);
+
+
 		commentBtn.setOnClickListener(new OnClickListener(){
 
 			@Override
@@ -77,9 +65,7 @@ public class NoteDetailsActivity extends Activity {
 			}
 			
 		});
-		
-		//comment button handler
-		favBtn=(Button) findViewById(R.id.ndFavBtn);
+
 		favBtn.setOnClickListener(new OnClickListener(){
 
 			@Override
@@ -98,12 +84,12 @@ public class NoteDetailsActivity extends Activity {
 	//get string value from intent of notes 
 	private void init(){
 		
-		name=String.valueOf(getIntent().getStringExtra("name"));
-		desc=String.valueOf(getIntent().getStringExtra("desc"));
-		contact=String.valueOf(getIntent().getStringExtra("desc"));
-		email=String.valueOf(getIntent().getStringExtra("desc"));
-		phone=String.valueOf(getIntent().getStringExtra("desc"));
-		price=String.valueOf(Float.valueOf(getIntent().getStringExtra("desc")));
+		nameTv.setText(String.valueOf(aNote.getNoteName()));
+		descTv.setText(String.valueOf(aNote.getDescription()));
+		contactTv.setText(String.valueOf(aNote.getPubUserId()));
+		emailTv.setText(String.valueOf(aNote.getPrice()));
+		phoneTv.setText(String.valueOf(Float.valueOf(aNote.getPrice())));
+		priceTv.setText(String.valueOf(Float.valueOf(aNote.getPrice())));
 		
 	}
 

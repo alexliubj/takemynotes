@@ -1,6 +1,8 @@
 package ca.techguys.takemynotes.beans;
 
-public class CommonModel {
+import java.io.Serializable;
+
+public class CommonModel  implements Serializable{
 	private int result;
 	private String errormessage;
 

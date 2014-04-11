@@ -46,9 +46,8 @@ public class PostCommentActivity extends Activity{
 	private String noteId;
 	private String userId;
 	
-	private EditText commentEdt=(EditText) findViewById(R.id.pcCommentEdt);
-	
-	private Button postBtn=(Button) findViewById(R.id.pcSaveBtn);
+	private EditText commentEdt;
+	private Button postBtn;
 	
 	
 	private Handler handler = new Handler() {
@@ -138,14 +137,7 @@ public class PostCommentActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_postcomments);
-		
-		
-		
-		
-		
-		
+		commentEdt=(EditText) findViewById(R.id.pcCommentEdt);
+		postBtn=(Button) findViewById(R.id.pcSaveBtn);
 	}
-
-	
-	
 }

@@ -1,16 +1,20 @@
 package ca.techguys.takemynotes.view;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeoutException;
+
+import com.google.gson.JsonSyntaxException;
 
 import ca.techguys.takemynotes.R;
 import ca.techguys.takemynotes.R.layout;
 import ca.techguys.takemynotes.R.menu;
 import ca.techguys.takemynotes.beans.ApplicationData;
 import ca.techguys.takemynotes.beans.CategoryItem;
+import ca.techguys.takemynotes.beans.Note;
 import ca.techguys.takemynotes.net.Parse;
 import ca.techguys.takemynotes.net.TakeMyNotesRequest;
 import android.os.AsyncTask;
@@ -38,15 +42,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import ca.techguys.takemynotes.beans.AppConstants;
+import ca.techguys.takemynotes.view.SubCategoryActivity;;
 public class CategoryActivity extends Activity {
 
 	private DialogActivity dialog;
-	private Intent intent;
 	private String mobelNo;
 	private ArrayList<CategoryItem> categoryList;
+	private ArrayList<Note> noteList;
 	private MyBaseAdapter myBaseAdapter;
 	static String path=AppConstants.path;
 	private Bitmap bitmap;
+	private int categoryId;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -66,14 +72,14 @@ public class CategoryActivity extends Activity {
 				if(categoryList==null){
 					return;
 				}
+				CategoryItem cateItem = categoryList.get(position);
+				categoryId = Integer.parseInt(cateItem.getIdCategory());
 				Object obj=(Object)categoryList.get(position);
+				new GetData(CategoryActivity.this,0).execute("");
 				if(obj instanceof String){
 					return;
 				}
 				
-				Intent intent=new Intent();
-				intent.setClass(CategoryActivity.this, SubCategoryActivity.class);
-				startActivity(intent);
 			}
 		});
 		
@@ -181,4 +187,149 @@ public class CategoryActivity extends Activity {
 	}
 	
 
+	private class GetData extends AsyncTask<String, String, String> {
+		private Context mContext;
+		private int mType;
+
+		private GetData(Context context, int type) {
+			this.mContext = context;
+			this.mType = type;
+		}
+
+		@Override
+		protected void onPreExecute() {
+			// TODO Auto-generated method stub
+			if (mType == 0) {
+				if (null != dialog && !dialog.isShowing()) {
+					dialog.show();
+				}
+			}
+			super.onPreExecute();
+		}
+
+		@Override
+		protected String doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			String result = null;
+			TakeMyNotesRequest request = new TakeMyNotesRequest(CategoryActivity.this);
+			
+			try {
+				result = request.getSubcategory(categoryId, 1, 30, "no");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (TimeoutException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return result;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			if (null != dialog && dialog.isShowing()) {
+				dialog.dismiss();
+			}
+			
+//			model = new Parse().parseRecentlyView(result);
+//			if (model.getResult() == 1) {
+//				modellist = model.getList();
+//				listLetter.setAdapter(new LetterAdatper(LetterActivity.this));
+//				handler.sendEmptyMessage(0);
+//			}
+			
+			if (result == null || result.equals("")) {
+				handler.sendEmptyMessage(3);
+			} else {
+
+				noteList = new ArrayList<Note>();
+				try {
+					noteList = new Parse().GetNotesByCategory(result);
+				} catch (JsonSyntaxException e) {
+					
+					e.printStackTrace();
+				}
+				
+				if (noteList != null) {
+					
+					//dialog.cancel();
+					Intent intent = new Intent(CategoryActivity.this,SubCategoryActivity.class);
+					intent.putExtra("noteLists", (Serializable)noteList);
+					startActivity(intent);
+					finish();
+				} else {
+					handler.sendEmptyMessage(1);
+				}
+		}
+	}
+
+	private Handler handler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			// TODO Auto-generated method stub
+			super.handleMessage(msg);
+			switch (msg.what) {
+			case 0:
+				new GetData(CategoryActivity.this, 1).execute("");
+				break;
+			default:
+				break;
+			}
+		}
+	};
+
+	private class CategoryAdapter extends BaseAdapter {
+		private Context mContext;
+
+		public CategoryAdapter(Context convert) {
+			this.mContext = convert;
+		}
+
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return 1;// modellist.size();
+		}
+
+		@Override
+		public Object getItem(int position) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public long getItemId(int position) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			// TODO Auto-generated method stub
+
+//			ViewHolder holder;
+//			if (convertView == null) {
+//				LayoutInflater inflater = (LayoutInflater) mContext
+//						.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//				convertView = inflater.inflate(R.layout.item_letter_list, null);
+//				holder = new ViewHolder();
+//				holder.tvName = (TextView) convertView.findViewById(R.id.tv_name);
+//				holder.tvMessage = (TextView) convertView.findViewById(R.id.tv_message);
+//				convertView.setTag(holder);
+//			} else {
+//				holder = (ViewHolder) convertView.getTag();
+//			}
+//			holder.tvName.setText(modellist.get(position).getShopName());
+//			holder.tvMessage.setText(modellist.get(position).getMessageInfo());
+			return convertView;
+		}
+
+		private class ViewHolder {
+			TextView tvName;
+			TextView tvMessage;
+		}
+	};
+	}
 }

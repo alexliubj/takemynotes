@@ -29,83 +29,178 @@ import android.os.Message;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TabHost;
+import android.widget.TextView;
 
-public class SubCategoryActivity extends SherlockFragmentActivity  implements OnClickListener {
-
-	/*private static final String LIST1_TAB_TAG = "List1";
-	private static final String LIST2_TAB_TAG = "List2";
-
-	// The two views in our tabbed example
-	private ListView listView1;
-	private ListView listView2;
-	private TabHost tabHost;*/
+public class SubCategoryActivity extends Activity implements OnClickListener {
 	
 	private DialogActivity dialog;
 	private Intent intent;
 	private String mobelNo;
-	private ArrayList<CategoryItem> categoryList;
+	private ArrayList<Note> noteList;
 	private MyBaseAdapter myBaseAdapter;
 	static String path=AppConstants.path;
 	private Bitmap bitmap;
 	private ArrayList<Note> tempModel;
-
+	private int noteId;
+	 
 	@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        
-        setTitle("Notes");
-        // Getting an instance of action bar
-        ActionBar actionBar = getSupportActionBar();
-        
-        // Enabling Tab Navigation mode for this action bar
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-        
-        // Enabling Title
-        actionBar.setDisplayShowTitleEnabled(true);
-        
-        // Creating Android Tab
-        Tab tab1 = actionBar.newTab()
-        					.setText("By Date")
-        					.setTabListener(new CustomTabListener<DateFragment>(this, "By Date", DateFragment.class) );
-        
-        // Adding Android Tab to acton bar
-        actionBar.addTab(tab1);
-        
-        // Creating Apple Tab
-        Tab tab2 = actionBar.newTab()
-				.setText("By Price")
-				.setTabListener(new CustomTabListener<PriceFragment>(this, "By Price", PriceFragment.class));
-        
-        // Adding Apple Tab to action bar
-        actionBar.addTab(tab2);        
-        
-        // Orientation Change Occurred
-        if(savedInstanceState!=null){
-        	int currentTabIndex = savedInstanceState.getInt("tab_index");
-        	actionBar.setSelectedNavigationItem(currentTabIndex);
-        }
-        
-        
-    }
-    
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-    	int currentTabIndex = getSupportActionBar().getSelectedNavigationIndex();
-    	outState.putInt("tab_index", currentTabIndex);
-    	super.onSaveInstanceState(outState);
-    }
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_sub_category);
+		
+		setTitle("Note Category");
+		
+		getNoteList();
+		ListView listView=(ListView)findViewById(R.id.news_listview);
+		myBaseAdapter=new MyBaseAdapter();
+		listView.setAdapter(myBaseAdapter);
+		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				if(noteList==null){
+					return;
+				}
+				Note noetItem = noteList.get(position);
+				noteId = Integer.parseInt(noetItem.getIdNotes());
+				Object obj=(Object)noteList.get(position);
+
+				Intent intent = new Intent(SubCategoryActivity.this,NoteDetailsActivity.class);
+				intent.putExtra("notedetails", (Serializable)noetItem);
+				startActivity(intent);
+				finish();
+				
+				//new GetData(NoteDetailsActivity.this,0).execute("");
+				if(obj instanceof String){
+					return;
+				}
+			}
+		});
+		
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void getNoteList()
+	{
+		noteList = (ArrayList<Note>)getIntent().getSerializableExtra("noteLists") ;
+	}
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.category, menu);
+		return true;
+	}
+	class MyBaseAdapter extends BaseAdapter{
+
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return noteList.size();
+		}
+
+		@Override
+		public Object getItem(int position) {
+			// TODO Auto-generated method stub
+			return position;
+		}
+
+		@Override
+		public long getItemId(int position) {
+			// TODO Auto-generated method stub
+			return position;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			if(noteList==null){
+				return convertView;
+			}
+			final View view=convertView.inflate(SubCategoryActivity.this, R.layout.sub_cate_item,null);
+			
+			Object obj=noteList.get(position);
+			
+			ImageView news_item_image=(ImageView)view.findViewById(R.id.news_item_image);
+			TextView news_item_title=(TextView)view.findViewById(R.id.news_item_title);
+			TextView news_item_content=(TextView)view.findViewById(R.id.news_item_content);
+			ImageView right_flag=(ImageView)view.findViewById(R.id.right_flag);
+			if(obj instanceof CategoryItem){
+				
+				final CategoryItem cate=(CategoryItem)obj;
+				
+				String cateName=cate.getCategoryName().toString();
+
+				if(bitmap!=null){
+					news_item_image.setImageBitmap(bitmap);
+				}else{
+					if(cateName.contains("ICT")){
+						news_item_image.setImageResource(R.drawable.computer);
+					}else if(cateName.contains("Business")){
+						news_item_image.setImageResource(R.drawable.business);
+					}else if(cateName.contains("Math")){
+						news_item_image.setImageResource(R.drawable.math);
+					}
+				}
+				news_item_title.setText(cate.getCategoryName());
+				
+				//news_item_content.setText(cate.getTitle());
+			}else{
+				//view.setBackgroundResource(R.drawable.grey_box);
+				view.setEnabled(false);
+				news_item_title.setText(obj.toString());
+				LayoutParams params = news_item_title.getLayoutParams();
+				params.width=LayoutParams.FILL_PARENT;
+				params.height=25;
+				news_item_title.setLayoutParams(params);
+				news_item_title.setGravity(Gravity.CENTER_VERTICAL);
+				news_item_title.setTextSize(15);
+			//	news_item_title.setTextColor(R.color.fav_text_item);
+				news_item_image.setVisibility(View.GONE);
+				news_item_content.setVisibility(View.GONE);
+			}
+			return view;
+		}
+	}
+	
+ 	public static Bitmap getPicByPath(String picName){
+ 			picName=picName.substring(picName.lastIndexOf("/")+1);
+ 			String filePath=path+picName;
+ 			Bitmap bitmap=BitmapFactory.decodeFile(filePath);
+ 			return bitmap;
+ 	}
 
 	@Override
 	public void onClick(View arg0) {
 		// TODO Auto-generated method stub
-		
+//		switch (arg0.getId()) {
+//		case R.id.srBuyBtn:
+//		{
+//			ShowMyDialog(1, null);
+//			handler.sendEmptyMessage(0);
+//		
+//		}
+//		break;
+//		
+//		case R.id.srSellBtn:
+//		{
+//			startActivity(new Intent(SelectRoleActivity.this,  SellNotesActivity.class));
+//			SelectRoleActivity.this.finish();
+//		}
+//		break;
+//	}
 	}
 
 	private Handler handler = new Handler() {
@@ -176,15 +271,5 @@ public class SubCategoryActivity extends SherlockFragmentActivity  implements On
 
 	};
 	
-	/**
-	 * Implement logic here when a tab is selected
-	 */
-	/*public void onTabChanged(String tabName) {
-		if(tabName.equals(LIST2_TAB_TAG)) {
-			//do something
-		}
-		else if(tabName.equals(LIST1_TAB_TAG)) {
-			//do something
-		}
-	}*/
+
 }

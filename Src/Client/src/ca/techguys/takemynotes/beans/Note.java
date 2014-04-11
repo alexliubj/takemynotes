@@ -1,6 +1,8 @@
 package ca.techguys.takemynotes.beans;
 
-public class Note {
+import java.io.Serializable;
+
+public class Note implements Serializable {
 	
 	private String idNotes;
 	private String NoteName;
