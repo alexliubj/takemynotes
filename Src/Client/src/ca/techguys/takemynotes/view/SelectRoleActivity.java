@@ -28,6 +28,7 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 
 	private Button buttonBuy;
 	private Button buttonSell;
+	private Button userInformaionButton;
 	private CategoryItem item;
 	private DialogActivity dialog;
 
@@ -38,6 +39,9 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 		
 		buttonSell = (Button) findViewById(R.id.srSellBtn);
 		buttonSell.setOnClickListener(this);
+		
+		userInformaionButton = (Button) findViewById(R.id.srUserInfo);
+		userInformaionButton.setOnClickListener(this);
 	}
 
 	public void onClick(View v) {
@@ -57,7 +61,15 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 				startActivity(new Intent(SelectRoleActivity.this,  SellNotesActivity.class));
 				SelectRoleActivity.this.finish();
 			}
+			
 			break;
+			
+			case R.id.srUserInfo:
+			{
+				//buttonSell.setBackgroundResource(R.drawable.sell);
+				startActivity(new Intent(SelectRoleActivity.this,  UserPanelActivity.class));
+				SelectRoleActivity.this.finish();
+			}
 		}
 	}
 	

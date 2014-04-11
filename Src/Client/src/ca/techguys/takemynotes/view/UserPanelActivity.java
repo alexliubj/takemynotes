@@ -84,11 +84,6 @@ public class UserPanelActivity extends Activity {
 			}
 			
 		});
-		
-		
-		
-		
-		
 	}
 
 	@Override

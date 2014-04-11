@@ -15,7 +15,7 @@
         android:layout_height="45dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="149dp"
+        android:layout_marginTop="59dp"
         android:background="@drawable/buypressed" />
 
     <Button
@@ -25,6 +25,15 @@
         android:layout_alignLeft="@+id/srBuyBtn"
         android:layout_below="@+id/srBuyBtn"
         android:layout_marginTop="109dp"
+        android:background="@drawable/sellpressed" />
+    
+    <Button
+        android:id="@+id/srUserInfo"
+        android:layout_width="128dp"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/srBuyBtn"
+        android:layout_below="@+id/srBuyBtn"
+        android:layout_marginTop="189dp"
         android:background="@drawable/sellpressed" />
     
 </RelativeLayout>
