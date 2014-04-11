@@ -22,6 +22,7 @@ import ca.techguys.takemynotes.R;
 import ca.techguys.takemynotes.beans.ApplicationData;
 import ca.techguys.takemynotes.beans.CategoryItem;
 import ca.techguys.takemynotes.beans.Note;
+import ca.techguys.takemynotes.beans.StoreUserInfo;
 import ca.techguys.takemynotes.net.Parse;
 import ca.techguys.takemynotes.net.TakeMyNotesRequest;
 
@@ -30,12 +31,10 @@ import com.google.gson.JsonSyntaxException;
 
 public class SellNotesActivity extends Activity {
 	private DialogActivity dialog;
-	EditText nameEdt;
-	EditText priceEdt;
-	EditText descEdt;
-	
+	private EditText nameEdt;
+	private EditText priceEdt;
+	private EditText descEdt;
 	Spinner cateSpinner;
-
 	Button postBtn;
 
 	String name;
@@ -134,20 +133,21 @@ public class SellNotesActivity extends Activity {
 						TakeMyNotesRequest request = new TakeMyNotesRequest(getApplicationContext());
 						String result = null;
 						
-						postBtn.setBackgroundResource(R.drawable.registerbgpress);
-						
 						name=nameEdt.getText().toString();
+						int selectIndex = cateSpinner.getSelectedItemPosition();
 						cateId=String.valueOf(cateSpinner.getSelectedItemId());
+						String categoryId = cateList.get(selectIndex).getIdCategory();
 						price=Float.valueOf(priceEdt.getText().toString());
 						desc=descEdt.getText().toString();
-						userId="0";
+						StoreUserInfo sui = ApplicationData.GetUserInforamtion();
 						status="0";
 
+						myNote = new Note();
 						myNote.setNoteName(name);
-						myNote.setCateId(cateId);
+						myNote.setCateId(categoryId);
 						myNote.setDescription(desc);
 						myNote.setPrice(price.toString());
-						myNote.setPubUserId(userId);
+						myNote.setPubUserId(sui.getIdUsers());
 						myNote.setStatus(status);
 						
 						try {
@@ -187,6 +187,12 @@ public class SellNotesActivity extends Activity {
 		setContentView(R.layout.activity_sell_notes);
 		setTitle("Sell note");
 		postBtn=(Button) findViewById(R.id.snCreateBtn);
+		
+		 nameEdt = (EditText)findViewById(R.id.snNoteName);
+		priceEdt = (EditText)findViewById(R.id.snPriceEdt);
+		descEdt = (EditText)findViewById(R.id.snDescEdt);
+		
+		
 		cateList = ApplicationData.getCategoryList();
 		add_list();
 		postBtn.setOnClickListener(new OnClickListener(){
