@@ -178,7 +178,11 @@ public class CategoryActivity extends Activity {
 		// TODO Auto-generated method stub
 		switch (keyCode) {
 		case KeyEvent.KEYCODE_BACK:
-			ApplicationData.exit(CategoryActivity.this);
+			Intent myIntent = new Intent();  
+            myIntent = new Intent(CategoryActivity.this, SelectRoleActivity.class);  
+            startActivity(myIntent);  
+            this.finish();  
+
 			break;
 		default:
 			break;

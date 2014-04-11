@@ -10,13 +10,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import ca.techguys.takemynotes.R;
+import ca.techguys.takemynotes.beans.ApplicationData;
 import ca.techguys.takemynotes.beans.CategoryItem;
 import ca.techguys.takemynotes.beans.Note;
 import ca.techguys.takemynotes.net.Parse;
@@ -26,11 +29,7 @@ import com.google.gson.JsonSyntaxException;
 
 
 public class SellNotesActivity extends Activity {
-
 	private DialogActivity dialog;
-	
-	
-	
 	EditText nameEdt;
 	EditText priceEdt;
 	EditText descEdt;
@@ -50,6 +49,36 @@ public class SellNotesActivity extends Activity {
 	
 	String result; 
 	ArrayList<CategoryItem> cateList;
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+		switch (keyCode) {
+		case KeyEvent.KEYCODE_BACK:
+			Intent myIntent = new Intent();  
+            myIntent = new Intent(SellNotesActivity.this, SelectRoleActivity.class);  
+            startActivity(myIntent);  
+            this.finish();  
+
+			break;
+		default:
+			break;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+	
+	private void add_list() { 
+		String[] catelistName = new String[cateList.size()];
+
+		for (int i = 0; i < cateList.size(); i++) {
+			catelistName[i] = cateList.get(i).getCategoryName();
+		}
+		cateSpinner = (Spinner) findViewById(R.id.snCateSpinner); 
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, 
+                android.R.layout.simple_spinner_item, catelistName); 
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); 
+        cateSpinner.setAdapter(adapter); 
+    } 
 	
 	private Handler handler = new Handler() {
 
@@ -98,7 +127,6 @@ public class SellNotesActivity extends Activity {
 			//post sell note ad
 			case 1:
 				Thread thread1 = new Thread() {
-
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
@@ -114,8 +142,7 @@ public class SellNotesActivity extends Activity {
 						desc=descEdt.getText().toString();
 						userId="0";
 						status="0";
-						
-						
+
 						myNote.setNoteName(name);
 						myNote.setCateId(cateId);
 						myNote.setDescription(desc);
@@ -158,11 +185,10 @@ public class SellNotesActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sell_notes);
-		
 		setTitle("Sell note");
-		
-		
-		postBtn=(Button) findViewById(R.id.lgCreateBtn);
+		postBtn=(Button) findViewById(R.id.snCreateBtn);
+		cateList = ApplicationData.getCategoryList();
+		add_list();
 		postBtn.setOnClickListener(new OnClickListener(){
 
 			@Override
@@ -170,9 +196,6 @@ public class SellNotesActivity extends Activity {
 				// TODO Auto-generated method stub
 				
 				handler.sendEmptyMessage(1);
-				
-				
-				
 			}
 			
 		});
@@ -187,8 +210,6 @@ public class SellNotesActivity extends Activity {
 		getMenuInflater().inflate(R.menu.sell_notes, menu);
 		return true;
 	}
-	
-	
 	
 
 }

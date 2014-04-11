@@ -26,8 +26,30 @@ import android.telephony.TelephonyManager;
  */
 public class ApplicationData extends Application{
 	
-	ArrayList<Object> listdata = new ArrayList<Object>();
+	static ArrayList<Object> listdata = new ArrayList<Object>();
 	
+	static UserInfo userinfo = new UserInfo();
+	static ArrayList<CategoryItem> cateItem = new ArrayList<CategoryItem>();
+	
+	public static ArrayList<CategoryItem> getCategoryList()
+	{
+		return cateItem;
+	}
+	
+	public static void SetCategoryList(ArrayList<CategoryItem> listCategory)
+	{
+		cateItem = listCategory;
+	}
+	
+	public static UserInfo GetUserInforamtion()
+	{
+		return userinfo;
+	}
+	
+	public static void SetUserInfor(UserInfo userinfor )
+	{
+		userinfo = userinfor;
+	}
 	public static HashMap<String, Boolean> newsReadFlag=new HashMap<String, Boolean>();
 	
 	public ArrayList<Object> getListdata() {
@@ -36,6 +58,8 @@ public class ApplicationData extends Application{
 	public void setListdata(ArrayList<Object> listdata) {
 		this.listdata = listdata;
 	}
+	
+	
 	
 
 	public static final String TAB_WOCHACHA = "TAB_WOCHACHA";

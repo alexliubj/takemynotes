@@ -19,6 +19,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import ca.techguys.takemynotes.beans.ApplicationData;
 import ca.techguys.takemynotes.beans.CategoryItem;
 import ca.techguys.takemynotes.beans.UniversalModel;
 import ca.techguys.takemynotes.net.Parse;
@@ -31,7 +32,6 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 	private Button userInformaionButton;
 	private CategoryItem item;
 	private DialogActivity dialog;
-
 	private ArrayList<CategoryItem> tempModel;
 	private void init() {
 		buttonBuy = (Button) findViewById(R.id.srBuyBtn);
@@ -107,6 +107,7 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 							tempModel = new ArrayList<CategoryItem>();
 							try {
 								tempModel = new Parse().GetCategory(result);
+								ApplicationData.SetCategoryList(tempModel);
 							} catch (JsonSyntaxException e) {
 								
 								e.printStackTrace();

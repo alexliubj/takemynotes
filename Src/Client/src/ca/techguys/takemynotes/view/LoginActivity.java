@@ -41,8 +41,6 @@ public class LoginActivity extends Activity implements OnClickListener {
 
 	private Button btnGetCaptcha;
 	private Button createBtn;
-	
-
 	private Button buttonBuy;
 	private Button buttonSell;
 	private CategoryItem item;
@@ -187,8 +185,6 @@ public class LoginActivity extends Activity implements OnClickListener {
 		}
 
 	};
-	
-	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -208,9 +204,5 @@ public class LoginActivity extends Activity implements OnClickListener {
 	    default:
 	        return super.onOptionsItemSelected(item);
 	    }
-		
 	}
-	
-
-		
 }
