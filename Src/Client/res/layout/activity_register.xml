@@ -38,17 +38,43 @@
         android:ems="10"
         android:hint="User Name" />
 
+    <EditText
+        android:id="@+id/regEmailEdt"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/regPasswordEdt"
+        android:layout_below="@+id/regUserNameEdt"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/textboxbg"
+        android:ems="10"
+        android:hint="Email" />
+
     <TextView
         android:id="@+id/regWarningTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/regRegisterBtn"
         android:layout_alignLeft="@+id/regConPasswordEdt"
-        android:layout_marginLeft="11dp"
+        android:layout_marginBottom="20dp"
         android:text="Warning"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#FF0000"
-        android:textSize="25sp" />
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/regPasswordEdt"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/regConPasswordEdt"
+        android:layout_below="@+id/regEmailEdt"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/textboxbg"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textEmailAddress" >
+
+        <requestFocus />
+    </EditText>
 
     <EditText
         android:id="@+id/regConPasswordEdt"
@@ -56,35 +82,8 @@
         android:layout_height="45dp"
         android:layout_above="@+id/regWarningTv"
         android:layout_alignRight="@+id/regRegisterBtn"
-        android:layout_marginBottom="38dp"
         android:background="@drawable/textboxbg"
         android:ems="10"
-        android:hint="Confirm Password" >
-
-        <requestFocus />
-    </EditText>
-
-    <EditText
-        android:id="@+id/regPasswordEdt"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_above="@+id/regConPasswordEdt"
-        android:layout_alignLeft="@+id/regConPasswordEdt"
-        android:layout_marginBottom="36dp"
-        android:background="@drawable/textboxbg"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textEmailAddress" />
-
-    <EditText
-        android:id="@+id/regEmailEdt"
-        android:layout_width="wrap_content"
-        android:layout_height="45dp"
-        android:layout_alignLeft="@+id/regPasswordEdt"
-        android:layout_below="@+id/regUserNameEdt"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/textboxbg"
-        android:ems="10"
-        android:hint="Email" />
+        android:hint="Confirm Password" />
 
 </RelativeLayout>

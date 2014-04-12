@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -47,8 +48,6 @@ public class RegisterActivity extends Activity implements OnClickListener {
 	private String email;
 	private String pwd;
 	private String conPwd;
-	
-	
 	
 	private UserInfo aUser;
 	
@@ -159,6 +158,11 @@ public class RegisterActivity extends Activity implements OnClickListener {
 		switch (v.getId()) {
 			case R.id.regRegisterBtn:
 			{
+				userName="";
+				email="";
+				pwd="";
+				conPwd="";
+				
 				warningTv.setText("");
 				signupBtn.setBackgroundResource(R.drawable.registerbgpress);
 				
@@ -167,22 +171,22 @@ public class RegisterActivity extends Activity implements OnClickListener {
 				email=emailEdt.getText().toString();
 				pwd=pwdEdt.getText().toString();
 				conPwd=conPwdEdt.getText().toString();
-				
-				System.out.println(userName+email+pwd);
+
 				//check all the field has been entered
 				if(validNotEmpty()==true){
 					//check if email is valid
 					if(validEmail(email)==true){
 						//check if pwd is match
 						if(pwdMatch(pwd, conPwd)==true){
-							System.out.println(userName+email+pwd);
+							warningTv.setTextColor(Color.GREEN);
+							warningTv.setText("All parameters are good to go");
 							//start to assign value to user
-							aUser.setName(userNameEdt.getText().toString());
-					        aUser.setEmail(emailEdt.getText().toString());
-					        aUser.setPassword(conPwdEdt.getText().toString());
+							aUser.setName(userName);
+//					        aUser.setEmail(email);
+//					        aUser.setPassword(pwd);
 					        
-							ShowMyDialog(1, null);
-							handler.sendEmptyMessage(0);
+							//ShowMyDialog(1, "cool man");
+							//handler.sendEmptyMessage(0);
 							
 						}else{//pwd doesn't match
 							warningTv.setText("Your password doesn't match.");
@@ -208,6 +212,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_register);
 		setTitle("Register");
 		init();
+		warningTv.setText("");
 	}
 
 	@Override
@@ -229,30 +234,29 @@ public class RegisterActivity extends Activity implements OnClickListener {
 	public boolean validNotEmpty(){
 		boolean valid=true;
 		
-		if(userName==null||userName==""){
+		if(userName.length()==0){
 			valid=false;
 		}
-		if(email==null||email==""){
+		if(email.length()==0){
 			valid=false;
 		}
-		if(pwd==null||pwd==""){
+		if(pwd.length()==0){
 			valid=false;
 		}
-		if(conPwd==null||conPwd==""){
+		if(conPwd.length()==0){
 			valid=false;
 		}
-		
 		
 		return valid;
 	}
 	
 	public boolean pwdMatch(String pwd, String conPwd){
 		boolean valid=false;
-		
-		if(pwd==conPwd){
+		System.out.println(pwd+" "+conPwd);
+		if(pwd.matches(conPwd)){
 			valid=true;
 		}
-		
+		System.out.println(valid);
 		return valid;
 	}
 	
