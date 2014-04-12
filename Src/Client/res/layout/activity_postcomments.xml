@@ -4,16 +4,6 @@
     android:background="@drawable/catebg"
     android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/pcSaveBtn"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="12dp"
-        android:layout_marginRight="12dp"
-        android:background="@drawable/save" />
-
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
@@ -33,5 +23,24 @@
         android:layout_below="@+id/textView1"
         android:layout_marginTop="97dp"
         android:ems="10" />
+
+    <Button
+        android:id="@+id/pcPostBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="17dp"
+        android:layout_marginRight="16dp"
+        android:text="Post" />
+
+    <TextView
+        android:id="@+id/pcTestTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/pcCommentEdt"
+        android:layout_marginTop="75dp"
+        android:text="TextView" />
     
 </RelativeLayout>

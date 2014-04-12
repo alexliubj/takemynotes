@@ -86,7 +86,11 @@ public class NoteDetailsActivity extends Activity implements OnClickListener {
 			@Override
 			public void onClick(View v) {
 				Intent intent=new Intent(NoteDetailsActivity.this, PostCommentActivity.class);
-		   		startActivity(intent);
+		   		
+				intent.putExtra("userId", "1");
+				intent.putExtra("noteId", aNote.getIdNotes().toString());
+				
+				startActivity(intent);
 			}
 		});
 

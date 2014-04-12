@@ -47,6 +47,7 @@ public class PostCommentActivity extends Activity{
 	private String userId;
 	
 	private EditText commentEdt;
+	private TextView testTv;
 	private Button postBtn;
 	
 	
@@ -68,9 +69,9 @@ public class PostCommentActivity extends Activity{
 						TakeMyNotesRequest request = new TakeMyNotesRequest(getApplicationContext());
 						String result = null;
 						try {
-							Note newNote=new Note();
+							System.out.println(userId+noteId+comment);
 							
-							result = request.postNote(newNote);
+							result = request.postComment(comment, noteId, userId);
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -81,8 +82,8 @@ public class PostCommentActivity extends Activity{
 						if (result == null || result.equals("")) {
 							handler.sendEmptyMessage(3);
 						} else {
-							
-							
+							testTv.setText(result.toString());
+							System.out.println(result);
 						}
 					}
 				};
@@ -138,6 +139,32 @@ public class PostCommentActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_postcomments);
 		commentEdt=(EditText) findViewById(R.id.pcCommentEdt);
-		postBtn=(Button) findViewById(R.id.pcSaveBtn);
+		testTv=(TextView) findViewById(R.id.pcTestTv);
+		
+		userId=getIntent().getStringExtra("userId").toString();
+		noteId=getIntent().getStringExtra("userId").toString();
+		
+		testTv.setText(noteId);
+		postBtn=(Button) findViewById(R.id.pcPostBtn);
+		postBtn.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+				comment=commentEdt.getText().toString();
+				if(comment.length()!=0){
+					
+					handler.sendEmptyMessage(0);
+				}else{
+					
+					testTv.setText("Please enter your comment.");
+				}
+				
+				
+			}
+			
+		});
+		
 	}
 }

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/itspro_chinahr_campus_android/!svn/ver/81/trunk/src/ChinaHRCampus/src/com/itotem/chinahr/campus/network
+END
+SSLSocketFactoryEx.java
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/svn/itspro_chinahr_campus_android/!svn/ver/81/trunk/src/ChinaHRCampus/src/com/itotem/chinahr/campus/network/SSLSocketFactoryEx.java
+END
+JobLib.java
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/itspro_chinahr_campus_android/!svn/ver/76/trunk/src/ChinaHRCampus/src/com/itotem/chinahr/campus/network/JobLib.java
+END
+BaseRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/itspro_chinahr_campus_android/!svn/ver/81/trunk/src/ChinaHRCampus/src/com/itotem/chinahr/campus/network/BaseRequest.java
+END
+NetworkManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/itspro_chinahr_campus_android/!svn/ver/50/trunk/src/ChinaHRCampus/src/com/itotem/chinahr/campus/network/NetworkManager.java
+END
+ChinahrRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 128
+/svn/itspro_chinahr_campus_android/!svn/ver/44/trunk/src/ChinaHRCampus/src/com/itotem/chinahr/campus/network/ChinahrRequest.java
+END
