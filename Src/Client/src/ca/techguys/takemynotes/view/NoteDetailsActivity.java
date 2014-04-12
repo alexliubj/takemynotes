@@ -9,25 +9,35 @@ import com.google.gson.JsonSyntaxException;
 import ca.techguys.takemynotes.R;
 import ca.techguys.takemynotes.R.layout;
 import ca.techguys.takemynotes.R.menu;
+import ca.techguys.takemynotes.beans.AppConstants;
 import ca.techguys.takemynotes.beans.ApplicationData;
+import ca.techguys.takemynotes.beans.Comment;
 import ca.techguys.takemynotes.beans.Note;
 import ca.techguys.takemynotes.beans.StoreUserInfo;
 import ca.techguys.takemynotes.net.Parse;
 import ca.techguys.takemynotes.net.TakeMyNotesRequest;
+import ca.techguys.takemynotes.view.SubCategoryActivity.MyBaseAdapter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class NoteDetailsActivity extends Activity implements OnClickListener {
@@ -42,6 +52,11 @@ public class NoteDetailsActivity extends Activity implements OnClickListener {
 	private Button commentBtn;
 	private Button favBtn;
 	private DialogActivity dialog;
+	private MyBaseAdapter myBaseAdapter;
+	private ArrayList<Comment> commentList;
+	static String path=AppConstants.path;
+	private int noteId;
+	private Bitmap bitmap;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +74,13 @@ public class NoteDetailsActivity extends Activity implements OnClickListener {
 		favBtn=(Button) findViewById(R.id.ndFavBtn);
 		
 		aNote = (Note)getIntent().getSerializableExtra("notedetails") ;
+		getNoteList();
+
+		ListView listView=(ListView)findViewById(R.id.note_comments);
+		if(commentList!=null){
+		myBaseAdapter=new MyBaseAdapter();
+		listView.setAdapter(myBaseAdapter);
+		}
 		init();
 		commentBtn.setOnClickListener(new OnClickListener(){
 			@Override
@@ -77,9 +99,74 @@ public class NoteDetailsActivity extends Activity implements OnClickListener {
 		});
 	}
 	
+	@SuppressWarnings("unchecked")
+	private void getNoteList()
+	{
+		commentList = (ArrayList<Comment>)getIntent().getSerializableExtra("commentsList") ;
+	}
+
+	class MyBaseAdapter extends BaseAdapter{
+
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return commentList.size();
+		}
+
+		@Override
+		public Object getItem(int position) {
+			// TODO Auto-generated method stub
+			return position;
+		}
+
+		@Override
+		public long getItemId(int position) {
+			// TODO Auto-generated method stub
+			return position;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			if(commentList==null){
+				return convertView;
+			}
+			final View view=convertView.inflate(NoteDetailsActivity.this, R.layout.sub_cate_item,null);
+			Object obj=commentList.get(position);
+			ImageView news_item_image=(ImageView)view.findViewById(R.id.news_item_image);
+			TextView news_item_title=(TextView)view.findViewById(R.id.news_item_title);
+			TextView news_item_content=(TextView)view.findViewById(R.id.news_item_content);
+			ImageView right_flag=(ImageView)view.findViewById(R.id.right_flag);
+			if(obj instanceof Note){
+				final Comment aNote=(Comment)obj;
+				String cateName=aNote.getCommt();
+				if(bitmap!=null){
+					news_item_image.setImageBitmap(bitmap);
+				}else{
+					if(cateName.contains("ICT")){
+						news_item_image.setImageResource(R.drawable.computer);
+					}else if(cateName.contains("Business")){
+						news_item_image.setImageResource(R.drawable.business);
+					}else if(cateName.contains("Math")){
+						news_item_image.setImageResource(R.drawable.math);
+					}
+				}
+				news_item_title.setText(aNote.getCommt());
+				//news_item_content.setText(cate.getTitle());
+			}else{
+			}
+			return view;
+		}
+	}
+	
+ 	public static Bitmap getPicByPath(String picName){
+ 			picName=picName.substring(picName.lastIndexOf("/")+1);
+ 			String filePath=path+picName;
+ 			Bitmap bitmap=BitmapFactory.decodeFile(filePath);
+ 			return bitmap;
+ 	}
+ 	
 	//get string value from intent of notes 
 	private void init(){
-		
 		nameTv.setText(String.valueOf(aNote.getNoteName()));
 		descTv.setText(String.valueOf(aNote.getDescription()));
 		contactTv.setText(String.valueOf(aNote.getPubUserId()));
@@ -150,7 +237,6 @@ public class NoteDetailsActivity extends Activity implements OnClickListener {
 				break;
 			}
 		}
-
 	};
 	
 	private void ShowMyDialog(int type, String str) {

@@ -131,6 +131,16 @@
         android:layout_alignParentRight="true"
         android:background="@drawable/comment" />
 
+     <ListView   
+	     	android:dividerHeight="0dip" 
+	     	android:id="@+id/note_comments" 
+	     	android:divider="#e0e0e0" 
+	     	android:layout_width="fill_parent" 
+	     	android:layout_height="wrap_content" 
+	     	android:cacheColorHint="#00000000" 
+	     	android:background="@drawable/itembg" 
+	     	>
+	     </ListView> 
     <Button
         android:id="@+id/ndFavBtn"
         android:layout_width="wrap_content"

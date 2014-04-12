@@ -18,6 +18,7 @@ import ca.techguys.takemynotes.R.layout;
 import ca.techguys.takemynotes.R.menu;
 import ca.techguys.takemynotes.beans.AppConstants;
 import ca.techguys.takemynotes.beans.CategoryItem;
+import ca.techguys.takemynotes.beans.Comment;
 import ca.techguys.takemynotes.beans.Note;
 import ca.techguys.takemynotes.net.Parse;
 import ca.techguys.takemynotes.net.TakeMyNotesRequest;
@@ -55,6 +56,8 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 	static String path=AppConstants.path;
 	private Bitmap bitmap;
 	private ArrayList<Note> tempModel;
+	private ArrayList<Comment> commentModel;
+	private Note nextPageNote;
 	private int noteId;
 	 
 	@Override
@@ -78,13 +81,10 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 				Note noetItem = noteList.get(position);
 				noteId = Integer.parseInt(noetItem.getIdNotes());
 				Object obj=(Object)noteList.get(position);
-
-				Intent intent = new Intent(SubCategoryActivity.this,NoteDetailsActivity.class);
-				intent.putExtra("notedetails", (Serializable)noetItem);
-				startActivity(intent);
-				finish();
-				
-				//new GetData(NoteDetailsActivity.this,0).execute("");
+				nextPageNote = new Note();
+				nextPageNote = (Note)obj;
+				ShowMyDialog(1, null);
+				handler.sendEmptyMessage(0);
 				if(obj instanceof String){
 					return;
 				}
@@ -92,6 +92,19 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 		});
 		
 	}
+	
+	private void ShowMyDialog(int type, String str) {
+		if (type == 1) {
+			dialog = new DialogActivity(this, 1);
+			dialog.getBtnCancel().setOnClickListener(this);
+		} else {
+			dialog = new DialogActivity(this, 2);
+			dialog.setShowMessage(str);
+			dialog.getBtnSure().setOnClickListener(this);
+		}
+		dialog.show();
+	}
+
 	
 	@SuppressWarnings("unchecked")
 	private void getNoteList()
@@ -130,9 +143,7 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 				return convertView;
 			}
 			final View view=convertView.inflate(SubCategoryActivity.this, R.layout.sub_cate_item,null);
-			
 			Object obj=noteList.get(position);
-			
 			ImageView news_item_image=(ImageView)view.findViewById(R.id.news_item_image);
 			TextView news_item_title=(TextView)view.findViewById(R.id.news_item_title);
 			TextView news_item_content=(TextView)view.findViewById(R.id.news_item_content);
@@ -157,17 +168,6 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 				
 				//news_item_content.setText(cate.getTitle());
 			}else{
-				//view.setBackgroundResource(R.drawable.grey_box);
-				view.setEnabled(false);
-				news_item_title.setText(obj.toString());
-				LayoutParams params = news_item_title.getLayoutParams();
-				params.width=LayoutParams.FILL_PARENT;
-				params.height=25;
-				news_item_title.setLayoutParams(params);
-				news_item_title.setGravity(Gravity.CENTER_VERTICAL);
-				news_item_title.setTextSize(15);
-				news_item_image.setVisibility(View.GONE);
-				news_item_content.setVisibility(View.GONE);
 			}
 			return view;
 		}
@@ -218,7 +218,7 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 						TakeMyNotesRequest request = new TakeMyNotesRequest(getApplicationContext());
 						String result = null;
 						try {
-							result = request.getCategory();
+							result = request.getComments(String.format("%d", noteId));
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -230,31 +230,37 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 							handler.sendEmptyMessage(3);
 						} else {
 
-							tempModel = new ArrayList<Note>();
+							commentModel = new ArrayList<Comment>();
 							try {
-								tempModel = new Parse().GetNotesByCategory(result);
+								commentModel = new Parse().GetListComments(result);
 							} catch (JsonSyntaxException e) {
 								
 								e.printStackTrace();
 							}
-							
-							if (tempModel != null) {
+							if (commentModel != null) {
 								
 								dialog.cancel();
-//								Intent intent = new Intent(NoteDetailsActivity.this,
-//										SubCategoryActivity.class);
-//								intent.putExtra("tempModel", (Serializable)tempModel);
-//								startActivity(intent);
-//								finish();
+//								
 							} else {
 								handler.sendEmptyMessage(1);
 							}
+							
+							Intent intent = new Intent(SubCategoryActivity.this,NoteDetailsActivity.class);
+							if (commentModel != null) {
+								intent.putExtra("commentsList", (Serializable)commentModel);
+							}
+							intent.putExtra("notedetails", (Serializable)nextPageNote);
+							startActivity(intent);
+							finish();
 						}
 					}
 				};
 				thread.start();
 				break;
 			case 1:
+				dialog.cancel();
+				break;
+			case 2:
 				dialog.cancel();
 				
 				break;
