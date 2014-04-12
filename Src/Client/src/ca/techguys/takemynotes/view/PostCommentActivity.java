@@ -79,12 +79,14 @@ public class PostCommentActivity extends Activity{
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
+						
 						if (result == null || result.equals("")) {
 							handler.sendEmptyMessage(3);
 						} else {
-							testTv.setText(result.toString());
 							System.out.println(result);
 						}
+						
+						
 					}
 				};
 				thread.start();
@@ -102,7 +104,7 @@ public class PostCommentActivity extends Activity{
 						
 						postBtn.setBackgroundResource(R.drawable.registerbgpress);
 						
-						comment=commentEdt.getText().toString();
+						//comment=commentEdt.getText().toString();
 						
 						try {
 							result = request.postComment(comment, noteId, userId);
@@ -151,13 +153,12 @@ public class PostCommentActivity extends Activity{
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
+				testTv.setText("");
 				comment=commentEdt.getText().toString();
 				if(comment.length()!=0){
 					
 					handler.sendEmptyMessage(0);
 				}else{
-					
 					testTv.setText("Please enter your comment.");
 				}
 				
