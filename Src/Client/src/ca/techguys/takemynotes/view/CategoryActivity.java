@@ -79,7 +79,6 @@ public class CategoryActivity extends Activity {
 				if(obj instanceof String){
 					return;
 				}
-				
 			}
 		});
 		
@@ -124,7 +123,6 @@ public class CategoryActivity extends Activity {
 			final View view=convertView.inflate(CategoryActivity.this, R.layout.cate_item,null);
 			
 			Object obj=categoryList.get(position);
-			
 			ImageView news_item_image=(ImageView)view.findViewById(R.id.news_item_image);
 			TextView news_item_title=(TextView)view.findViewById(R.id.news_item_title);
 			TextView news_item_content=(TextView)view.findViewById(R.id.news_item_content);
@@ -237,13 +235,6 @@ public class CategoryActivity extends Activity {
 				dialog.dismiss();
 			}
 			
-//			model = new Parse().parseRecentlyView(result);
-//			if (model.getResult() == 1) {
-//				modellist = model.getList();
-//				listLetter.setAdapter(new LetterAdatper(LetterActivity.this));
-//				handler.sendEmptyMessage(0);
-//			}
-			
 			if (result == null || result.equals("")) {
 				handler.sendEmptyMessage(3);
 			} else {
@@ -252,12 +243,9 @@ public class CategoryActivity extends Activity {
 				try {
 					noteList = new Parse().GetNotesByCategory(result);
 				} catch (JsonSyntaxException e) {
-					
 					e.printStackTrace();
 				}
-				
 				if (noteList != null) {
-					
 					//dialog.cancel();
 					Intent intent = new Intent(CategoryActivity.this,SubCategoryActivity.class);
 					intent.putExtra("noteLists", (Serializable)noteList);
@@ -312,21 +300,6 @@ public class CategoryActivity extends Activity {
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
 			// TODO Auto-generated method stub
-
-//			ViewHolder holder;
-//			if (convertView == null) {
-//				LayoutInflater inflater = (LayoutInflater) mContext
-//						.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//				convertView = inflater.inflate(R.layout.item_letter_list, null);
-//				holder = new ViewHolder();
-//				holder.tvName = (TextView) convertView.findViewById(R.id.tv_name);
-//				holder.tvMessage = (TextView) convertView.findViewById(R.id.tv_message);
-//				convertView.setTag(holder);
-//			} else {
-//				holder = (ViewHolder) convertView.getTag();
-//			}
-//			holder.tvName.setText(modellist.get(position).getShopName());
-//			holder.tvMessage.setText(modellist.get(position).getMessageInfo());
 			return convertView;
 		}
 

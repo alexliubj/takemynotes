@@ -1,6 +1,7 @@
 package ca.techguys.takemynotes.view;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.TimeoutException;
 
 import ca.techguys.takemynotes.R;
@@ -17,6 +18,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
 import ca.techguys.takemynotes.beans.ApplicationData;
+import ca.techguys.takemynotes.beans.CategoryItem;
+import ca.techguys.takemynotes.beans.Note;
 import ca.techguys.takemynotes.beans.StoreUserInfo;
 import ca.techguys.takemynotes.net.TakeMyNotesRequest;
 
@@ -29,6 +32,7 @@ public class UserPanelActivity extends Activity {
 	EditText addressEdt;
 	Button updateBtn;
 	String userId;
+	private ArrayList<Note> favNoteList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +41,8 @@ public class UserPanelActivity extends Activity {
 		
 		StoreUserInfo suin = ApplicationData.GetUserInforamtion();
 		setTitle("My profile");
-		
+		favNoteList = new ArrayList<Note>();
+		favNoteList = (ArrayList<Note>)getIntent().getSerializableExtra("notelists") ;
 		registerDateTv=(TextView) findViewById(R.id.upDateRegisterTv);
 		loginDateTv=(TextView) findViewById(R.id.upLastLoginTv);
 		registerDateTv.setVisibility(View.GONE);

@@ -89,7 +89,6 @@ public class SellNotesActivity extends Activity {
 			//get all category 
 			case 0:
 				Thread thread = new Thread() {
-
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
@@ -98,7 +97,6 @@ public class SellNotesActivity extends Activity {
 						String result = null;
 						try {
 							Note newNote=new Note();
-							
 							result = request.postNote(newNote);
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
@@ -117,7 +115,6 @@ public class SellNotesActivity extends Activity {
 								
 								e.printStackTrace();
 							}
-							
 						}
 					}
 				};
@@ -170,7 +167,6 @@ public class SellNotesActivity extends Activity {
 			//dialog for error message
 			case 3:
 				dialog.cancel();
-				
 				break;
 			default:
 				break;
@@ -178,8 +174,6 @@ public class SellNotesActivity extends Activity {
 		}
 
 	};
-	
-	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -200,14 +194,9 @@ public class SellNotesActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
 				handler.sendEmptyMessage(1);
 			}
-			
 		});
-		
-		
-		
 	}
 
 	@Override
@@ -216,6 +205,4 @@ public class SellNotesActivity extends Activity {
 		getMenuInflater().inflate(R.menu.sell_notes, menu);
 		return true;
 	}
-	
-
 }

@@ -21,6 +21,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import ca.techguys.takemynotes.beans.ApplicationData;
 import ca.techguys.takemynotes.beans.CategoryItem;
+import ca.techguys.takemynotes.beans.Note;
 import ca.techguys.takemynotes.beans.UniversalModel;
 import ca.techguys.takemynotes.net.Parse;
 import ca.techguys.takemynotes.net.TakeMyNotesRequest;
@@ -33,6 +34,7 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 	private CategoryItem item;
 	private DialogActivity dialog;
 	private ArrayList<CategoryItem> tempModel;
+	private ArrayList<Note> tempNote;
 	private void init() {
 		buttonBuy = (Button) findViewById(R.id.srBuyBtn);
 		buttonBuy.setOnClickListener(this);
@@ -51,7 +53,6 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 				buttonBuy.setBackgroundResource(R.drawable.buy);
 				ShowMyDialog(1, null);
 				handler.sendEmptyMessage(0);
-			
 			}
 			break;
 			
@@ -66,17 +67,14 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 			
 			case R.id.srUserInfo:
 			{
-				//buttonSell.setBackgroundResource(R.drawable.sell);
-				startActivity(new Intent(SelectRoleActivity.this,  UserPanelActivity.class));
-				SelectRoleActivity.this.finish();
+				ShowMyDialog(1, null);
+				handler.sendEmptyMessage(2);
+				
 			}
 		}
 	}
 	
-
-	
 	private Handler handler = new Handler() {
-
 		@Override
 		public void handleMessage(Message msg) {
 			// TODO Auto-generated method stub
@@ -131,7 +129,51 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 				break;
 			case 1:
 				dialog.cancel();
+				break;
+			case 2:
+				Thread thread2 = new Thread() {
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						super.run();
+						TakeMyNotesRequest request = new TakeMyNotesRequest(getApplicationContext());
+						String result = null;
+						try {
+							result = request.getFavList(ApplicationData.GetUserInforamtion().getIdUsers());
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (TimeoutException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						if (result == null || result.equals("")) {
+							handler.sendEmptyMessage(3);
+						} else {
+
+							tempNote = new ArrayList<Note>();
+							try {
+								tempNote = new Parse().GetNotesByCategory(result);
+							} catch (JsonSyntaxException e) {
+								e.printStackTrace();
+							}
+							if (tempNote != null) {
+								dialog.cancel();
+								
+								Intent intent = new Intent(SelectRoleActivity.this,
+										UserPanelActivity.class);
+								intent.putExtra("notelists", (Serializable)tempNote);
+								startActivity(intent);
+								finish();
+							} else {
+								handler.sendEmptyMessage(1);
+							}
+						}
+					}
+				};
+				thread2.start();
 				
+				dialog.cancel();
 				break;
 			case 3:
 				dialog.cancel();
@@ -141,7 +183,6 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 				break;
 			}
 		}
-
 	};
 	
 	@Override
@@ -171,5 +212,4 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 		dialog.show();
 	}
 
-	
 }

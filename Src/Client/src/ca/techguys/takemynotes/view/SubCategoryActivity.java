@@ -137,11 +137,10 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 			TextView news_item_title=(TextView)view.findViewById(R.id.news_item_title);
 			TextView news_item_content=(TextView)view.findViewById(R.id.news_item_content);
 			ImageView right_flag=(ImageView)view.findViewById(R.id.right_flag);
-			if(obj instanceof CategoryItem){
+			if(obj instanceof Note){
 				
-				final CategoryItem cate=(CategoryItem)obj;
-				
-				String cateName=cate.getCategoryName().toString();
+				final Note aNote=(Note)obj;
+				String cateName=aNote.getNoteName();
 
 				if(bitmap!=null){
 					news_item_image.setImageBitmap(bitmap);
@@ -154,7 +153,7 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 						news_item_image.setImageResource(R.drawable.math);
 					}
 				}
-				news_item_title.setText(cate.getCategoryName());
+				news_item_title.setText(aNote.getNoteName());
 				
 				//news_item_content.setText(cate.getTitle());
 			}else{
@@ -167,7 +166,6 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 				news_item_title.setLayoutParams(params);
 				news_item_title.setGravity(Gravity.CENTER_VERTICAL);
 				news_item_title.setTextSize(15);
-			//	news_item_title.setTextColor(R.color.fav_text_item);
 				news_item_image.setVisibility(View.GONE);
 				news_item_content.setVisibility(View.GONE);
 			}

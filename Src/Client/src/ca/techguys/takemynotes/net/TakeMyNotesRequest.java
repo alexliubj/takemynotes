@@ -230,6 +230,16 @@ public class TakeMyNotesRequest {
 		}
 		return baseRequest.postRequestByHttpClient(strParams, getUrl("GetComments.php", ""));
 	}
+
+	//http://www.picpicworld.com/TakeMyNotes/bin/GetFavNotesByUserId.php?userid=1
+	public String getFavList(String userid)
+			throws IOException, TimeoutException {
+		ArrayList<NameValuePair> strParams = new ArrayList<NameValuePair>();
+		if (!TextUtils.isEmpty(userid)) {
+			strParams.add(new BasicNameValuePair("userid", userid));
+		}
+		return baseRequest.postRequestByHttpClient(strParams, getUrl("GetFavNotesByUserId.php", ""));
+	}
 	
 	//http://www.picpicworld.com/TakeMyNotes/bin/PostComments.php?userid=2&noteid=2&comments=1113123123123123
 	public String postComment(String comment,String noteId,String userId)
