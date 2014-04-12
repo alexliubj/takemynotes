@@ -11,10 +11,6 @@ import android.app.Dialog;
 import ca.techguys.takemynotes.R;
 import ca.techguys.takemynotes.R.layout;
 import ca.techguys.takemynotes.R.menu;
-import ca.techguys.takemynotes.beans.ApplicationData;
-import ca.techguys.takemynotes.beans.CategoryItem;
-import ca.techguys.takemynotes.beans.UserInfo;
-import ca.techguys.takemynotes.beans.ResultModel;
 import ca.techguys.takemynotes.beans.*;
 import ca.techguys.takemynotes.net.Parse;
 import ca.techguys.takemynotes.net.TakeMyNotesRequest;
@@ -35,26 +31,40 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 public class LoginActivity extends Activity implements OnClickListener {
 
 	private Button btnGetCaptcha;
-	private Button createBtn;
-	private Button buttonBuy;
-	private Button buttonSell;
-	private CategoryItem item;
+	private Button btnCreate;
+	
 	private DialogActivity dialog;
+	
+	private TextView testTv;
+	private EditText userNameEdt;
+	private EditText pwdEdt;
+	
 	private int userid;
+	private String userName;
+	private String pwd;
 
 	private ResultModel tempModel;
 	private StoreUserInfo storeInfoModel; 
+	
+	
 	private void init() {
 		btnGetCaptcha = (Button) findViewById(R.id.lgLoginBtn);
 		btnGetCaptcha.setOnClickListener(this);
-		createBtn = (Button) findViewById(R.id.lgCreateBtn);
-		createBtn.setOnClickListener(this);
+		
+		btnCreate = (Button) findViewById(R.id.lgCreateBtn);
+		btnCreate.setOnClickListener(this);
+		
+		testTv=(TextView) findViewById(R.id.lgTestTv);
+		userNameEdt=(EditText) findViewById(R.id.lgUserName);
+		pwdEdt=(EditText) findViewById(R.id.lgPasswordEdt);
+		
 	}
 	
 	private void ShowMyDialog(int type, String str) {
@@ -67,6 +77,19 @@ public class LoginActivity extends Activity implements OnClickListener {
 			dialog.getBtnSure().setOnClickListener(this);
 		}
 		dialog.show();
+	}
+	
+	public boolean validNotEmpty(){
+		boolean valid=true;
+		
+		if(userName.length()==0){
+			valid=false;
+		}
+		if(pwd.length()==0){
+			valid=false;
+		}
+		
+		return valid;
 	}
 	
 	@Override
@@ -88,10 +111,20 @@ public class LoginActivity extends Activity implements OnClickListener {
 			{
 				btnGetCaptcha.setBackgroundResource(R.drawable.loginbtnpressed);
 				
-				handler.sendEmptyMessage(0);
+				userName=userNameEdt.getText().toString();
+				pwd=pwdEdt.getText().toString();
 				
-//				startActivity(new Intent(LoginActivity.this,  SelectRoleActivity.class));
-//				LoginActivity.this.finish();
+				if(validNotEmpty()==true){
+					//handler.sendEmptyMessage(0);
+					
+//					startActivity(new Intent(LoginActivity.this,  SelectRoleActivity.class));
+//					LoginActivity.this.finish();
+				}else{
+					testTv.setText("Plesae makek sure you have"
+							+ " entered your user name and password");
+				}
+				
+				
 				
 			}
 			break;
@@ -113,8 +146,11 @@ public class LoginActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_login);
 		
 		setTitle("Login");
-		
+		testTv.setText("");
 		init();
+		
+		
+		
 	}
 
 	private Handler handler = new Handler() {
@@ -135,11 +171,9 @@ public class LoginActivity extends Activity implements OnClickListener {
 						TakeMyNotesRequest request = new TakeMyNotesRequest(getApplicationContext());
 						String result = null;
 						try {
-					        final EditText lgUserName = (EditText) findViewById(R.id.lgUserName);
-					        String username = lgUserName.getText().toString();
-					        final EditText lgPasswordEdt = (EditText) findViewById(R.id.lgPasswordEdt);
-					        String password = lgPasswordEdt.getText().toString();
-							result = request.getLogin("",username,password);
+					        
+							result = request.getLogin("",userName,pwd);
+							
 						} catch (IOException e) {
 							e.printStackTrace();
 						} catch (TimeoutException e) {
@@ -155,12 +189,15 @@ public class LoginActivity extends Activity implements OnClickListener {
 								e.printStackTrace();
 							}
 							if (!tempModel.getResult().equals("fail")) { // success
-								int userid2 = Integer.parseInt(tempModel.getResult());
-								userid = userid2;
-								handler.sendEmptyMessage(4);
+//								int userid2 = Integer.parseInt(tempModel.getResult());
+//								userid = userid2;
+//								handler.sendEmptyMessage(4);
 //								startActivity(new Intent(LoginActivity.this,  SelectRoleActivity.class));
 //								LoginActivity.this.finish();
 //								dialog.cancel();
+								
+								
+								
 							} else { //failed
 								
 							}
