@@ -28,6 +28,9 @@ import ca.techguys.takemynotes.net.TakeMyNotesRequest;
 
 public class SelectRoleActivity extends Activity implements OnClickListener {
 
+	private String userId;
+	private String email;
+	
 	private Button buttonBuy;
 	private Button buttonSell;
 	private Button userInformaionButton;
@@ -191,6 +194,9 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_select_role);
 		setTitle("Select Your Action");
 		init();
+		
+		email=getIntent().getStringExtra("email").toString();
+		
 	}
 
 	@Override

@@ -49,7 +49,6 @@ public class RegisterActivity extends Activity implements OnClickListener {
 	private String pwd;
 	private String conPwd;
 	
-	private UserInfo aUser;
 	
 	private void ShowMyDialog(int type, String str) {
 		if (type == 1) {
@@ -96,7 +95,11 @@ public class RegisterActivity extends Activity implements OnClickListener {
 						TakeMyNotesRequest request = new TakeMyNotesRequest(getApplicationContext());
 						String result = null;
 						try {
+							UserInfo aUser =new UserInfo();
 							
+							aUser.setName(userName);
+							aUser.setEmail(email);
+							aUser.setPassword(pwd);
 							result = request.getRegister(aUser);
 							
 						} catch (IOException e) {
@@ -127,7 +130,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 								}
 								Intent intent = new Intent(RegisterActivity.this,
 										SelectRoleActivity.class);
-								intent.putExtra("email", aUser.getEmail().toString());
+								intent.putExtra("email", email);
 								startActivity(intent);
 								finish();
 							} else {
@@ -180,13 +183,9 @@ public class RegisterActivity extends Activity implements OnClickListener {
 						if(pwdMatch(pwd, conPwd)==true){
 							warningTv.setTextColor(Color.GREEN);
 							warningTv.setText("All parameters are good to go");
-							//start to assign value to user
-							aUser.setName(userName);
-//					        aUser.setEmail(email);
-//					        aUser.setPassword(pwd);
-					        
-							//ShowMyDialog(1, "cool man");
-							//handler.sendEmptyMessage(0);
+							
+							ShowMyDialog(1, null);
+							handler.sendEmptyMessage(0);
 							
 						}else{//pwd doesn't match
 							warningTv.setText("Your password doesn't match.");
