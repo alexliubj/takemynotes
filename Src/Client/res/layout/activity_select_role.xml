@@ -33,7 +33,7 @@
         android:layout_height="45dp"
         android:layout_alignLeft="@+id/srBuyBtn"
         android:layout_below="@+id/srBuyBtn"
-        android:layout_marginTop="189dp"
-        android:background="@drawable/sellpressed" />
+        android:layout_marginTop="239dp"
+        android:background="@drawable/uinfo" />
     
 </RelativeLayout>
