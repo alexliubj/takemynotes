@@ -137,8 +137,8 @@ public class NoteDetailsActivity extends Activity implements OnClickListener {
 			TextView news_item_content=(TextView)view.findViewById(R.id.news_item_content);
 			ImageView right_flag=(ImageView)view.findViewById(R.id.right_flag);
 			if(obj instanceof Note){
-				final Comment aNote=(Comment)obj;
-				String cateName=aNote.getCommt();
+				final Comment aComment=(Comment)obj;
+				String cateName=aComment.getCommt();
 				if(bitmap!=null){
 					news_item_image.setImageBitmap(bitmap);
 				}else{
@@ -150,7 +150,7 @@ public class NoteDetailsActivity extends Activity implements OnClickListener {
 						news_item_image.setImageResource(R.drawable.math);
 					}
 				}
-				news_item_title.setText(aNote.getCommt());
+				news_item_title.setText(aComment.getCommt());
 				//news_item_content.setText(cate.getTitle());
 			}else{
 			}
