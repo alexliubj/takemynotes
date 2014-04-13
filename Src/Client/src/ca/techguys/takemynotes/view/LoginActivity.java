@@ -57,6 +57,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 	
 	private void init() {
 		btnGetCaptcha = (Button) findViewById(R.id.lgLoginBtn);
+		btnGetCaptcha.setBackgroundResource(R.drawable.loginbtnbg);
 		btnGetCaptcha.setOnClickListener(this);
 		
 		btnCreate = (Button) findViewById(R.id.lgCreateBtn);

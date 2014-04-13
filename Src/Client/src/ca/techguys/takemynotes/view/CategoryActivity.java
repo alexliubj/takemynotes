@@ -253,7 +253,6 @@ public class CategoryActivity extends Activity {
 					e.printStackTrace();
 				}
 				if (noteList != null) {
-					//dialog.cancel();
 					Intent intent = new Intent(CategoryActivity.this,SubCategoryActivity.class);
 					intent.putExtra("noteLists", (Serializable)noteList);
 					intent.putExtra("userId", userId);

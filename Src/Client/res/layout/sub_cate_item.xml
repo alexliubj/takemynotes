@@ -24,7 +24,7 @@
         android:visibility="gone" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/pcWarningTv"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="3.32"

@@ -62,7 +62,7 @@
 
     <Button
         android:id="@+id/ndCommentBtn"
-        android:layout_width="800dp"
+        android:layout_width="60dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
@@ -140,11 +140,11 @@
 
     <Button
         android:id="@+id/ndFavBtn"
-        android:layout_width="80dp"
-        android:layout_height="100dp"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
         android:layout_alignLeft="@+id/textView9"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/ndNoteNameTv"
+        android:layout_alignRight="@+id/ndContactTv"
         android:layout_alignTop="@+id/ndCommentBtn"
         android:text="Favourite" />
 

@@ -14,6 +14,7 @@ import ca.techguys.takemynotes.R.menu;
 import ca.techguys.takemynotes.beans.ApplicationData;
 import ca.techguys.takemynotes.beans.CategoryItem;
 import ca.techguys.takemynotes.beans.Note;
+import ca.techguys.takemynotes.beans.ResultModel;
 import ca.techguys.takemynotes.beans.UserInfo;
 import ca.techguys.takemynotes.net.Parse;
 import ca.techguys.takemynotes.net.TakeMyNotesRequest;
@@ -23,6 +24,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -48,7 +50,11 @@ public class PostCommentActivity extends Activity{
 	
 	private EditText commentEdt;
 	private TextView testTv;
+	private TextView warningTv;
 	private Button postBtn;
+	
+	private ResultModel resultModel;
+	
 	
 	
 	private Handler handler = new Handler() {
@@ -68,11 +74,11 @@ public class PostCommentActivity extends Activity{
 						super.run();
 						TakeMyNotesRequest request = new TakeMyNotesRequest(getApplicationContext());
 						String result = null;
+						
 						try {
-							dialog.cancel();
-							System.out.println(userId+noteId+comment);
-							
+							comment=commentEdt.getText().toString();
 							result = request.postComment(comment, noteId, userId);
+							
 						} catch (IOException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -84,14 +90,16 @@ public class PostCommentActivity extends Activity{
 						if (result == null || result.equals("")) {
 							handler.sendEmptyMessage(3);
 						} else {
-							System.out.println(result);
+							System.out.println(result.toString());
 						}
-						
-						
+//						Intent intent=new Intent(PostCommentActivity.this, NoteDetailsActivity.class);
+//						intent.putExtra("userId", userId);
+//						startActivity(intent);
 					}
 				};
 				thread.start();
 				break;
+
 				
 			//post sell note ad
 			case 1:
@@ -144,24 +152,28 @@ public class PostCommentActivity extends Activity{
 		setContentView(R.layout.activity_postcomments);
 		commentEdt=(EditText) findViewById(R.id.pcCommentEdt);
 		testTv=(TextView) findViewById(R.id.pcTestTv);
+		warningTv=(TextView) findViewById(R.id.pcWarningTv);
 		
 		userId=getIntent().getStringExtra("userId").toString();
 		noteId=getIntent().getStringExtra("noteId").toString();
 		
-		testTv.setText(userId+" "+noteId);
+		testTv.setText("userId: "+userId+" noteId: "+noteId);
 		postBtn=(Button) findViewById(R.id.pcPostBtn);
 		postBtn.setOnClickListener(new OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				testTv.setText("");
+				
+				warningTv.setText("");
 				comment=commentEdt.getText().toString();
 				if(comment.length()!=0){
-					
+					//post comment 
 					handler.sendEmptyMessage(0);
+					
 				}else{
-					testTv.setText("Please enter your comment.");
+					warningTv.setTextColor(Color.RED);
+					warningTv.setText("Please enter your comment.");
 				}
 				
 				
