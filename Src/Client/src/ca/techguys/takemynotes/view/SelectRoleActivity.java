@@ -74,6 +74,7 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 				ShowMyDialog(1, null);
 				handler.sendEmptyMessage(2);
 				
+				
 			}
 		}
 	}
@@ -84,6 +85,7 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 			// TODO Auto-generated method stub
 			super.handleMessage(msg);
 			switch (msg.what) {
+			//get category
 			case 0:
 				Thread thread = new Thread() {
 
@@ -168,6 +170,8 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 								Intent intent = new Intent(SelectRoleActivity.this,
 										UserPanelActivity.class);
 								intent.putExtra("notelists", (Serializable)tempNote);
+								intent.putExtra("userId", userId);
+								intent.putExtra("userName", userName);
 								startActivity(intent);
 								finish();
 							} else {
@@ -194,6 +198,10 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_select_role);
+		
+		userId="";
+		userName="";
+		
 		setTitle("Select Your Action");
 		init();
 		

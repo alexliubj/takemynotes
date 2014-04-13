@@ -80,18 +80,18 @@ public final class R {
         public static final int welcome=0x7f020034;
     }
     public static final class id {
-        public static final int Account_Management=0x7f090042;
-        public static final int action_settings=0x7f090041;
+        public static final int Account_Management=0x7f090043;
+        public static final int action_settings=0x7f090042;
         public static final int btn_back=0x7f09003c;
         public static final int btn_cancel=0x7f090039;
         public static final int btn_sure=0x7f09003b;
         public static final int cateTv=0x7f090025;
         public static final int descTv=0x7f09002a;
-        public static final int favImg=0x7f090040;
-        public static final int favorite=0x7f090043;
-        public static final int heartImg=0x7f09003f;
-        public static final int img=0x7f09003d;
-        public static final int info=0x7f09003e;
+        public static final int favImg=0x7f090041;
+        public static final int favorite=0x7f090044;
+        public static final int heartImg=0x7f090040;
+        public static final int img=0x7f09003e;
+        public static final int info=0x7f09003f;
         public static final int lgCreateBtn=0x7f090006;
         public static final int lgLoginBtn=0x7f090002;
         public static final int lgPasswordEdt=0x7f090005;
@@ -135,6 +135,7 @@ public final class R {
         public static final int srBuyBtn=0x7f090021;
         public static final int srSellBtn=0x7f090022;
         public static final int srUserInfo=0x7f090023;
+        public static final int textView1=0x7f09003d;
         public static final int textView10=0x7f09000b;
         public static final int textView3=0x7f09000a;
         public static final int textView7=0x7f09000c;

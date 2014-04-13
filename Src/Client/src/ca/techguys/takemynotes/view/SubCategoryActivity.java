@@ -65,7 +65,7 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sub_category);
 		
-		setTitle("Note Category");
+		setTitle("Note List");
 		
 		getNoteList();
 		ListView listView=(ListView)findViewById(R.id.news_listview);
@@ -142,12 +142,11 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 			if(noteList==null){
 				return convertView;
 			}
-			final View view=convertView.inflate(SubCategoryActivity.this, R.layout.sub_cate_item,null);
+			final View view=convertView.inflate(SubCategoryActivity.this, R.layout.subcate_listview,null);
 			Object obj=noteList.get(position);
-			ImageView news_item_image=(ImageView)view.findViewById(R.id.news_item_image);
-			TextView news_item_title=(TextView)view.findViewById(R.id.news_item_title);
-			TextView news_item_content=(TextView)view.findViewById(R.id.news_item_content);
-			ImageView right_flag=(ImageView)view.findViewById(R.id.right_flag);
+			ImageView news_item_image=(ImageView)view.findViewById(R.id.img);
+			TextView news_item_title=(TextView)view.findViewById(R.id.info);
+			ImageView right_flag=(ImageView)view.findViewById(R.id.favImg);
 			if(obj instanceof Note){
 				
 				final Note aNote=(Note)obj;
@@ -164,7 +163,8 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 						news_item_image.setImageResource(R.drawable.math);
 					}
 				}
-				news_item_title.setText(aNote.getNoteName());
+				news_item_title.setText(aNote.getNoteName()+
+						aNote.getDescription()+aNote.getPrice());
 				
 				//news_item_content.setText(cate.getTitle());
 			}else{
