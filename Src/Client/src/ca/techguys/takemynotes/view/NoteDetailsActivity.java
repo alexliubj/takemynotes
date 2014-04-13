@@ -159,7 +159,7 @@ public class NoteDetailsActivity extends Activity implements OnClickListener {
 //						news_item_image.setImageResource(R.drawable.math);
 //					}
 //				}
-				news_item_title.setText(aComment.getCommt());
+				news_item_title.setText(aComment.getCommt().toString());
 				//news_item_content.setText(cate.getTitle());
 			}else{
 			}

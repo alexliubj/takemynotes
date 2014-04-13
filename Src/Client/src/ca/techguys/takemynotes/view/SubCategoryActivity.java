@@ -5,6 +5,9 @@ package ca.techguys.takemynotes.view;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.TimeoutException;
 
@@ -87,22 +90,24 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 
 		getNoteList();
 		
+		//sort by date
 		dateBtn.setOnClickListener(new OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				dateNoteList=noteList;
+				sortByDate();
 			}
 			
 		});
 		
+		//sort by price
 		priceBtn.setOnClickListener(new OnClickListener(){
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				
+				sortByPrice();
 			}
 			
 		});
@@ -133,6 +138,41 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 	}
 	
 	
+	public void sortByDate(){
+		
+		Collections.sort(noteList, new Comparator<Note>(){
+		    public int compare(Note n1, Note n2) {
+		        return n1.getDateCreate().compareToIgnoreCase(n2.getDateCreate());
+		    }
+		});
+		
+		for(int i=0; i<noteList.size(); i++){
+			System.out.println(noteList.get(i).getDateCreate().toString());
+		}
+		
+		
+	}
+	
+	
+	public void sortByPrice(){
+		
+		Collections.sort(noteList, new Comparator<Note>(){
+		    public int compare(Note n1, Note n2) {
+		        return n1.getPrice().compareToIgnoreCase(n2.getPrice());
+		    }
+		});
+		
+		for(int i=0; i<noteList.size(); i++){
+			System.out.println(noteList.get(i).getPrice().toString());
+		}
+		
+	}
+	
+	public void sortTest(){
+		
+		
+		
+	}
 	
 	
 	private void ShowMyDialog(int type, String str) {
