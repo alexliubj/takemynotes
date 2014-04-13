@@ -41,12 +41,15 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TextView;
 
 public class SubCategoryActivity extends Activity implements OnClickListener {
+	
+	private String userId;
 	
 	private DialogActivity dialog;
 	private Intent intent;
@@ -59,7 +62,14 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 	private ArrayList<Comment> commentModel;
 	private Note nextPageNote;
 	private int noteId;
-	 
+	
+	private Button dateBtn;
+	private Button priceBtn;
+	
+	private ArrayList<Note> dateNoteList;
+	private ArrayList<Note> priceNoteList;
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -67,7 +77,36 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 		
 		setTitle("Note List");
 		
+		if(getIntent().hasExtra("userId")){
+			userId=getIntent().getStringExtra("userId").toString();
+		}
+		
+		dateBtn=(Button) findViewById(R.id.scDateBtn);
+		priceBtn=(Button) findViewById(R.id.scPriceBtn);
+		
+
 		getNoteList();
+		
+		dateBtn.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				dateNoteList=noteList;
+			}
+			
+		});
+		
+		priceBtn.setOnClickListener(new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
+		
 		ListView listView=(ListView)findViewById(R.id.news_listview);
 		myBaseAdapter=new MyBaseAdapter();
 		listView.setAdapter(myBaseAdapter);
@@ -93,6 +132,9 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 		
 	}
 	
+	
+	
+	
 	private void ShowMyDialog(int type, String str) {
 		if (type == 1) {
 			dialog = new DialogActivity(this, 1);
@@ -111,6 +153,8 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 	{
 		noteList = (ArrayList<Note>)getIntent().getSerializableExtra("noteLists") ;
 	}
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -209,6 +253,7 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 			// TODO Auto-generated method stub
 			super.handleMessage(msg);
 			switch (msg.what) {
+			//get comment by note id
 			case 0:
 				Thread thread = new Thread() {
 
@@ -251,6 +296,7 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 								intent.putExtra("commentsList", (Serializable)commentModel);
 							}
 							intent.putExtra("notedetails", (Serializable)nextPageNote);
+							intent.putExtra("userId", userId);
 							startActivity(intent);
 							finish();
 						}

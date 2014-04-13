@@ -146,9 +146,9 @@ public class PostCommentActivity extends Activity{
 		testTv=(TextView) findViewById(R.id.pcTestTv);
 		
 		userId=getIntent().getStringExtra("userId").toString();
-		noteId=getIntent().getStringExtra("userId").toString();
+		noteId=getIntent().getStringExtra("noteId").toString();
 		
-		testTv.setText(noteId);
+		testTv.setText(userId+" "+noteId);
 		postBtn=(Button) findViewById(R.id.pcPostBtn);
 		postBtn.setOnClickListener(new OnClickListener(){
 

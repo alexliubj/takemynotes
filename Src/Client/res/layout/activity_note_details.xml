@@ -62,48 +62,12 @@
 
     <Button
         android:id="@+id/ndCommentBtn"
-        android:layout_width="50dp"
+        android:layout_width="800dp"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:background="@drawable/comment" />
-
-    <Button
-        android:id="@+id/ndFavBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView9"
-        android:layout_alignTop="@+id/ndCommentBtn"
-        android:text="Favourite" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/noteDetailImg"
-        android:layout_below="@+id/noteDetailImg"
-        android:text="Contact:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_below="@+id/textView3"
-        android:layout_marginTop="16dp"
-        android:text="Phone:"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/ndPriceTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ndEmailTv"
-        android:layout_below="@+id/textView8"
-        android:layout_marginTop="17dp"
-        android:text="$45.20"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:layout_toRightOf="@+id/ndDescTv"
+        android:text="Comment" />
 
     <TextView
         android:id="@+id/textView9"
@@ -126,12 +90,12 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/ndPriceTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView7"
-        android:layout_below="@+id/textView10"
-        android:text="Email:"
+        android:layout_above="@+id/ndCommentBtn"
+        android:layout_alignLeft="@+id/ndEmailTv"
+        android:text="$45.20"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -139,16 +103,58 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/ndPriceTv"
-        android:layout_alignLeft="@+id/textView10"
+        android:layout_marginBottom="8dp"
+        android:layout_toRightOf="@+id/noteDetailImg"
         android:text="takemynote@notes.com"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/ndEmailTv"
+        android:layout_alignBottom="@+id/ndEmailTv"
+        android:layout_alignLeft="@+id/textView7"
+        android:text="Email:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView8"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_marginBottom="10dp"
+        android:text="Phone:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView10"
+        android:layout_alignLeft="@+id/noteDetailImg"
+        android:layout_marginBottom="9dp"
+        android:text="Contact:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/ndFavBtn"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:layout_alignLeft="@+id/textView9"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/ndNoteNameTv"
+        android:layout_alignTop="@+id/ndCommentBtn"
+        android:text="Favourite" />
+
 </RelativeLayout>
        <ListView
            android:dividerHeight="1dip" 
            android:id="@+id/note_comments"
            android:layout_width="fill_parent"
            android:layout_height="wrap_content"
-           android:background="@drawable/itembg"
+           android:background="#00000000"
            android:cacheColorHint="#00000000"
            android:divider="#e0e0e0">
 	     </ListView> 

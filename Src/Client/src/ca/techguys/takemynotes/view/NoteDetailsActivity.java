@@ -42,6 +42,8 @@ import android.widget.TextView;
 
 public class NoteDetailsActivity extends Activity implements OnClickListener {
 
+	private String userId;
+	
 	private Note aNote;
 	private TextView nameTv;
 	private TextView descTv;
@@ -64,6 +66,11 @@ public class NoteDetailsActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_note_details);
 		
 		setTitle("Note detail");
+		
+		if(getIntent().hasExtra("userId")){
+			userId=getIntent().getStringExtra("userId").toString();
+		}
+		
 		nameTv=(TextView) findViewById(R.id.ndNoteNameTv);
 		descTv=(TextView) findViewById(R.id.ndDescTv);
 		contactTv=(TextView) findViewById(R.id.ndContactTv);
@@ -87,7 +94,7 @@ public class NoteDetailsActivity extends Activity implements OnClickListener {
 			public void onClick(View v) {
 				Intent intent=new Intent(NoteDetailsActivity.this, PostCommentActivity.class);
 		   		
-				intent.putExtra("userId", "1");
+				intent.putExtra("userId", userId);
 				intent.putExtra("noteId", aNote.getIdNotes().toString());
 				
 				startActivity(intent);

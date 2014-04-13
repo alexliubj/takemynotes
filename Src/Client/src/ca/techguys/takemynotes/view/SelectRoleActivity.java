@@ -123,6 +123,7 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 								Intent intent = new Intent(SelectRoleActivity.this,
 										CategoryActivity.class);
 								intent.putExtra("tempModel", (Serializable)tempModel);
+								intent.putExtra("userId", userId);
 								startActivity(intent);
 								finish();
 							} else {
