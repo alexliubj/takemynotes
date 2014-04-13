@@ -152,19 +152,20 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 				final Note aNote=(Note)obj;
 				String cateName=aNote.getNoteName();
 
-				if(bitmap!=null){
-					news_item_image.setImageBitmap(bitmap);
-				}else{
-					if(cateName.contains("ICT")){
-						news_item_image.setImageResource(R.drawable.computer);
-					}else if(cateName.contains("Business")){
-						news_item_image.setImageResource(R.drawable.business);
-					}else if(cateName.contains("Math")){
-						news_item_image.setImageResource(R.drawable.math);
-					}
-				}
-				news_item_title.setText(aNote.getNoteName()+
-						aNote.getDescription()+aNote.getPrice());
+//				if(bitmap!=null){
+//					news_item_image.setImageBitmap(bitmap);
+//				}else{
+//					if(cateName.contains("ICT")){
+//						news_item_image.setImageResource(R.drawable.computer);
+//					}else if(cateName.contains("Business")){
+//						news_item_image.setImageResource(R.drawable.business);
+//					}else if(cateName.contains("Math")){
+//						news_item_image.setImageResource(R.drawable.math);
+//					}
+//				}
+				news_item_title.setText("Name: "+aNote.getNoteName()+"\n"+
+						"Description: "+aNote.getDescription()+"\n"+
+						"Price: $"+aNote.getPrice());
 				
 				//news_item_content.setText(cate.getTitle());
 			}else{

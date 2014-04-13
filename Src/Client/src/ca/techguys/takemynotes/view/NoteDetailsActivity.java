@@ -134,26 +134,24 @@ public class NoteDetailsActivity extends Activity implements OnClickListener {
 			if(commentList==null){
 				return convertView;
 			}
-			final View view=convertView.inflate(NoteDetailsActivity.this, R.layout.sub_cate_item,null);
+			final View view=convertView.inflate(NoteDetailsActivity.this, R.layout.comment_listview,null);
 			Object obj=commentList.get(position);
-			ImageView news_item_image=(ImageView)view.findViewById(R.id.news_item_image);
-			TextView news_item_title=(TextView)view.findViewById(R.id.news_item_title);
-			TextView news_item_content=(TextView)view.findViewById(R.id.news_item_content);
-			ImageView right_flag=(ImageView)view.findViewById(R.id.right_flag);
+			ImageView news_item_image=(ImageView)view.findViewById(R.id.img);
+			TextView news_item_title=(TextView)view.findViewById(R.id.info);
 			if(obj instanceof Note){
 				final Comment aComment=(Comment)obj;
 				String cateName=aComment.getCommt();
-				if(bitmap!=null){
-					news_item_image.setImageBitmap(bitmap);
-				}else{
-					if(cateName.contains("ICT")){
-						news_item_image.setImageResource(R.drawable.computer);
-					}else if(cateName.contains("Business")){
-						news_item_image.setImageResource(R.drawable.business);
-					}else if(cateName.contains("Math")){
-						news_item_image.setImageResource(R.drawable.math);
-					}
-				}
+//				if(bitmap!=null){
+//					news_item_image.setImageBitmap(bitmap);
+//				}else{
+//					if(cateName.contains("ICT")){
+//						news_item_image.setImageResource(R.drawable.computer);
+//					}else if(cateName.contains("Business")){
+//						news_item_image.setImageResource(R.drawable.business);
+//					}else if(cateName.contains("Math")){
+//						news_item_image.setImageResource(R.drawable.math);
+//					}
+//				}
 				news_item_title.setText(aComment.getCommt());
 				//news_item_content.setText(cate.getTitle());
 			}else{
