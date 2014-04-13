@@ -29,6 +29,7 @@ import ca.techguys.takemynotes.net.TakeMyNotesRequest;
 public class SelectRoleActivity extends Activity implements OnClickListener {
 
 	private String userId;
+	private String userName;
 	private String email;
 	
 	private Button buttonBuy;
@@ -133,6 +134,7 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 			case 1:
 				dialog.cancel();
 				break;
+			//get user fav list
 			case 2:
 				Thread thread2 = new Thread() {
 					@Override
@@ -198,6 +200,10 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 		if(getIntent().hasExtra("userId")){
 			userId=getIntent().getStringExtra("userId").toString();
 			System.out.println(userId);
+		}
+		if(getIntent().hasExtra("userName")){
+			userName=getIntent().getStringExtra("userName").toString();
+			System.out.println(userName);
 		}
 		
 		

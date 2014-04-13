@@ -132,17 +132,18 @@ public class RegisterActivity extends Activity implements OnClickListener {
 								{
 									dialog.cancel();
 									
-									handler.sendEmptyMessage(4);
+									//handler.sendEmptyMessage(4);
 									
+									//System.out.println(tempModel.getResult().toString());
 									Intent intent = new Intent(RegisterActivity.this,
 											SelectRoleActivity.class);
-									intent.putExtra("userId",tempModel);
+									intent.putExtra("userName",userName);
 									startActivity(intent);
 									finish();
 								}
 								
 							} else {
-								handler.sendEmptyMessage(1);
+								dialog.cancel();
 							}
 						}
 					}
@@ -187,10 +188,8 @@ public class RegisterActivity extends Activity implements OnClickListener {
 								e.printStackTrace();
 							}
 							if (!tempModel.getResult().equals("fail")) { // success
-								
 								//dialog.cancel();
 								System.out.println(tempModel.getResult().toString());
-								
 								
 							} else { //failed
 								
@@ -303,7 +302,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 	
 	public boolean pwdMatch(String pwd, String conPwd){
 		boolean valid=false;
-		System.out.println(pwd+" "+conPwd);
+		//System.out.println(pwd+" "+conPwd);
 		if(pwd.matches(conPwd)){
 			valid=true;
 		}
