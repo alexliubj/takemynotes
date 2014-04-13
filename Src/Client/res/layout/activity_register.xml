@@ -49,18 +49,6 @@
         android:ems="10"
         android:hint="Email" />
 
-    <TextView
-        android:id="@+id/regWarningTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/regRegisterBtn"
-        android:layout_alignLeft="@+id/regConPasswordEdt"
-        android:layout_marginBottom="20dp"
-        android:text="Warning"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#FF0000"
-        android:textSize="18sp" />
-
     <EditText
         android:id="@+id/regPasswordEdt"
         android:layout_width="wrap_content"
@@ -80,10 +68,23 @@
         android:id="@+id/regConPasswordEdt"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
-        android:layout_above="@+id/regWarningTv"
         android:layout_alignRight="@+id/regRegisterBtn"
+        android:layout_below="@+id/regPasswordEdt"
+        android:layout_marginTop="24dp"
         android:background="@drawable/textboxbg"
         android:ems="10"
         android:hint="Confirm Password" />
+
+    <TextView
+        android:id="@+id/regWarningTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/regConPasswordEdt"
+        android:layout_below="@+id/regConPasswordEdt"
+        android:layout_marginTop="36dp"
+        android:text="Warning"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FF0000"
+        android:textSize="18sp" />
 
 </RelativeLayout>

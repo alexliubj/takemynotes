@@ -83,6 +83,7 @@
         android:layout_alignLeft="@+id/lgPasswordEdt"
         android:layout_below="@+id/lgPasswordEdt"
         android:layout_marginTop="31dp"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textSize="18sp" />
 
 </RelativeLayout>

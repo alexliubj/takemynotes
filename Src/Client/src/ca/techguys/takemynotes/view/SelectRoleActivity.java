@@ -195,8 +195,11 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 		setTitle("Select Your Action");
 		init();
 		
-		userId=getIntent().getStringExtra("userId").toString();
-		System.out.println(userId);
+		if(getIntent().hasExtra("userId")){
+			userId=getIntent().getStringExtra("userId").toString();
+			System.out.println(userId);
+		}
+		
 		
 	}
 

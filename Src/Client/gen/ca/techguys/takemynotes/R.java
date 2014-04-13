@@ -119,13 +119,13 @@ public final class R {
         public static final int pcTestTv=0x7f090019;
         public static final int priceTv=0x7f090029;
         public static final int probLoading=0x7f090038;
-        public static final int regConPasswordEdt=0x7f090020;
+        public static final int regConPasswordEdt=0x7f09001f;
         public static final int regEmailEdt=0x7f09001d;
         public static final int regImg=0x7f09001b;
         public static final int regPasswordEdt=0x7f09001e;
         public static final int regRegisterBtn=0x7f09001a;
         public static final int regUserNameEdt=0x7f09001c;
-        public static final int regWarningTv=0x7f09001f;
+        public static final int regWarningTv=0x7f090020;
         public static final int right_flag=0x7f090037;
         public static final int snCateSpinner=0x7f090027;
         public static final int snCreateBtn=0x7f090024;

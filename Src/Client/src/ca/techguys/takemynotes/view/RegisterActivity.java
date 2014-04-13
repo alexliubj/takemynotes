@@ -88,6 +88,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 			// TODO Auto-generated method stub
 			super.handleMessage(msg);
 			switch (msg.what) {
+			//register new user
 			case 0:
 				Thread thread = new Thread() {
 
@@ -129,13 +130,17 @@ public class RegisterActivity extends Activity implements OnClickListener {
 								dialog.cancel();
 								if(common.getResult().equals("succ")) // successful
 								{
-									handler.sendEmptyMessage(1);
+									dialog.cancel();
+									
+									handler.sendEmptyMessage(4);
+									
+									Intent intent = new Intent(RegisterActivity.this,
+											SelectRoleActivity.class);
+									intent.putExtra("userId",tempModel);
+									startActivity(intent);
+									finish();
 								}
-								Intent intent = new Intent(RegisterActivity.this,
-										SelectRoleActivity.class);
-								intent.putExtra("email", email);
-								startActivity(intent);
-								finish();
+								
 							} else {
 								handler.sendEmptyMessage(1);
 							}
@@ -152,8 +157,9 @@ public class RegisterActivity extends Activity implements OnClickListener {
 				dialog.cancel();
 				
 				break;
+			//get user'd id by user name in register
 			case 4:
-				ShowMyDialog(1, null);
+				//ShowMyDialog(1, null);
 				Thread thread2 = new Thread() {
 
 					@Override
@@ -172,8 +178,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 							e.printStackTrace();
 						}
 						if (result == null || result.equals("")) {
-							
-							handler.sendEmptyMessage(3);
+							dialog.cancel();
 						} else {
 							tempModel = new ResultModel();
 							try {
@@ -183,10 +188,8 @@ public class RegisterActivity extends Activity implements OnClickListener {
 							}
 							if (!tempModel.getResult().equals("fail")) { // success
 								
-								dialog.cancel();
+								//dialog.cancel();
 								System.out.println(tempModel.getResult().toString());
-								
-								
 								
 								
 							} else { //failed
@@ -304,7 +307,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 		if(pwd.matches(conPwd)){
 			valid=true;
 		}
-		System.out.println(valid);
+		//System.out.println(valid);
 		return valid;
 	}
 	

@@ -155,11 +155,18 @@ public class LoginActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 		
-//		String errorMsg=getIntent().getStringExtra("errorMsg").toString();
-//		
 		setTitle("Login");
 		init();
 		testTv.setText("");
+		
+//		String errorMsg=getIntent().getStringExtra("errorMsg").toString();
+//		
+		if(getIntent().hasExtra("errorMsg")){
+			testTv.setTextColor(Color.RED);
+			testTv.setText(getIntent().getStringExtra("errorMsg"));
+		}
+		
+		
 		
 		
 	}
