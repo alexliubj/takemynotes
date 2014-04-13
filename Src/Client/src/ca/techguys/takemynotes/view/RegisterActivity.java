@@ -220,7 +220,6 @@ public class RegisterActivity extends Activity implements OnClickListener {
 				warningTv.setText("");
 				signupBtn.setBackgroundResource(R.drawable.registerbgpress);
 				
-				
 				userName=userNameEdt.getText().toString();
 				email=emailEdt.getText().toString();
 				pwd=pwdEdt.getText().toString();

@@ -28,8 +28,6 @@ import ca.techguys.takemynotes.net.TakeMyNotesRequest;
 
 public class SelectRoleActivity extends Activity implements OnClickListener {
 
-	private String userId;
-	private String userName;
 	private String email;
 	
 	private Button buttonBuy;
@@ -123,7 +121,7 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 								Intent intent = new Intent(SelectRoleActivity.this,
 										CategoryActivity.class);
 								intent.putExtra("tempModel", (Serializable)tempModel);
-								intent.putExtra("userId", userId);
+							
 								startActivity(intent);
 								finish();
 							} else {
@@ -171,8 +169,7 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 								Intent intent = new Intent(SelectRoleActivity.this,
 										UserPanelActivity.class);
 								intent.putExtra("notelists", (Serializable)tempNote);
-								intent.putExtra("userId", userId);
-								intent.putExtra("userName", userName);
+							
 								startActivity(intent);
 								finish();
 							} else {
@@ -200,21 +197,10 @@ public class SelectRoleActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_select_role);
 		
-		userId="";
-		userName="";
 		
 		setTitle("Select Your Action");
 		init();
-		
-		if(getIntent().hasExtra("userId")){
-			userId=getIntent().getStringExtra("userId").toString();
-			System.out.println(userId);
-		}
-		if(getIntent().hasExtra("userName")){
-			userName=getIntent().getStringExtra("userName").toString();
-			System.out.println(userName);
-		}
-		
+	
 		
 	}
 

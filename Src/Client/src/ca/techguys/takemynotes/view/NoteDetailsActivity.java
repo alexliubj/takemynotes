@@ -42,8 +42,6 @@ import android.widget.TextView;
 
 public class NoteDetailsActivity extends Activity implements OnClickListener {
 
-	private String userId;
-	
 	private Note aNote;
 	private TextView nameTv;
 	private TextView descTv;
@@ -67,10 +65,6 @@ public class NoteDetailsActivity extends Activity implements OnClickListener {
 		
 		setTitle("Note detail");
 		
-		if(getIntent().hasExtra("userId")){
-			userId=getIntent().getStringExtra("userId").toString();
-		}
-		
 		nameTv=(TextView) findViewById(R.id.ndNoteNameTv);
 		descTv=(TextView) findViewById(R.id.ndDescTv);
 		contactTv=(TextView) findViewById(R.id.ndContactTv);
@@ -93,10 +87,7 @@ public class NoteDetailsActivity extends Activity implements OnClickListener {
 			@Override
 			public void onClick(View v) {
 				Intent intent=new Intent(NoteDetailsActivity.this, PostCommentActivity.class);
-		   		
-				intent.putExtra("userId", userId);
 				intent.putExtra("noteId", aNote.getIdNotes().toString());
-				
 				startActivity(intent);
 			}
 		});
@@ -145,22 +136,11 @@ public class NoteDetailsActivity extends Activity implements OnClickListener {
 			Object obj=commentList.get(position);
 			ImageView news_item_image=(ImageView)view.findViewById(R.id.img);
 			TextView news_item_title=(TextView)view.findViewById(R.id.info);
-			if(obj instanceof Note){
+			if(obj instanceof Comment){
 				final Comment aComment=(Comment)obj;
 				String cateName=aComment.getCommt();
-//				if(bitmap!=null){
-//					news_item_image.setImageBitmap(bitmap);
-//				}else{
-//					if(cateName.contains("ICT")){
-//						news_item_image.setImageResource(R.drawable.computer);
-//					}else if(cateName.contains("Business")){
-//						news_item_image.setImageResource(R.drawable.business);
-//					}else if(cateName.contains("Math")){
-//						news_item_image.setImageResource(R.drawable.math);
-//					}
-//				}
 				news_item_title.setText(aComment.getCommt().toString());
-				//news_item_content.setText(cate.getTitle());
+				
 			}else{
 			}
 			return view;

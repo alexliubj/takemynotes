@@ -246,13 +246,13 @@ public class TakeMyNotesRequest {
 			throws IOException, TimeoutException {
 		ArrayList<NameValuePair> strParams = new ArrayList<NameValuePair>();
 		if (!TextUtils.isEmpty(userId)) {
-			strParams.add(new BasicNameValuePair("comment", comment));
+			strParams.add(new BasicNameValuePair("comments", comment));
 		}
 		if (!TextUtils.isEmpty(noteId)) {
-			strParams.add(new BasicNameValuePair("noteId", noteId));
+			strParams.add(new BasicNameValuePair("noteid", noteId));
 		}
 		if (!TextUtils.isEmpty(userId)) {
-			strParams.add(new BasicNameValuePair("userId", userId));
+			strParams.add(new BasicNameValuePair("userid", userId));
 		}
 		
 		return baseRequest.postRequestByHttpClient(strParams, getUrl("PostComments.php", ""));

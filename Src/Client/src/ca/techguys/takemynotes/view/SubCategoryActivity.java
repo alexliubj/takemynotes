@@ -52,8 +52,6 @@ import android.widget.TextView;
 
 public class SubCategoryActivity extends Activity implements OnClickListener {
 	
-	private String userId;
-	
 	private DialogActivity dialog;
 	private Intent intent;
 	private String mobelNo;
@@ -80,14 +78,10 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 		
 		setTitle("Note List");
 		
-		if(getIntent().hasExtra("userId")){
-			userId=getIntent().getStringExtra("userId").toString();
-		}
 		
 		dateBtn=(Button) findViewById(R.id.scDateBtn);
 		priceBtn=(Button) findViewById(R.id.scPriceBtn);
 		
-
 		getNoteList();
 		
 		//sort by date
@@ -336,7 +330,7 @@ public class SubCategoryActivity extends Activity implements OnClickListener {
 								intent.putExtra("commentsList", (Serializable)commentModel);
 							}
 							intent.putExtra("notedetails", (Serializable)nextPageNote);
-							intent.putExtra("userId", userId);
+					
 							startActivity(intent);
 							finish();
 						}

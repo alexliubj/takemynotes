@@ -45,8 +45,6 @@ import ca.techguys.takemynotes.beans.AppConstants;
 import ca.techguys.takemynotes.view.SubCategoryActivity;;
 public class CategoryActivity extends Activity {
 
-	private String userId;
-	
 	private DialogActivity dialog;
 	private String mobelNo;
 	private ArrayList<CategoryItem> categoryList;
@@ -62,11 +60,7 @@ public class CategoryActivity extends Activity {
 		setContentView(R.layout.activity_category);
 		
 		setTitle("Note Category");
-		
-		if(getIntent().hasExtra("userId")){
-			userId=getIntent().getStringExtra("userId").toString();
-		}
-		
+	
 		getCategoryList();
 		
 		ListView listView=(ListView)findViewById(R.id.news_listview);
@@ -255,7 +249,7 @@ public class CategoryActivity extends Activity {
 				if (noteList != null) {
 					Intent intent = new Intent(CategoryActivity.this,SubCategoryActivity.class);
 					intent.putExtra("noteLists", (Serializable)noteList);
-					intent.putExtra("userId", userId);
+					
 					startActivity(intent);
 					finish();
 				} else {

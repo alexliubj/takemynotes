@@ -15,6 +15,7 @@ import ca.techguys.takemynotes.beans.ApplicationData;
 import ca.techguys.takemynotes.beans.CategoryItem;
 import ca.techguys.takemynotes.beans.Note;
 import ca.techguys.takemynotes.beans.ResultModel;
+import ca.techguys.takemynotes.beans.StoreUserInfo;
 import ca.techguys.takemynotes.beans.UserInfo;
 import ca.techguys.takemynotes.net.Parse;
 import ca.techguys.takemynotes.net.TakeMyNotesRequest;
@@ -43,11 +44,9 @@ public class PostCommentActivity extends Activity{
 
 	private DialogActivity dialog;
 	
-	
+	private String userId;
 	private String comment;
 	private String noteId;
-	private String userId;
-	
 	private EditText commentEdt;
 	private TextView testTv;
 	private TextView warningTv;
@@ -92,9 +91,6 @@ public class PostCommentActivity extends Activity{
 						} else {
 							System.out.println(result.toString());
 						}
-//						Intent intent=new Intent(PostCommentActivity.this, NoteDetailsActivity.class);
-//						intent.putExtra("userId", userId);
-//						startActivity(intent);
 					}
 				};
 				thread.start();
@@ -142,7 +138,6 @@ public class PostCommentActivity extends Activity{
 				break;
 			}
 		}
-
 	};
 	
 	
@@ -150,11 +145,14 @@ public class PostCommentActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_postcomments);
+		
+		StoreUserInfo suin = ApplicationData.GetUserInforamtion();
+		userId = suin.getIdUsers();
+	 
 		commentEdt=(EditText) findViewById(R.id.pcCommentEdt);
 		testTv=(TextView) findViewById(R.id.pcTestTv);
 		warningTv=(TextView) findViewById(R.id.pcWarningTv);
 		
-		userId=getIntent().getStringExtra("userId").toString();
 		noteId=getIntent().getStringExtra("noteId").toString();
 		
 		testTv.setText("userId: "+userId+" noteId: "+noteId);
@@ -175,10 +173,7 @@ public class PostCommentActivity extends Activity{
 					warningTv.setTextColor(Color.RED);
 					warningTv.setText("Please enter your comment.");
 				}
-				
-				
 			}
-			
 		});
 		
 	}
