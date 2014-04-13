@@ -22,6 +22,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import ca.techguys.takemynotes.beans.ResultModel;
 import ca.techguys.takemynotes.beans.CategoryItem;
+import ca.techguys.takemynotes.beans.StoreUserInfo;
 import ca.techguys.takemynotes.beans.UniversalModel;
 import ca.techguys.takemynotes.beans.UserInfo;
 import ca.techguys.takemynotes.net.Parse;
@@ -49,6 +50,8 @@ public class RegisterActivity extends Activity implements OnClickListener {
 	private String pwd;
 	private String conPwd;
 	
+	private ResultModel tempModel;
+	private StoreUserInfo storeInfoModel;
 	
 	private void ShowMyDialog(int type, String str) {
 		if (type == 1) {
@@ -148,6 +151,52 @@ public class RegisterActivity extends Activity implements OnClickListener {
 			case 3:
 				dialog.cancel();
 				
+				break;
+			case 4:
+				ShowMyDialog(1, null);
+				Thread thread2 = new Thread() {
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						super.run();
+						TakeMyNotesRequest request = new TakeMyNotesRequest(getApplicationContext());
+						String result = null;
+						try {
+					        
+							result = request.getLogin("",userName,pwd);
+							
+						} catch (IOException e) {
+							e.printStackTrace();
+						} catch (TimeoutException e) {
+							e.printStackTrace();
+						}
+						if (result == null || result.equals("")) {
+							
+							handler.sendEmptyMessage(3);
+						} else {
+							tempModel = new ResultModel();
+							try {
+								tempModel = new Parse().ResultParse(result);
+							} catch (JsonSyntaxException e) {
+								e.printStackTrace();
+							}
+							if (!tempModel.getResult().equals("fail")) { // success
+								
+								dialog.cancel();
+								System.out.println(tempModel.getResult().toString());
+								
+								
+								
+								
+							} else { //failed
+								
+							}
+							
+						}
+					}
+				};
+				thread2.start();
 				break;
 			default:
 				break;

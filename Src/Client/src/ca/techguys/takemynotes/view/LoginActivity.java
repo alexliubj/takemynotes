@@ -20,6 +20,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -109,19 +110,28 @@ public class LoginActivity extends Activity implements OnClickListener {
 		switch (v.getId()) {
 			case R.id.lgLoginBtn:
 			{
+				testTv.setText("");
 				btnGetCaptcha.setBackgroundResource(R.drawable.loginbtnpressed);
 				
 				userName=userNameEdt.getText().toString();
 				pwd=pwdEdt.getText().toString();
 				
-				if(validNotEmpty()==true){
-					//handler.sendEmptyMessage(0);
+				//check for user name
+				if(userName.length()!=0){
+					//check for pwd
+					if(pwd.length()!=0){
+						
+						handler.sendEmptyMessage(0);
+						
+					}else{//no password
+						testTv.setTextColor(Color.RED);
+						testTv.setText("Plesae enter your password");
+					}
 					
-//					startActivity(new Intent(LoginActivity.this,  SelectRoleActivity.class));
-//					LoginActivity.this.finish();
-				}else{
-					testTv.setText("Plesae makek sure you have"
-							+ " entered your user name and password");
+					
+				}else{//no user name
+					testTv.setTextColor(Color.RED);
+					testTv.setText("Plesae enter your user name");
 				}
 				
 				
@@ -146,8 +156,9 @@ public class LoginActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_login);
 		
 		setTitle("Login");
-		testTv.setText("");
 		init();
+		testTv.setText("");
+		
 		
 		
 		
@@ -180,6 +191,8 @@ public class LoginActivity extends Activity implements OnClickListener {
 							e.printStackTrace();
 						}
 						if (result == null || result.equals("")) {
+							testTv.setText("Login fail, please ceck your user anem and password");
+							
 							handler.sendEmptyMessage(3);
 						} else {
 							tempModel = new ResultModel();
@@ -189,18 +202,20 @@ public class LoginActivity extends Activity implements OnClickListener {
 								e.printStackTrace();
 							}
 							if (!tempModel.getResult().equals("fail")) { // success
-//								int userid2 = Integer.parseInt(tempModel.getResult());
-//								userid = userid2;
-//								handler.sendEmptyMessage(4);
-//								startActivity(new Intent(LoginActivity.this,  SelectRoleActivity.class));
-//								LoginActivity.this.finish();
-//								dialog.cancel();
 								
+								dialog.cancel();
+								System.out.println(tempModel.getResult().toString());
+								
+								Intent intent = new Intent(LoginActivity.this,
+										SelectRoleActivity.class);
+								intent.putExtra("tempModel", tempModel.getResult().toString());
+								startActivity(intent);
 								
 								
 							} else { //failed
-								
+								testTv.setText("Login fail, please ceck your user anem and password");
 							}
+							
 						}
 					}
 				};

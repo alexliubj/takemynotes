@@ -69,6 +69,7 @@ public class PostCommentActivity extends Activity{
 						TakeMyNotesRequest request = new TakeMyNotesRequest(getApplicationContext());
 						String result = null;
 						try {
+							dialog.cancel();
 							System.out.println(userId+noteId+comment);
 							
 							result = request.postComment(comment, noteId, userId);
