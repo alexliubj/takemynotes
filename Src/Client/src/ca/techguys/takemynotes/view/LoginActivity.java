@@ -155,11 +155,11 @@ public class LoginActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
 		
+//		String errorMsg=getIntent().getStringExtra("errorMsg").toString();
+//		
 		setTitle("Login");
 		init();
 		testTv.setText("");
-		
-		
 		
 		
 	}
@@ -171,6 +171,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 			// TODO Auto-generated method stub
 			super.handleMessage(msg);
 			switch (msg.what) {
+			//validate user and get user id
 			case 0:
 				ShowMyDialog(1, null);
 				Thread thread = new Thread() {
@@ -187,13 +188,13 @@ public class LoginActivity extends Activity implements OnClickListener {
 							
 						} catch (IOException e) {
 							e.printStackTrace();
+							
 						} catch (TimeoutException e) {
 							e.printStackTrace();
+							
 						}
 						if (result == null || result.equals("")) {
-							testTv.setText("Login fail, please ceck your user anem and password");
-							
-							handler.sendEmptyMessage(3);
+							//dialog.cancel();
 						} else {
 							tempModel = new ResultModel();
 							try {
@@ -204,16 +205,20 @@ public class LoginActivity extends Activity implements OnClickListener {
 							if (!tempModel.getResult().equals("fail")) { // success
 								
 								dialog.cancel();
-								System.out.println(tempModel.getResult().toString());
+								//System.out.println(tempModel.getResult().toString());
+
+								userid=Integer.valueOf(tempModel.getResult());
 								
 								Intent intent = new Intent(LoginActivity.this,
 										SelectRoleActivity.class);
-								intent.putExtra("tempModel", tempModel.getResult().toString());
+								intent.putExtra("userId", tempModel.getResult().toString());
 								startActivity(intent);
 								
-								
 							} else { //failed
-								testTv.setText("Login fail, please ceck your user anem and password");
+								Intent intent = new Intent(LoginActivity.this,
+										LoginActivity.class);
+								intent.putExtra("errorMsg", "Fail to login, please check your user name and password");
+								startActivity(intent);
 							}
 							
 						}
@@ -230,6 +235,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 				
 				break;
 				
+			//get user info by user id
 			case 4:
 				Thread thread2 = new Thread() {
 
@@ -239,6 +245,7 @@ public class LoginActivity extends Activity implements OnClickListener {
 						TakeMyNotesRequest request = new TakeMyNotesRequest(getApplicationContext());
 						String result = null;
 						try {
+							handler.sendEmptyMessage(0);
 							result = request.GetUserInfo(String.format("%d", userid));
 						} catch (IOException e) {
 							e.printStackTrace();

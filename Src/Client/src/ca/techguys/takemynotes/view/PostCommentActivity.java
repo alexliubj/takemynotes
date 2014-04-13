@@ -58,7 +58,7 @@ public class PostCommentActivity extends Activity{
 			// TODO Auto-generated method stub
 			super.handleMessage(msg);
 			switch (msg.what) {
-			//get all category 
+			//post comment for note
 			case 0:
 				Thread thread = new Thread() {
 
@@ -92,6 +92,7 @@ public class PostCommentActivity extends Activity{
 				};
 				thread.start();
 				break;
+				
 			//post sell note ad
 			case 1:
 				Thread thread1 = new Thread() {
