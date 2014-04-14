@@ -10,18 +10,27 @@ import ca.techguys.takemynotes.R.menu;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
+import ca.techguys.takemynotes.beans.AppConstants;
 import ca.techguys.takemynotes.beans.ApplicationData;
 import ca.techguys.takemynotes.beans.CategoryItem;
+import ca.techguys.takemynotes.beans.Comment;
 import ca.techguys.takemynotes.beans.Note;
 import ca.techguys.takemynotes.beans.StoreUserInfo;
 import ca.techguys.takemynotes.net.TakeMyNotesRequest;
+import ca.techguys.takemynotes.view.NoteDetailsActivity.MyBaseAdapter;
 
 public class UserPanelActivity extends Activity {
 
@@ -32,6 +41,8 @@ public class UserPanelActivity extends Activity {
 	EditText addressEdt;
 	Button updateBtn;
 	String userId;
+	private MyBaseAdapter myBaseAdapter;
+	static String path=AppConstants.path;
 	private ArrayList<Note> favNoteList;
 
 	@Override
@@ -85,7 +96,64 @@ public class UserPanelActivity extends Activity {
 			}
 			
 		});
+
+		updateBtn.setVisibility(View.GONE);
+
+		ListView listView=(ListView)findViewById(R.id.note_comments);
+		if(favNoteList!=null){
+		myBaseAdapter=new MyBaseAdapter();
+		listView.setAdapter(myBaseAdapter);
+		}
+
 	}
+
+	class MyBaseAdapter extends BaseAdapter{
+
+		@Override
+		public int getCount() {
+			// TODO Auto-generated method stub
+			return favNoteList.size();
+		}
+
+		@Override
+		public Object getItem(int position) {
+			// TODO Auto-generated method stub
+			return position;
+		}
+
+		@Override
+		public long getItemId(int position) {
+			// TODO Auto-generated method stub
+			return position;
+		}
+
+		@Override
+		public View getView(int position, View convertView, ViewGroup parent) {
+			if(favNoteList==null){
+				return convertView;
+			}
+			final View view=convertView.inflate(UserPanelActivity.this, R.layout.comment_listview,null);
+			Object obj=favNoteList.get(position);
+			ImageView news_item_image=(ImageView)view.findViewById(R.id.img);
+			TextView news_item_title=(TextView)view.findViewById(R.id.info);
+			if(obj instanceof Note){
+				final Note aComment=(Note)obj;
+				String cateName=aComment.getNoteName();
+				news_item_title.setText(aComment.getNoteName().toString());
+				
+			}else{
+			}
+			return view;
+		}
+	}
+	
+ 	public static Bitmap getPicByPath(String picName){
+ 			picName=picName.substring(picName.lastIndexOf("/")+1);
+ 			String filePath=path+picName;
+ 			Bitmap bitmap=BitmapFactory.decodeFile(filePath);
+ 			return bitmap;
+ 	}
+ 	
 	
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
