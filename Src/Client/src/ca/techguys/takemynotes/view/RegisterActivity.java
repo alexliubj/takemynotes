@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.view.Menu;
@@ -126,20 +128,17 @@ public class RegisterActivity extends Activity implements OnClickListener {
 							}
 							
 							if (common != null) {
-								
-								dialog.cancel();
+								//dialog.cancel();
 								if(common.getResult().equals("succ")) // successful
 								{
-									dialog.cancel();
+									//dialog.cancel();
 									
-									//handler.sendEmptyMessage(4);
-									
-									//System.out.println(tempModel.getResult().toString());
 									Intent intent = new Intent(RegisterActivity.this,
-											SelectRoleActivity.class);
-									intent.putExtra("userName",userName);
+											LoginActivity.class);
+									intent.putExtra("regMsg", "pass");
 									startActivity(intent);
 									finish();
+									
 								}
 								
 							} else {
@@ -207,6 +206,22 @@ public class RegisterActivity extends Activity implements OnClickListener {
 
 	};
 	
+	@SuppressWarnings("deprecation")
+	public void showAlert(){
+
+		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+		alertDialog.setTitle("Message");
+		alertDialog.setMessage("You register successfully");
+		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+		public void onClick(DialogInterface dialog, int which) {
+			
+		}
+		});
+		alertDialog.setIcon(R.drawable.icon);
+		alertDialog.show();
+		
+ 	   	
+	}
 	
 	public void onClick(View v) {
 		switch (v.getId()) {

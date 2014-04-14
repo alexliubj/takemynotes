@@ -7,14 +7,11 @@ import java.util.concurrent.TimeoutException;
 import com.google.gson.JsonSyntaxException;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import ca.techguys.takemynotes.R;
 import ca.techguys.takemynotes.R.layout;
 import ca.techguys.takemynotes.R.menu;
-import ca.techguys.takemynotes.beans.ApplicationData;
-import ca.techguys.takemynotes.beans.CategoryItem;
-import ca.techguys.takemynotes.beans.UserInfo;
-import ca.techguys.takemynotes.beans.ResultModel;
 import ca.techguys.takemynotes.beans.*;
 import ca.techguys.takemynotes.net.Parse;
 import ca.techguys.takemynotes.net.TakeMyNotesRequest;
@@ -23,6 +20,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -50,11 +48,16 @@ private int userid;
 
 private ResultModel tempModel;
 private StoreUserInfo storeInfoModel;
+
+private AlertDialog alertDialog;
+
 private void init() {
 btnGetCaptcha = (Button) findViewById(R.id.lgLoginBtn);
 btnGetCaptcha.setOnClickListener(this);
 createBtn = (Button) findViewById(R.id.lgCreateBtn);
 createBtn.setOnClickListener(this);
+
+alertDialog = new AlertDialog.Builder(this).create();
 }
 
 private void ShowMyDialog(int type, String str) {
@@ -114,8 +117,35 @@ setContentView(R.layout.activity_login);
 
 setTitle("Login");
 
-init();
+if(getIntent().hasExtra("regMsg")){
+	showAlert();
 }
+
+init();
+
+
+
+}
+
+
+@SuppressWarnings("deprecation")
+public void showAlert(){
+
+	AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+	alertDialog.setTitle("Message");
+	alertDialog.setMessage("Please check you user name and password");
+	alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+	public void onClick(DialogInterface dialog, int which) {
+		
+	}
+	});
+	alertDialog.setIcon(R.drawable.icon);
+	alertDialog.show();
+	
+	   	
+}
+
+
 
 private Handler handler = new Handler() {
 
@@ -162,7 +192,7 @@ handler.sendEmptyMessage(4);
 // LoginActivity.this.finish();
 // dialog.cancel();
 } else { //failed
-
+	
 }
 }
 }

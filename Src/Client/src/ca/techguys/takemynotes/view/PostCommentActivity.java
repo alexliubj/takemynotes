@@ -7,6 +7,7 @@ import java.util.concurrent.TimeoutException;
 import com.google.gson.JsonSyntaxException;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import ca.techguys.takemynotes.R;
 import ca.techguys.takemynotes.R.layout;
@@ -24,6 +25,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.text.Editable;
@@ -39,6 +41,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.app.AlertDialog;
+
+
 
 public class PostCommentActivity extends Activity{
 
@@ -53,7 +58,6 @@ public class PostCommentActivity extends Activity{
 	private Button postBtn;
 	
 	private ResultModel resultModel;
-	
 	
 	
 	private Handler handler = new Handler() {
@@ -90,6 +94,8 @@ public class PostCommentActivity extends Activity{
 							handler.sendEmptyMessage(3);
 						} else {
 							System.out.println(result.toString());
+//							showAlert();
+							
 						}
 					}
 				};
@@ -141,6 +147,25 @@ public class PostCommentActivity extends Activity{
 	};
 	
 	
+	public void showAlert(){
+
+		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+		alertDialog.setTitle("Message");
+		alertDialog.setMessage("Your comment has been posted");
+		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+		public void onClick(DialogInterface dialog, int which) {
+//	        Intent intent=new Intent(PostCommentActivity.this, NoteDetailsActivity.class);
+//	 	   	startActivity(intent);
+		}
+		});
+		alertDialog.setIcon(R.drawable.icon);
+		alertDialog.show();
+		
+ 	   	
+	}
+	
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -168,6 +193,7 @@ public class PostCommentActivity extends Activity{
 				if(comment.length()!=0){
 					//post comment 
 					handler.sendEmptyMessage(0);
+					showAlert();
 					
 				}else{
 					warningTv.setTextColor(Color.RED);

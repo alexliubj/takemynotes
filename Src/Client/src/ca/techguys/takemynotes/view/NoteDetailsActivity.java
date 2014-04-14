@@ -22,6 +22,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -97,9 +99,28 @@ public class NoteDetailsActivity extends Activity implements OnClickListener {
 			public void onClick(View v) {
 				ShowMyDialog(1,null);
 				handler.sendEmptyMessage(0);
+				showAlert();
 			}
 		});
 	}
+	
+	
+	public void showAlert(){
+
+		AlertDialog alertDialog = new AlertDialog.Builder(this).create();
+		alertDialog.setTitle("Message");
+		alertDialog.setMessage("You have add this note to favourite list");
+		alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+		public void onClick(DialogInterface dialog, int which) {
+			
+		}
+		});
+		alertDialog.setIcon(R.drawable.icon);
+		alertDialog.show();
+		
+ 	   	
+	}
+	
 	
 	@SuppressWarnings("unchecked")
 	private void getNoteList()
@@ -146,6 +167,8 @@ public class NoteDetailsActivity extends Activity implements OnClickListener {
 			return view;
 		}
 	}
+	
+	
 	
  	public static Bitmap getPicByPath(String picName){
  			picName=picName.substring(picName.lastIndexOf("/")+1);
